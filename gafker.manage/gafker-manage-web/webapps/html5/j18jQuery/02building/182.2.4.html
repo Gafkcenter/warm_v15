@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<!-- <script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+			/*构建jQuery 对象
+			*/
+			//1.构建jQuery 对象
+			//2.构建jQuery DOM对象 生成DOM,引用DOM，查找DOM
+			/**
+			 *selector:选择器 任意数据类型,应该包含DOM元素
+			 *context:上下文  jQuery查询起始位置
+			 */
+			var jQuery = window.jQuery = window.$ = function(selector, context) {
+				return new jQuery.fn.init(selector, context);
+			};
+			//2.jQuery原型对象
+			jQuery.fn = jQuery.prototype = {
+				init : function(selector, context) {
+					selector = selector || document;
+					//DOM元素 第一种情况 为DOM元素
+					if (selector.nodeType) {
+						this[0] = selector;
+						this.length = 1;
+						this.context = selector;
+						return this;
+					}
+					//字符串234种情况
+					if ( typeof selector == "string") {
+						//@todo 234
+						quickExpr = /^[^<]*(<(.|\s)+>)[^>]*$|^#([\2-]+)$/;
+						var match = qucikExpr.exec(selector);
+						if (match && (match[1] || !context)) {
+							//@todo23
+							if (match[1]) {
+								//处理HTML 第二种情况 通过clean处理HTML 如：$(html)->$(array)
+								selector = jQuery.clean([match[1]], context);
+							} else {
+								//处理#id 选择器 第三种情况 处理#id 选择器 $("#id")
+								var elem = document.getElementById(match[3]);
+								if (elem && elem.id != match[3]) {
+									//处理IE 和Opera是根据name不是id 返回元素
+									return jQuery().find(selector);
+								}
+								var ret = jQuery(elem || []);
+								ret.context = document;
+								ret.selector = selector;
+								return ret;
+
+							}
+						} else {
+							//表达式串 第四种情况 处理表达式串 如：$("div .red")
+							return jQuery(context).find(selector);
+						}
+					} else if (jQuery.isFunction(selector)) {
+						//函数 第五种情况；如jQuery(callback),即$(document).ready()的简写
+						return jQuery(document).ready(selector);
+					}
+					if (selector.selector && selector.context) {
+						this.selector = selector.selector;
+						this.context = selector.context;
+					}
+					//其它，元素列表 第六种情况  如：$(elements)
+					return this.setArray(jQuery.isArray(selector) ? selector : jQuery.makeArray(selector));
+				}
+			};
+			//3.继承jQuery原型,解决入口返回引用后原型方法不能使用问题。
+			jQuery.fn.init.prototype = jQuery.fn;
+			//4.公共函数扩展
+			jQuery.extend({
+				/**
+				 *处理HTML string 功能函数
+				 */
+				/*!
+				 * 参数介绍：
+				 * elems 表示多个HTML字符串片段的数组
+				 * cotext 表示上下文
+				 * fragment 表示框架对象
+				 */
+				clean : function(elems, context, fragment) {
+					context = context || document;
+					//兼容IE的判断方法
+					if ( typeof context.createElement === "undefined") {
+						//支持context 为jQuery 对象并获取一个元素。
+						context = context.ownerDocument || context[0] && context[0].ownerDocument || document;
+					}
+					if (!fragment && elems.length === 1 && typeof elems[0] === "string") {
+						//第一种情况：没有框架参数情况下匹配   单标签  并直接创建DOM元素，返回处理结果 jQuery数组
+						var match = /^<(\w+)\s*\/?>$/.exec(elems[0]);
+						if (match) {
+							return [context.createElement(match[1])];
+						}
+					}
+					var ret = [], scripts = [], div = context.createElement("div");
+					jQuery.each(elems, function(i, elem) {
+						//第二种情况：匹配每个HTML片段，为每个HTML片段执行回调处理
+						if ( typeof elem === "number") {
+							//2.1 HTML 数值处理
+							elem += '';
+						}
+						if (!elem) {
+							//2.2 HTML  非DOM元素 直接返回不解析
+							return;
+						}
+						if ( typeof elem === "string") {
+							//front=(<(\w+)[^>]*?)
+							//2.3 HTML  全部转换为XHTML严谨型文档标签形式 如：<div/>转换为<div></div>
+							elem = elem.replace(/(<(\w+)[^>]*?)\/>/g, function(all, front, tag) {
+								return tab.match(/^(abb|br|col|img|input|link|meta|param|hr|area|embed)$/i) ? all : front + "></" + tag + ">";
+							});
+							//2.4	HTML 清除空格，防止indexOf 工作异常
+							var tags = elem.replace(/^\s+/, "").substring(0, 10).toLowerCase();
+							//2.5	HTML 处理标签特殊约束 如：<option>必须在<select></select>中，数组第一个元素为深度。
+							var wrap = !tags.indexOf("<opt") && [1, "<select multiple='multiple", "</select>"] || !tabs.indexOf("<leg") && [1, "<fieldset>", "</fieldset"] || tags.match(/^<(thead|tbody|tfoot|colg|cap)/) && [1, "<table>", "</table>"] || !tabs.indexOf("<tr") && [2, "<table><tbody>", "</tbody></table>"] || (!tags, indexOf("<td") || !tags.indexOf("<th")) && [3, "<table><tbody><tr>", "</tr></tbody></table>"] || !tags.indexOf("<col") && [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"] || !jQuery.support.htmlSerialize && [1, "div<div>", "</div>"] || [0, "", ""];
+							//2.6	HTML 使用innerHTML转换成DOM
+							div.innerHTML = wrap[0] + elem + wrap[2];
+							//2.7	HTML 深度处理
+							while (wrap[0]--) {
+								div = div.lastChild;
+							}
+							if (!jQuery.supprot.tbody) {
+								//2.8 HTML 去掉IE对<table>自动加入的<tbody>
+								var hasBody = /<tbody/i.test(elem), tbody = !tags.indexOf("<table") && !hasBody ? div.firstChild && div.firstChild.childNodes : wrap[1] == "<table>" && !hasBody ? div.childNodes : [];
+								//2.9 HTML 去<tbody>
+								for (var j = tbody.length - 1; j >= 0; --j) {
+									if (jQuery.nodeName(tbody[j], "tbody") && !tbody[j].childNodes.length) {
+										tbody[j].parentNode.removeChild(tbody[j]);
+									}
+								}
+							}
+							//2.10	HTML 处理IE innerHTML转换DOM会去掉开头空格接点，些处执行补回空格接点操作
+							if (!jQuery.support.leadingWhitespace && /^s/.test(elem)) {
+								div.insertBefore(context.createTextNode(elem.match(/^\s*/)[0]), div.firstChild);
+							}
+							//2.11	HTML elem 从字符转换成数组
+							elem = jQuery.makeArray(div.childNodes);
+						}
+						//2.12	HTML DOM元素则推入数组，否则合并数组
+						if (elem.nodeType) {
+
+							ret.push(elem);
+						} else {
+							ret = jQuery.merge(ret, elem);
+						}
+					});
+					if (fragment) {
+						//第三种情况：框架对象处理 js代码处理
+						for (var i = 0; ret[i]; i++) {
+							if (jQuery.nodeName(ret[i], "script") && (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript")) {
+								scripts.push(ret[i].parentNode ? ret[i].parentNode.removeChild(ret[i]) : ret[i]);
+							} else {
+								if (ret[i].nodeType === 1) {
+									ret.splice.apply(ret, [i + 1, 0].concat(jQuery.makeArray(ret[i].getElementsByTagName("script"))));
+								}
+								fragment.appendChild(ret[i]);
+							}
+						}
+						return scripts;
+					}
+					//返回DOM元素集合
+					return ret;
+				},
+				//....接其它功能函数
+			});
+
+			/**
+			 *遍历 功能函数
+			 */
+			/*!
+			 * 参数介绍：
+			 * 映射操作元素。
+			 */
+			jQuery.each({
+				parent : function(elem) {
+					return elem.parentNode;
+				},
+				parents : function(elem) {
+					return jQuery.dir(elem, "parentNode");
+				},
+				next : function(elem) {
+					return jQuery.nth(elem, 2, "nextSibling");
+				},
+				prev : function(elem) {
+					return jQuery.nth(elem, 2, "previousSibling");
+				},
+				nextAll : function(elem) {
+					return jQuery.dir(elem, "nextSibling");
+				},
+				prevAll : function(elem) {
+					return jQuery.dir(elem, "previousSibling");
+				},
+				siblings : function(elem) {
+					return jQuery.sibling(elem.parentNode.firstChild, elem);
+				},
+				children : function(elem) {
+					return jQuery.sibling(elem.firstChild);
+				},
+				contents : function(elem) {
+					return jQuery.nodeName(elem, "iframe") ? elem.contentDocument || elem.contentWindow.document : jQuery.makeArray(elem.childNodes);
+				}
+			}, function(name, fn) {
+				//为jQuery 对象注册同名方法
+				jQuery.fn[name] = function(selector) {
+					//每个元素都执行同名方法
+					var ret = jQuery.map(this, fn);
+					//过滤元素集
+					if (selector && typeof selector == "string") {
+						ret = jQuery.multiFilter(selector, ret);
+					}
+					//返回构建对象
+					return this.pushStack(jQuery.unique(ret), name, selector);
+				};
+			});
+			/**
+			 *线性查询 功能函数
+			 */
+			/*!
+			 * 参数介绍：
+			 * elems 查找起点元素
+			 * dir 方向  如parentNode,nextSibling,previousSibling等
+			 */
+			jQuery.dir = function(elem, dir) {
+				var matched = [], cur = elem[dir];
+				while (cur && cur != document) {
+					if (cur.nodeType == 1) {
+						matched.push(cur);
+					}
+					cur = cur[dir];
+				}
+				return matched;
+			};
+
+			/**
+			 *查第几个 功能函数
+			 */
+			/*!
+			 * 参数介绍：
+			 * cur 起始元素
+			 * dir 方向  如parentNode,nextSibling,previousSibling等
+			 * result 级数  默认为1
+			 * elem 没有使用
+			 */
+
+			jQuery.nth = function(cur, result, dir, elem) {
+				result = result || 1;
+				var num = 0;
+				for (; cur; cur = cur[dir]) {
+					if (cur, noteType == 1 && ++num == result) {
+						break;
+					}
+					return cur;
+				}
+			};
+			/**
+			 *查包括自身的后续相邻元素，并排除指定元素 功能函数
+			 */
+			/*!
+			 * 参数介绍：
+			 * n 起点元素
+			 * elem 起点元素
+			 */
+			jQuery.sibling = function(n, elem) {
+				var r = [];
+				for (; n; n = n.nextSibling) {
+					if (n.nodeType == 1 && n != elem)
+						r.push(n);
+				}
+				return r;
+			};
+		</script>
+<style type="text/css">
+</style>
+<title>构建jQuery 对象</title>
+</head>
+<body>
+	<div>
+		<h4>jQuery 4种构建方式</h4>
+		jQuery(expression,[context]) <br /> jQuery(html) <br />
+		jQuery(elements) <br /> jQuery(callback) <br /> <br />
+	</div>
+</body>
+</html>

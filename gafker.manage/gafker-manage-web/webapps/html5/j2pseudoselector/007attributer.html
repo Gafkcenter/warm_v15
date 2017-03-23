@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("img").css("width","260px");
+				$("img[alt]").css("border","solid 2px red");
+				$("img[alt][title='图像']").css("border","solid 3px yellow");
+				
+			});
+		</script>
+<title>伪类选择器/-属性选择器 selector</title>
+</head>
+<body>
+	属性选择器: [属性名]，[attribute=value]，[属性选择器1][属性选择器2][属性选择器3]
+	<br />
+	[attribute=value]匹配值相同,[attribute!=value]不同,[attribute^=value]以值开始,[attribute$=value]以值结束,[attribute*=value]包含值
+	<br />
+	<ul>
+		<li>img标签设置宽度属性260px
+		<li>img 有alt属性的加上边框
+		<li>img 有alt属性且title="图像"的单独设置一种边框
+	</ul>
+	<br />
+	<img
+		src="../../images/pic1.jpg"
+		alt="pic1"
+	/>
+	<img
+		src="../../images/pic2.jpg"
+		alt="pic2"
+	/>
+	<img src="../../images/pic2.jpg" />
+	<img
+		src="../../images/pic3.jpg"
+		alt="pic3"
+		title="图像"
+	/>
+</body>
+</html>

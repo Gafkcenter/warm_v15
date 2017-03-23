@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.6.4.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				//引用map数据
+				$("p").bind("click", {
+					"gafker" : "熊",
+					"honesty" : "锋"
+				}, function(event) {
+					$(this).text("FirstName:" + event.data.honesty + " LastName:" + event.data.gafker);
+					//限止起泡
+					event.stopPropagation();
+				});
+			});
+		</script>
+<style type="text/css">
+p {
+	color: white;
+	border: solid 2px #FFCCFF;
+	background: blue;
+}
+</style>
+<title>事件处理-事件处理模型</title>
+</head>
+<body>
+	1. 0 级raw code,
+	<br /> --DOM 2级
+	addEventListener(type,fn,useCapture),removeEventListener(type,fn,useCapture),stopPropagegation()
+	<br /> --IE attachEvent(type,fn),cancelBubble属性，detachEvent()
+	<br /> 2.jquery:
+	<br /> 绑定:bind(),one(),unbind();
+	<br />
+	触发:trigger(eventType,extraParameters),trigger(event),triggerHandler();
+	<br /> 经过：toggle(handler(eventObject),...n),hover()
+	<br />
+	委派:live(eventType,handler),live(eventType,eventData,handler),die(),die(eventType,[handler]),ready();
+	<br /> 《事件控制》
+	<p>点击——段落1</p>
+	<p>点击——段落2</p>
+	<p>点击——段落3</p>
+</body>
+</html>

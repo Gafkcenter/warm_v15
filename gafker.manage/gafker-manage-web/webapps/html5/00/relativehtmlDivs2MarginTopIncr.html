@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+text-align: center;
+}
+div{
+border: 1px solid #0000ff;
+}
+div.wh{
+width: 102px;
+height: 102px;
+border: 1px solid #00ff00;
+}
+</style>
+</head>
+<body>
+<h1>基本配置01</h1>
+<div style="border: 0px solid #0000ff;text-align: left;">
+CSS的Left、Right、Top、Bottom属性（偏移属性）和Margin属性（外边距）<br/>
+相对定位布局块级元素:position值： position:relative;<br/>
+			  position值：position:absolute;<br/>
+<br/>
+margin-bottom属性和margin-top属性设置负值可以改变文档流中所占空间的高度，会影响文档流中的其它元素位置。<br/>
+
+</div>
+事例(没有加位置信息)：<br/>
+<br/>
+<h1>
+<div style="border: 0px solid #0000ff;text-align: left;">
+box1 ——– position:relative ; margin-bottom:-102px;<br/>
+box2 ——– position:relative ; margin-bottom:-102px; margin-left:110px;<br/>
+box3 ——– position:relative ; margin-bottom:0px; margin-left:330px;<br/>
+</div>
+</h1>
+<div>
+<div id="box1" class="wh" style="position:relative ; margin-bottom:-102px">box1</div><!-- 负数清除原盒了位置 -->
+<div id="box2" class="wh" style="position:relative ; margin-bottom:-102px; margin-left:110px;">box2</div>
+<div id="box3" class="wh" style="position:relative ; margin-bottom:100px; margin-left:330px;">box3</div><!-- 增加点位空间 -->
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("p").has("span.red").css("background-color", "red");
+			});
+		</script>
+<title>过滤器/-过滤</title>
+</head>
+<body>
+	表达式过滤(has("")过滤出p标签中span.red类设置背景为红色)
+	<br />
+	<p>
+		<span class="red">文本1</span>
+	</p>
+	<p>
+		<span>文本2</span><span></span>
+	</p>
+	<p>文本3</p>
+</body>
+</html>

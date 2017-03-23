@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload=function(){
+				var div = document.getElementsByTagName("div")[0];
+				div.onclick = function(){
+					var div1 = div.cloneNode(true);
+					div.parentNode.insertBefore(div1,div.nextSibling);
+				}
+			}
+		</script>
+<title>DOM-克隆内容--cloneNode()--clone</title>
+</head>
+<body>
+	注意：1.通过javaScript cloneNode并显示在后面；2.通过jquery clone并显示到后面。
+	<br /> 1.nodeObject.cloneNode(true|false)
+	2.clone([true|false]),clone([true|false],[true|false])
+	1.nodeObject.cloneNode(include_all)2.clone([withDataAndEvents]),clone([withDataAndEvents],[deepWithDataAndEvents])
+	<br />
+	<div
+		class="red"
+		title="on"
+		ondblclick="alert('ok')"
+	>
+		<p>P段落文本</p>
+	</div>
+</body>
+</html>

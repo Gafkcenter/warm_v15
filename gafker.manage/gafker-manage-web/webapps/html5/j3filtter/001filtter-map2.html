@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("p").append($("input").map(function() {
+					return $(this).val();
+				}).get().join("、")).css("background-color","grey");
+			});
+		</script>
+<title>过滤器/-过滤</title>
+</head>
+<body>
+	映射过滤 .map(fn)
+	<br /> 为间接应用：先map()将元素-映射到->数组-映射到->其它形态或格式数据
+	<br />
+	<p>
+		<b>注册信息：</b>
+	</p>
+	<form>
+		<input
+			type="text"
+			name="name"
+			value="用户名"
+		/> <input
+			type="text"
+			name="password"
+			value="密码"
+		/> <input
+			type="text"
+			name="url"
+			value="htpp://www.baidu.com/"
+		/>
+	</form>
+</body>
+</html>

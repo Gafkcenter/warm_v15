@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<servlet>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>cn.itcast.web.TestServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>cn.itcast.web.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>XmlFileServlet</servlet-name>
+		<servlet-class>cn.itcast.web.XmlFileServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JSONServlet</servlet-name>
+		<servlet-class>cn.itcast.web.JSONServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JSONServlet02</servlet-name>
+		<servlet-class>cn.itcast.web.JSONServlet02</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/testServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/registerServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>XmlFileServlet</servlet-name>
+		<url-pattern>/xmlFileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JSONServlet</servlet-name>
+		<url-pattern>/jsonServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JSONServlet02</servlet-name>
+		<url-pattern>/jsonServlet02</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoadServlet</servlet-name>
+		<servlet-class>cn.itcast.web.LoadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadServlet</servlet-name>
+		<url-pattern>/loadServlet</url-pattern>
+	</servlet-mapping>
+</web-app>

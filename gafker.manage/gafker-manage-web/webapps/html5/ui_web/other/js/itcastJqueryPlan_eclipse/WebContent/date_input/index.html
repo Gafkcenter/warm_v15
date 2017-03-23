@@ -1,0 +1,42 @@
+﻿<script
+	type="text/javascript"
+	src="../js/jquery-1.4.2.js"
+></script>
+<link
+	rel="stylesheet"
+	href="./jquery.datepick.css"
+	type="text/css"
+>
+<script
+	type="text/javascript"
+	src="./jquery.datepick.js"
+></script>
+<script
+	type="text/javascript"
+	src="./jquery.datepick-zh-CN.js"
+></script>
+<div>jQuery插件datePicker日期选择器</div>
+<input
+	type="text"
+	name="time"
+	value="2009-2-9"
+	class="biuuu"
+/>
+<input
+	type="text"
+	name="time"
+	value="2009-2-9"
+	class="biuuu"
+/>
+<input
+	type="text"
+	name="time"
+	value="2009-2-9"
+	class="biuuu"
+/>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//使用class属性处理  'yy-mm-dd' 设置格式"yyyy/mm/dd"
+		$('.biuuu').datepick({dateFormat: 'yy-mm-dd'}); 
+	});
+</script>

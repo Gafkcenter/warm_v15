@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+			$(function() {
+				$('input[type="button"]').click(function() {
+					var i = 0;
+					$('input[type="text"]').each(function() {
+						i += parseInt($(this).val());
+					});
+					$('label').text(i);
+				});
+				$('input:lt(2)').add('label').css({
+					'color' : 'red',
+					'border' : 'none',
+					'borderBottom' : 'solid 2px navy',
+					'textAlign' : 'center',
+					'width' : '30px'
+				});
+			});
+		</script>
+<title>选择器加法运算</title>
+</head>
+<body>
+	<a href="http://docs.jquery.com/Selectors">选择器相关内容</a>
+	<br />
+	<input
+		type="text"
+		value=""
+	/> +
+	<input
+		type="text"
+		value=""
+	/>
+	<input
+		type="button"
+		value="="
+	/>
+	<label></label>
+</body>
+</html>

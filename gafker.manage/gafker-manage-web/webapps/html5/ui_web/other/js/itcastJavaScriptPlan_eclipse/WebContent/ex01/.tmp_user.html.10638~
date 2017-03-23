@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>添加用户</title>
+	</head>
+	<body>
+		<center>
+			<br><br>
+			添加用户:<br><br>
+			姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp;
+			email: <input type="text" name="email" id="email" />&nbsp;&nbsp;
+			电话: <input type="text" name="tel" id="tel" /><br><br>
+			<button id="addUser">提交</button>
+			<br><br>
+			<hr>
+			<br><br>
+			<table id="usertable" border="1" cellpadding="5" cellspacing=0>
+				<tbody>
+					<tr>
+						<th>姓名</th>
+						<th>email</th>
+						<th>电话</th>
+						<th>&nbsp;</th>
+					</tr>
+					<tr>
+						<td>Tom</td>
+						<td>tom@tom.com</td>
+						<td>5000</td>
+						<td><a href="deleteEmp?id=Tom">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Jerry</td>
+						<td>jerry@sohu.com</td>
+						<td>8000</td>
+						<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+	<script language="JavaScript">
+		//当文档加载完毕， 才执行该函数体的内容
+		window.onload=function(){
+		   //<button id="addUser">提交</button> 增加onClick事件
+			var bElement=document.getElementById("addUser");
+			bElement.onclick = function(){
+	
+				//姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp;
+				var nameValue = document.getElementById("name").value;
+				
+				//email: <input type="text" name="email" id="email" />&nbsp;&nbsp;
+				var emailValue = document.getElementById("email").value;
+				
+				//电话: <input type="text" name="tel" id="tel" /><br><br>
+				var telValue = document.getElementById("tel").value;
+				
+				
+							/*
+				 *    <tr>
+				 <td>Jerry</td>
+				 <td>jerry@sohu.com</td>
+				 <td>8000</td>
+				 <td><a href="deleteEmp?id=Jerry">Delete</a></td>
+				 </tr>
+				 */
+				//创建<td>name</td>
+				var nameTdElement = document.createElement("td");
+				var nameTdTextElement = document.createTextNode(nameValue);
+				nameTdElement.appendChild(nameTdTextElement);
+				
+				//<td>email</td>
+				var emailTdElement = document.createElement("td");
+				var emailTextElement = document.createTextNode(emailValue);
+				emailTdElement.appendChild(emailTextElement);
+				
+				
+				//<td>8000</td>
+				var telTdElement = document.createElement("td");
+				var telTdTextElement = document.createTextNode(telValue);
+				telTdElement.appendChild(telTdTextElement);
+				
+				
+				//<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+				var aTdElement = document.createElement("td");
+				
+				
+				//<a href="deleteEmp?id=Jerry">Delete</a>
+				var aElement = document.createElement("a");
+				aElement.setAttribute("href", "deleteEmp?id=" + nameValue);
+				//delete
+				var deleteTextElement = document.createTextNode("delete");
+				aElement.appendChild(deleteTextElement);
+				
+				//<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+				aTdElement.appendChild(aElement);
+				
+				
+				//创建tr
+				var trElement = document.createElement("tr");
+				trElement.appendChild(nameTdElement);
+				trElement.appendChild(emailTdElement);
+				trElement.appendChild(telTdElement);
+				trElement.appendChild(aTdElement);
+				
+				//在table增加tr
+				//<table id="usertable" border="1" cellpadding="5" cellspacing=0>
+				var tableElement = document.getElementById("usertable");
+				
+				tableElement.firstChild.appendChild(trElement);
+				
+				//给a标签增加onClick事件
+				aElement.onclick=function(){	
+				    //调用删除节点的方法  //使超链接失效
+					return deleteTr(aElement);  //方法的参数是a元素
+				}
+			}	
+				
+		}//window.onLoad结束
+///////////////////////////////////////////////////////////////////////////////////////////////////		
+		function deleteTr(aElement){
+			
+			//获取tr中name属性的值
+			/*
+			   <tr>
+				 <td>Jerry</td>
+				 <td>jerry@sohu.com</td>
+				 <td>8000</td>
+				 <td><a href="deleteEmp?id=Jerry">Delete</a></td>
+			  </tr>
+			 */
+			var nameValue=aElement.parentNode.parentNode.firstChild.firstChild.nodeValue;
+			var flag=window.confirm("您真的要删除["+nameValue+"]这个用户吗");
+			//alert(flag);
+			
+			//点击"取消" 按钮
+			if(!flag){ //使超链接失效
+				return false; //不再往下执行
+			}
+			
+			//点击"确定" 执行删除
+			
+			//获取tbody节点
+			var tbodyElement=aElement.parentNode.parentNode.parentNode;
+			
+			//获取a标签所在的tr
+			var trElement=aElement.parentNode.parentNode;
+			
+			//删除
+			tbodyElement.removeChild(trElement);
+			
+			
+			//使超链接失效
+			return false;
+			
+		}
+		
+	
+	 
+	 
+	 
+	</script>
+</html>

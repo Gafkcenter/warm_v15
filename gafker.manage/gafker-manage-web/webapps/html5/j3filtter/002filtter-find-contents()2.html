@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("#menu").contents().css({"color":"red","text-decoration":"underline"});
+			});
+		</script>
+<title>过滤器/-查找</title>
+</head>
+<body>
+	向下查找所有或指定后代:-contents()--无参，可返回标签与注释
+	<br /> 1.给所有ul 子加下划线并红色；2.给home类加下划线；3.给home类外的加下划线。
+	<br />
+	<ul id="menu">
+		<li class="home">首页</li>
+		<li>Family</li>
+		<li>Home</li>
+		<li>Message</li>
+		<li>广告</li>
+		<li>Mall</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+text-align: center;
+}
+div{
+border: 1px solid #0000ff;
+}
+div.wh{
+width: 102px;
+height: 102px;
+border: 1px solid #00ff00;
+}
+</style>
+</head>
+<body>
+<h1>基本配置01</h1>
+<div style="border: 0px solid #0000ff;text-align: left;">
+偏移属性:Left、Right、Top、Bottom属性（偏移属性）和<br/>
+Margin属性（外边距）:Margin-Left、Margin-Right、Margin-Top、Margin-Bottom属性<br/>
+相对定位布局块级元素:position值： position:relative;<br/>
+			  position值：position:absolute;<br/>
+<br/>
+</div>
+事例(加位置信息+加位置定位方式)：<br/>
+一、用相对定位布局块级元素<br/>
+元素设置position值： position:relative（没有脱离文档流-原盒子位置还存在，不会被其它元素占据）<br/>
+此属性值的设置，元素没有脱离文档流，还是普通流定位模型的一部分，会对文档流中其它元素布局产生影响。（说明：蓝色代表占位空间，红色代表元素）<br/>
+设置属性的原盒子位置还存在，不会被其它元素占据. 应用:用作空白点位符
+<br/>
+
+<h1>box2 ——– position:relative; top:-60px; left:80px;</h1><br/>
+<div>
+<div id="box1" class="wh">box1</div>
+<!-- box2默认div偏移前的位置空间保持为空不被其它内容占用 -->
+<div id="box2" class="wh" style="position:relative ; top:-60px; left:80px;">box2</div>
+<div id="box3" class="wh">box3</div>
+以前面一个box1的顶边和左边为0点参考位置
+</div>
+</body>
+</html>

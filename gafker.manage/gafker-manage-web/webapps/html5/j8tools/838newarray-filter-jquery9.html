@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.6.4.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			$(function() {
+				var arr=[1,2,3,4,5,6,7,8,9,10];
+				arr =jQuery.grep(arr,function(value,index){
+					return value>=5;
+				});
+				alert(arr);
+			});
+		</script>
+<style type="text/css">
+.bg {
+	background: blue;
+}
+
+div {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: red;
+	left: 0px;
+	top: 50px;
+	display: none;
+}
+</style>
+<title>生成数组-标签转换成数组，再利用reverse()实现逆转。</title>
+</head>
+<body>
+	逆转：
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+</body>
+</html>

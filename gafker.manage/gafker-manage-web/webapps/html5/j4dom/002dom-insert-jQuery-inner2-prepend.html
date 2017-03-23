@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function(){
+				$(".container").prepend($("<img src='../../images/icon/icon (3).png'/>"));
+			});
+		</script>
+<title>DOM-创建接点-插入元素-内部插入</title>
+</head>
+<body>
+	注意：通过jQuery 1. 在ul的尾部追加图片元素（为新增元素时）。2.append已经存在的元素为移动。
+	<br />
+	jQuery实现：append(context|fn(index,html))追加,appendTo(target)被追加;prepend(context|fn(index,html))前置追加,prependTo(target)被前置追加;
+	<h2>图片列表</h2>
+	<ul class="container">
+		<li><img src="../../images/icon/icon (1).png" /></li>
+		<li><img src="../../images/icon/icon (2).png" /></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+text-align: center;
+}
+div{
+border: 1px solid #0000ff;
+}
+div.wh{
+width: 102px;
+height: 102px;
+border: 1px solid #00ff00;
+}
+</style>
+</head>
+<body>
+<h1>基本配置01</h1>
+<div style="border: 0px solid #0000ff;text-align: left;">
+CSS的Left、Right、Top、Bottom属性（偏移属性）和Margin属性（外边距）<br/>
+相对定位布局块级元素:position值： position:relative;相对定位，原盒子还在文档内占位,left,right,top,bottom 以是 近的relative作为 参照物<br/>
+			  position值：position:absolute;绝对定位，原盒子已经从文档删除<br/>
+<br/>
+二、用绝对定位布局块级元素<br/>
+设置position值：position:absolute;<br/>
+此属性值的设置，元素从文档流完全删除。 <br/>
+</div>
+事例<br/>
+<br/>
+<h1>层级关系为：<br/>
+<div align="left">
+层级关系为：
+div ——————————— position:relative;最近的祖先定位元素，参照物<br/>
+div—————————-没有设置为定位元素，不是参照物<br/>
+div———————-没有设置为定位元素，<br/>
+div box1<br/>
+div box2 ——–position:absolute; top:50px; left:120px;<br/>
+div box3<br/>
+</div>
+</h1><br/>
+<div>
+div这是远点的一个参照 relative
+<div style="position: relative;width: 500px;height: 500px"><!-- 最近参照物 -->
+div
+<div >
+div这是最近的一个参照 relative
+<div>
+				<div id="box1" class="wh">box1</div>
+				<div id="box2" class="wh" style="position:absolute;top:0px;left:120px;">absolute box2</div><!-- 移到最近参照物了 -->
+				<div id="box3" class="wh">box3</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

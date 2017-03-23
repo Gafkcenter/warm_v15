@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload = function(){
+				var a = document.getElementsByTagName("a")[1];
+				a.removeAttribute("title");
+				alert("the Second link title attribute already remove please move your mouse on it !!!");
+			}
+		</script>
+<style type="text/css">
+a {
+	background: #fcf;
+}
+</style>
+<title>DOM-属性操作--设置读取删除修改</title>
+</head>
+<body>
+	<a
+		href="http://www.gafker.com/"
+		title="一个充满爱心的网站"
+	>主页</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>社区</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>新闻</a>
+	<br />
+	设置|修改:1.elementNode.setAttribute("title","content");2.prop(),attr()
+	<br /> 读取:1.elementNode.setAttribute("title");2.prop(),attr()
+	<br />
+	删除:1.elementNode.removeAttribute("title","content");2.removeProp(),removeAttr()
+	<br />
+	<p>段落文本</p>
+</body>
+</html>

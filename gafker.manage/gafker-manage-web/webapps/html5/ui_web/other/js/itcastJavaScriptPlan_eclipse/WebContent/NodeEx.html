@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>form.html</title>
+<meta
+	http-equiv="keywords"
+	content="keyword1,keyword2,keyword3"
+>
+<meta
+	http-equiv="description"
+	content="this is my page"
+>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=UTF-8"
+>
+</head>
+<body>
+	<form
+		name="form1"
+		action="test.html"
+		method="post"
+	>
+		<input
+			type="text"
+			name="tname"
+			value="传智播客5周年_1"
+			id="tid_1"
+		><br> <input
+			type="text"
+			name="tname"
+			value="传智播客5周年_2"
+			id="tid_2"
+		><br> <input
+			type="text"
+			name="tname"
+			value="传智播客5周年_3"
+			id="tid_3"
+		><br> <input
+			type="button"
+			name="ok"
+			value="保存1"
+		/>
+	</form>
+	<h1 id="h1">明天休息</h1>
+</body>
+<script language="JavaScript">
+  ////////////////////////////////////////////////////////////////////////////////////////////   
+  /*
+   * 文本节点  属性节点  元素节点
+   */
+  
+  /*
+   * 打印 ”明天休息”  (利用两种方法)
+           提示:使用(firstChild lastChild childNodes)
+   */
+  
+  
+ //方法一 利用firstchild  输出明天休息
+   var h1Element=document.getElementById("h1");
+   //alert(h1Element.firstChild.nodeValue)
+  
+  
+  //方法二childNodes表示父元素下的所有的子元素(数组)
+   alert(h1Element.childNodes[0].nodeValue);
+
+
+ 
+ </script>
+</html>

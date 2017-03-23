@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload = function() {
+				var a = document.getElementsByTagName("a")[0];
+				a.onclick=function(){
+					alert(a.getAttribute("href"));
+					return false;
+				}
+			}
+		</script>
+<style type="text/css">
+div {
+	margin: 12px 10px;
+	border: solid 2px blue;
+}
+</style>
+<title>事件处理-事件处理模型</title>
+</head>
+<body>
+	1. 0 级raw code,
+	<br /> --DOM 2级
+	addEventListener(type,fn,useCapture),removeEventListener(type,fn,useCapture),stopPropagegation()
+	<br /> --IE attachEvent(type,fn),cancelBubble属性，detachEvent()
+	<br /> 2.jquery:
+	<br /> 绑定:bind(),one(),unbind();
+	<br />
+	触发:trigger(eventType,extraParameters),trigger(event),triggerHandler();
+	<br /> 经过：toggle(handler(eventObject),...n),hover()
+	<br />
+	委派:live(eventType,handler),live(eventType,eventData,handler),die(),die(eventType,[handler]),ready();
+	<br />《事件控制》
+	<a href="http://www.gafker.com">百度一下</a>&nbsp;
+	<a href="http://www.gafker.com">百度二下</a>
+</body>
+</html>

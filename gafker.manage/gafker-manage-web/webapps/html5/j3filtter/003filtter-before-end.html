@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$('div').find('p').css({'border':'solid 1px red','margin':'4px'}).end().css({'background':'grey'});	
+			});
+		</script>
+<title>过滤器/-串联</title>
+</head>
+<body>
+	返回前一个对象 end()
+	<br /> 设置完p 格式后再给前面（父级）div设置背景色
+	<br />
+	<div>
+		<p>第一段文本</p>
+		<p>第二段文本</p>
+	</div>
+</body>
+</html>

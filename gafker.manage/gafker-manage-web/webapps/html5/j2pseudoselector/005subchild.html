@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("p:first-child").css("color","red");
+				$("p:nth-child(3n)").css("color","yellow");
+				$("p:last-child").css("color","blue");
+			});
+		</script>
+<title>伪类选择器/-匹配了元素相关选择器 selector</title>
+</head>
+<body>
+	匹配了元素相关选择器: :nth-child(index|伪类|选择器)为选择器找到的了元素,:first-child为第一个子元素
+	:last-child为最后一个子元素，:only-child:一个儿子的了元素
+	<br />
+	<div>
+		<p>我有爱心</p>
+		<p>我很难静下心做事情！</p>
+		<p>我愿意为社会做贡献</p>
+		<p>我喜欢多事一起做！</p>
+		<p>我有无偿献个血</p>
+		<p>我不善于拒绝别人！</p>
+		<p>我其实很有爱心和公德心的</p>
+		<p>我有爱心1</p>
+		<p>我很难静下心做事情！1</p>
+		<p>我愿意为社会做贡献1</p>
+		<p>我喜欢多事一起做！1</p>
+		<p>我有无偿献个血1</p>
+		<p>我不善于拒绝别人！1</p>
+		<p>我其实很有爱心和公德心的1</p>
+	</div>
+</body>
+</html>

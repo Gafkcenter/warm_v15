@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+		$(function(){
+			$("body *").css("color","blue");
+		});
+		</script>
+<title>star selector</title>
+</head>
+<body>
+	注意：*与body&nbsp;*差别,后者没有在标签内的内容不会设置格式。
+	<br />
+	<div>*操作选择,设置所有文字为蓝色</div>
+	<br />
+	<div class="red">简单id</div>
+	<br /> 通过转义id操作选择
+	<br />
+	<div class="div1">a.b&nbsp;id</div>
+	<div class="red">a:b&nbsp;id</div>
+	<div class="div1">[div]&nbsp;id</div>
+</body>
+</html>

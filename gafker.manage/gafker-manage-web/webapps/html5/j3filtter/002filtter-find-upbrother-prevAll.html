@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$(".red").prevAll().css({
+					"border" : "solid 1px red"
+				});
+			});
+		</script>
+<title>过滤器/-查找</title>
+</head>
+<body>
+	向上查找兄弟:
+	<br />
+	-prev([expr])向上查相临兄弟（与previousSibling类似，但可以匹配除相临兄弟外的其它任意类型兄弟-节点）。
+	<br /> -prevAll([expr])找相临兄弟和所有同辈元素。
+	<br />
+	-prevUntil([selector])在兄弟里找部分找（prev()~prevAll()之间的内容）条件为[selector]的同辈元素;
+	<br />
+	<h1>回乡偶书</h1>
+	<h2>贺知章</h2>
+	<p class="blue">少小离家老大回，</p>
+	<p>乡音无改鬓毛衰。</p>
+	<p class="red">儿童相见不相识，</p>
+	<p>笑问客从何处来。</p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="gb2312"?>
+<chart caption='cd类别对照表' palette='4' decimals='0'
+	enableSmartLabels='1' enableRotation='0' bgColor='99CCFF,FFFFFF'
+	bgAlpha='40,100' bgRatio='0,100' bgAngle='360' showBorder='1'
+	startingAngle='70'>
+	<set label='民乐' value='6' />
+	<set label='流行音乐' value='8' />
+	<set label='外国歌曲' value='1' />
+	<set label='摇滚乐' value='6' />
+</chart>

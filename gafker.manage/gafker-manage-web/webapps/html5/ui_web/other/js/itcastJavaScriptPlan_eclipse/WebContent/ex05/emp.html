@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=utf-8"
+/>
+<title>demo</title>
+</head>
+<body>
+	<p>员工信息录入</p>
+	<form
+		name="empForm"
+		id="empForm"
+		method="post"
+		action="user.html"
+	>
+		<table border=1>
+			<tr>
+				<td>真实姓名(不能为空 ,没有其他要求)</td>
+				<td><input
+					type="text"
+					id="realname"
+					name="realname"
+				/></td>
+			</tr>
+			<tr>
+				<td>登录名(登录名不能为空,长度应该在5-8之间,可以包含中文字符(一个汉字算一个字符)):</td>
+				<td><input
+					type="text"
+					id="username"
+					name="username"
+				/></td>
+			</tr>
+			<tr>
+				<td>密码(不能为空,长度6-12字符或数字,不能包含中文字符):</td>
+				<td><input
+					type="password"
+					id="psw"
+					name="psw"
+					style="width: 120px"
+				/></td>
+			</tr>
+			<tr>
+				<td>重复密码密码(不能为空,长度6-12字符或数字,不能包含中文字符):</td>
+				<td><input
+					type="password"
+					id="psw2"
+					name="psw2"
+					style="width: 120px"
+				/></td>
+			</tr>
+			<tr>
+				<td>性别(必选其一)</td>
+				<td><input
+					type="radio"
+					id="gender_male"
+					value="m"
+					name="gender"
+				/>男 <input
+					type="radio"
+					id="gender_female"
+					value="f"
+					name="gender"
+				/>女</td>
+			</tr>
+			<tr>
+				<td>身份证(15或18为)</td>
+				<td><input
+					type="text"
+					id="cart"
+					name="cart"
+					size=20
+					value="12345678912345555"
+				/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input
+					type="button"
+					name="ok"
+					id="ok"
+					value="保存"
+				></td>
+			</tr>
+		</table>
+	</form>
+</body>
+<script language="JavaScript">
+   window.onload=function(){
+   	    document.getElementById("ok").onclick=function(){
+/***********************************************************************************************/			
+//	   var idElement=document.getElementById("id");		
+//	   //alert(idElement);
+//	   if(!idElement){
+//	   	  alert("idElement==null");
+//	   }
+
+//       var i;
+//	   if(i==undefined){
+//	      alert(i==undefined);	
+//	   }
+
+
+      alert(document.ooi);
+	   
+			
+			
+			
+			
+/**********************************************************************************************/	
+		    /*
+		     * <tr>
+				<td>真实姓名(不能为空 ,没有其他要求)</td>
+				<td><input type="text" id="realname" name="realname" />
+			    </td>
+			  </tr>
+		     */
+		
+//		  var realname=document.getElementById("realname").value;
+//		  if(realname==""||realname=='null'||realname=='undefined'){
+//		  	 alert("您的真实姓名不能为空");
+//			 document.getElementById("realname").focus();
+//			 return false;
+//		  }
+/**********************************************************************************************/		
+		/*<tr>  A-Z a-z 0-9 中文
+				<td>登录名(登录名不能为空,长度应该在5-8之间,可以包含中文字符(一个汉字算一个字符)):</td>
+				<td><input type="text" id="username" name="username" /></td>
+	     </tr>*/
+//		  var username=document.getElementById("username").value;
+//		  if(username==""||username=='null'||username=='undefined'){
+//		  	 alert("您的登陆名不能为空");
+//			 document.getElementById("username").focus();
+//			 return false;
+//		  }
+//		
+//		  //验证登陆名的长度不能少于5个字符   使用构造方法
+//		  var pattern=new RegExp("^[A-Za-z0-9\u4e00-\u9fa5]{0,4}$");
+//		  var flag=pattern.test(username);
+//		  //alert("flag "+flag);
+//		  if(flag){
+//		  	 alert("您输出的登陆名不能少于5个字符");
+//			 document.getElementById("username").focus();
+//			 return false;
+//		  }
+//		   
+//		  //验证登陆名的长度不能大于8个字符  使用文本格式,在文本中不是使用转义
+//		   pattern=/^[A-Za-z0-9\u4e00-\u9fa5]{9,}$/;
+//		   if(pattern.test(username)){
+//		   	   alert("您输出的登陆名不能大于8个字符");
+//			    document.getElementById("username").focus();
+//			     return false;
+//		   }
+/**********************************************************************************************/
+//         /*
+//          *  <tr> 
+//		      <td>密码(不能为空,长度6-12字符或数字,psw):</td>
+//		      <td><input type="password" id="psw"  name="psw" style="width:120px" /></td>
+//		    </tr>
+//          */ 
+//		  var psw=document.getElementById("psw").value;
+//		  if(psw==""||psw=='null'||psw=='undefined'){
+//		  	 alert("您的密码不能为空");
+//			 document.getElementById("psw").focus();
+//			 return false;
+//		  }		  
+//          
+//		  //验证密码长度不能小于6个字符
+//		  var pattern=/^[a-zA-Z0-9\u4e00-\u9fa5]{0,5}$/;
+//		  if(pattern.test(psw)){
+//		  	 alert("您输入的密码长度不能小于6个");
+//			 document.getElementById("psw").focus();
+//			 return false;
+//		  }
+//		  
+//		  //验证密码长度不能小于12个字符
+//		   var pattern=/^[a-zA-Z0-9\u4e00-\u9fa5]{13,}$/;
+//		  if(pattern.test(psw)){
+//		  	 alert("您输入的密码长度不能大于12个");
+//			 document.getElementById("psw").focus();
+//			 return false;
+//		  }
+
+/**********************************************************************************************/
+//          /*<tr> 
+//		      <td>重复密码密码(不能为空,长度6-12字符或数字,不能包含中文字符):</td>
+//		      <td><input type="password" id="psw2" name="psw2" style="width:120px" /></td>
+//		    </tr>
+//          */
+//          var psw2=document.getElementById("psw2").value;
+//		  if(psw!=psw2){
+//		  	 alert("您两次密码输入的不一致");
+//			 document.getElementById("psw2").focus();
+//			 return false;
+//		  }
+		  
+/**********************************************************************************************/
+//  /*
+//   *   <tr>
+//			<td>性别(必选其一)</td>
+//			    <input  type="radio" id="gender_male" value="m" name="gender"/>男
+//			    <input  type="radio" id="gender_female" value="f" name="gender"/>女
+//   */
+//       var flag=false;  //true表示有选中的  false表示没有选中的
+//       var genderElements=document.getElementsByName("gender");  
+//	   //alert(genderElements.length);
+//       for(var i=0;i<genderElements.length;i++){
+//	   	  if(genderElements[i].checked){
+//		  	 flag=true;
+//			 break;
+//		  }
+//	   }
+//	   
+//	   if(!flag){
+//	   	  alert("您没有第三种性别可选");
+//		  return false;
+//	   }
+/**********************************************************************************************/	
+            /*<tr> 
+               <td>身份证(15或18为)</td>
+               <td><input type="text" id="cart"  name="cart" size=20 value="" /></td>
+            </tr>*/
+//        var cartValue=document.getElementById("cart").value;
+//		  if(cartValue==""||cartValue=='null'||cartValue=='undefined'){
+//		  	 alert("您的身份证不能为空");
+//			 document.getElementById("cart").focus();
+//			 return false;
+//		  }	  
+
+//	      var len=cartValue.length;
+//	      
+//		  if(len!=15&&len!=18){
+//		  	  alert("您的身份证输入有误");
+//			  document.getElementById("cart").focus();
+//			  return false;
+//		  }
+//		  
+//		  
+//		  if (len == 15) {
+//		     //验证身份证是15位
+//			  var pattern=/^\d{15}$/;
+//			  if(!pattern.test(cartValue)){
+//			  	  alert("15为身份证输入有误");
+//				  document.getElementById("cart").focus();
+//			      return false;
+//			  }	
+//	       }
+//		  
+//		  //验证身份证是18为
+//          if (len == 18) {
+//		     //验证身份证是18位
+//			  var pattern=/^\d{18}|\d{17}[X]{1}$/;
+//			  if(!pattern.test(cartValue)){
+//			  	   alert("18为身份证输入有误");
+//				   document.getElementById("cart").focus();
+//			       return false;
+//			  }	
+//	       }
+/**********************************************************************************************/
+	}
+  }
+</script>
+</html>

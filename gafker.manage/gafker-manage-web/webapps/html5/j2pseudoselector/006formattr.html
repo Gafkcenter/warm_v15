@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("input:disabled").val("不可用");
+				$("input:enabled").val("可用");
+				$("input:checked").removeAttr("checked");		
+				$("#sele option:selected").removeAttr("selected");
+			});
+		</script>
+<title>伪类选择器/-表单属性相关选择器 selector</title>
+</head>
+<body>
+	表单属性相关选择器:disabled,:enabled,:checked,:selected
+	<br />
+	<form
+		id="test"
+		action=""
+		method="get"
+	>
+		<input
+			name=""
+			type="text"
+			disabled="disabled"
+			value="文本域"
+		/> <br /> <input
+			name=""
+			type="text"
+			disabled="disabled"
+			value="文本域"
+		/> <br /> <input
+			name=""
+			type="text"
+			value="文本域"
+		/> <br /> <input
+			name=""
+			type="checkbox"
+			checked="checked"
+			value="复选框"
+		/> 复选框 <br /> <input
+			name=""
+			type="radio"
+			value="单选按钮"
+			checked="checked"
+		/> 单选按钮1 <select
+			name=""
+			id="sele"
+		>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option
+				value="3"
+				selected="selected"
+			>3</option>
+		</select>
+	</form>
+</body>
+</html>

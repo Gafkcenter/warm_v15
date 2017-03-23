@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload = function() {
+				//获取签节点
+				var div = document.getElementsByTagName("div")[0];
+				//建新标签节点
+				var h1 = document.createElement("h1");
+				var h2 = document.createElement("h2");
+				//插入新标签接点
+				var o =div.appendChild(h1);
+				var o1 =div.insertBefore(h2,div.firstChild);
+			}
+		</script>
+<title>DOM-创建接点-插入元素-内部插入</title>
+</head>
+<body>
+	注意：通过JavaScript创建两新标签并插入在p标签的前后-开发者工具查看效果。
+	<br /> JavaScript实现：前面插入insertBefore()，后面插入appendChild(h1);
+	<div>
+		<p>段落文本</p>
+	</div>
+</body>
+</html>

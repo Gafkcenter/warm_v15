@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload = function() {
+				//建标签节点
+				var div = document.createElement("div");
+				//建文本节点
+				var txt = document.createTextNode("DOM TEST");
+				//加入属性
+				div.setAttribute("title", "盒子");
+				//文本节点内容放入DIV盒子
+				div.appendChild(txt);
+				//DIV盒子放入到document 文档 body上展示
+				document.body.appendChild(div);
+			}
+		</script>
+<title>DOM-创建接点-创建元素</title>
+</head>
+<body>
+	注意：通过JavaScript创建带内容的DIV盒子并在文档中展示。
+	<br /> JavaScript实现：标签createElement，内容createTextNode，属性setAttribute
+</body>
+</html>

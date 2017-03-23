@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="gb2312"?>
+<chart caption='cd类别对照表' subCaption="cd类别对照表" rotateYAxisName='0'
+	xAxisName='类别' yAxisName='数量' maxColWidth="60" showValues='1'
+	baseFontSize='18' formatNumberScale='1' shownames="1">
+	<set label='民乐' value='6' hoverText="民乐=6" />
+	<set label='流行音乐' value='8' />
+	<set label='外国歌曲' value='1' />
+	<set label='摇滚乐' value='6' />
+</chart>	

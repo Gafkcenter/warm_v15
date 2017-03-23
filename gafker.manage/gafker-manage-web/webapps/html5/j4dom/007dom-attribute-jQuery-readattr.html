@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				$("img").each(function() {
+					$(this).after("<p>"+$(this).attr("title")+"</p>");
+				});
+			});
+		</script>
+<style type="text/css">
+b {
+	color: red;
+}
+</style>
+<title>DOM-属性操作--设置读取删除修改</title>
+</head>
+<body>
+	<a
+		href="http://www.gafker.com/"
+		title="一个充满爱心的网站"
+	>主页</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>社区</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>新闻</a>
+	<br />
+	设置|修改:1.elementNode.setAttribute("title","content");2.prop(),attr()
+	<br /> 读取:1.elementNode.setAttribute("title");2.prop(),attr()
+	<br />
+	删除:1.elementNode.removeAttribute("title","content");2.removeProp(),removeAttr()
+	<br />
+	<img
+		src="../../images/icon/icon (15).png"
+		title="FaceBook 社交网络平台；2004年2月1日上线"
+	/>
+	<img
+		src="../../images/icon/icon (3).png"
+		title="Apple 美国苹果公司******"
+	/>
+	<img
+		src="../../images/icon/icon (19).png"
+		title="Google 美国互联网搜索公司 1998年9月7日以私有股份公司的形式创立。"
+	/>
+</body>
+</html>

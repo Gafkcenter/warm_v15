@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$('div').find('p').andSelf().css({'border':'solid 1px red','margin':'4px'});	
+			});
+		</script>
+<title>过滤器/-串联</title>
+</head>
+<body>
+	绑定andSelf()
+	<br /> 两个p合并起来
+	<br />
+	<div>
+		<p>第一段文本</p>
+		<p>第二段文本</p>
+	</div>
+</body>
+</html>

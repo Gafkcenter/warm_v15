@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload=function(){
+				var p = document.getElementsByTagName("p");
+				var div = document.createElement("div");
+				div.innerHTML="盒子";
+				for(var i=0,l=p.length;i<l;i++){
+					var div1= div.cloneNode(true);
+					p[0].parentNode.replaceChild(div1,p[0]);
+				}
+			}
+		</script>
+<title>DOM-替换内容--replaceChild(new_node,old_node);--replaceWith(),replaceAll()</title>
+</head>
+<body>
+	注意：1.通过javaScript replaceChild并显示在后面；2.通过jquery
+	replaceWith(),replaceAll()并显示到后面。 本例点击效果没有出现。
+	<br /> 1.nodeObject.replaceChild(new_node,old_node)
+	2.replaceWith(),replaceAll()
+	<br />
+	<p>P段落文本1</p>
+	<p>P段落文本2</p>
+	<p>P段落文本3</p>
+</body>
+</html>

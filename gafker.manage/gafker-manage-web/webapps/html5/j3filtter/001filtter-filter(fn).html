@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("p").filter(function(index) {
+					return $("span",this).length==2;
+				}).css("background-color", "red");
+			});
+		</script>
+<style type="text/css">
+div {
+	height: 100px;
+}
+</style>
+<title>过滤器/-过滤</title>
+</head>
+<body>
+	表达式过滤(过滤出p标签中连续2个span设置背景为红色)
+	<br />
+	<p>
+		<span>文本1</span>
+	</p>
+	<p>
+		<span>文本2</span><span></span>
+	</p>
+	<p>文本3</p>
+</body>
+</html>

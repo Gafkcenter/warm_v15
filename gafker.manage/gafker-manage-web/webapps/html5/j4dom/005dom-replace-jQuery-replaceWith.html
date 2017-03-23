@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				$("button").click(function() {
+					$(this).replaceWith("<div>" + $(this).text() + "</div>");
+				});
+			});
+		</script>
+<style type="text/css">
+button {
+	display: block;
+	margin: 3px;
+	color: red;
+	width: 200px;
+}
+
+div {
+	color: red;
+	border: 2px solid blue;
+	width: 200px;
+	margin: 3px;
+	text-align: center;
+}
+</style>
+<title>DOM-替换内容--replaceChild(new_node,old_node);--replaceWith(),replaceAll()</title>
+</head>
+<body>
+	注意：1.通过javaScript replaceChild并显示在后面；2.通过jquery replaceAll()
+	,replaceWith()被替换
+	<br /> 1.nodeObject.replaceChild(new_node,old_node)
+	2.replaceWith(newContent|fn),replaceAll(selector)
+	<br />
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+</body>
+</html>

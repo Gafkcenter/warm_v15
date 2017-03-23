@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>a2.html</title>
+<meta
+	http-equiv="keywords"
+	content="keyword1,keyword2,keyword3"
+>
+<meta
+	http-equiv="description"
+	content="this is my page"
+>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=UTF-8"
+>
+</head>
+<script language="JavaScript">
+   	  function viewData(vid,vname){
+	  	// alert(vid+"   "+vname);
+		// window.dialogArguments 封装的是a1.html页面的相关信息
+		var a1Data = window.dialogArguments;
+		//a1.html
+		a1Data.document.getElementById("cid").value=vid;
+		a1Data.document.getElementById("cname").value=vname;
+		window.close();
+		
+		//a2.html
+		//alert(document.getElementById("ss").value);
+		
+	  }
+	
+	
+	
+	
+   
+  </script>
+<body>
+	<table border="1">
+		<tr>
+			<td>操作</td>
+			<td>客户id</td>
+			<td>客户名称</td>
+		</tr>
+		<tr>
+			<td><input
+				type="button"
+				value="选择"
+				id="ss"
+				onclick="viewData('001','深圳华为')"
+			></td>
+			<td>001</td>
+			<td>深圳华为</td>
+		</tr>
+		<tr>
+			<td><input
+				type="button"
+				value="选择"
+				onclick="viewData('002','用友软件')"
+			></td>
+			<td>002</td>
+			<td>用友软件</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("#menu li").not(".home").css("color","red");
+			});
+		</script>
+<title>过滤器/-过滤</title>
+</head>
+<body>
+	清洗过滤 .not(expr)
+	<br /> 给清洗之外的数据设置格式或进行操作，给home类之外的li设置格式
+	<br />
+	<ul id="menu">
+		<li class="home">首页</li>
+		<li>Family</li>
+		<li>Home</li>
+		<li>Message</li>
+		<li>广告</li>
+		<li>Mall</li>
+	</ul>
+</body>
+</html>

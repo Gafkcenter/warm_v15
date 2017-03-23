@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+		$(function(){
+			document.getElementById("a.b").style.background="yellow";
+			document.getElementById("a:b").style.color="blue";
+			document.getElementById("[div]").style.color="green";
+		});
+		</script>
+<title>ID selector</title>
+</head>
+<body>
+	通过简单id操作选择
+	<br />
+	<div id="div1">简单id</div>
+	<br /> 通过转义id操作选择
+	<br />
+	<div id="a.b">a.b&nbsp;id</div>
+	<div id="a:b">a:b&nbsp;id</div>
+	<div id="[div]">[div]&nbsp;id</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			function r(x) {
+				// alert("r"+x);
+				return (x);
+			}
+
+			function f(x) {
+				x[0] = x[0] + ">";
+				// alert("f"+x);
+				return x;
+			}
+
+			function o() {
+				var temp = r;
+				r = function() {
+					return temp.apply(this, f(arguments));
+				};
+				// alert("o");
+			}
+
+			function a() {
+				o();
+				alert(r("="));
+			}
+			//执行调用
+			for (var i = 0; i < 10; i++) {
+				a();
+			}
+		</script>
+<style type="text/css">
+.req-label {
+	font-weight: bold;
+}
+
+h2 {
+	background: #3cf;
+	margin: 0px;
+	padding: 0.3em 0.5em;
+}
+
+ul, ol {
+	list-style-type: none;
+	padding: 0.5em;
+	margin: 0px;
+}
+
+ul {
+	margin-left: 1.5em;
+}
+
+li {
+	margin: 4px;
+}
+
+#contact {
+	position: relative
+}
+
+p {
+	position: absolute;
+	right: 1em;
+	top: 2em;
+	background: #cfc;
+	padding: 1em;
+}
+
+.error-message {
+	color: red;
+}
+
+.warning {
+	color: #F0F;
+}
+
+body {
+	background-image: url('/fileupload/season/640960.jpg');
+	background-repeat: repeat;
+}
+</style>
+<title>call() apply()测试</title>
+</head>
+<body>
+	<h1>
+		call() apply()后台执行
+		<h1>
+			<h1>函数作用域</h1>
+			<img src="../../images/flow/JavaScript_localfunction-env.jpg" />
+</body>
+</html>

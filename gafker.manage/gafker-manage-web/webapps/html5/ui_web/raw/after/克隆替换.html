@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>��¡�ڵ�</title>
+<style type="text/css">
+#one {
+	border: 1px solid blue;
+	background-color: green;
+	width: 300px;
+	height: 150px;
+}
+
+#two {
+	border: 1px solid blue;
+	background-color: red;
+	width: 300px;
+	height: 150px;
+}
+
+#three {
+	border: 1px solid blue;
+	background-color: yellow;
+	width: 300px;
+	height: 150px;
+}
+</style>
+<script type="text/javascript">
+		function demo(){
+			//��ȡָ���Ľڵ�
+			var oldNode = document.getElementById("one");
+			
+			var cloneNode = oldNode.cloneNode(true);
+			
+			var newNode = document.getElementById("three");
+			
+			//newNode.replaceNode(cloneNode);
+			newNode.parentNode.replaceChild(cloneNode, newNode);
+		}    
+    
+    </script>
+</head>
+<body>
+	<div id="one">xxxxxx</div>
+	<div id="two">yyyyyy</div>
+	<div id="three">zzzzzzzzzz</div>
+	<input
+		type="button"
+		value="��¡���滻"
+		onclick="demo()"
+	/>
+</body>
+</html>

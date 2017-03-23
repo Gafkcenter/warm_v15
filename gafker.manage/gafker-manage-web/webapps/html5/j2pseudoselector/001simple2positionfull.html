@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$(":first").css("background", "blue").css("color", "white");
+				$(":eq(1)").css("background", "#f1f5fb");
+				$(":last").css("background", "#ff9");
+			});
+		</script>
+<title>伪类选择器/-简单/定位过滤器 selector</title>
+</head>
+<body>
+	简单伪类选择器（特定位置选择器）没有设置范围即为整个文档。
+	<br />
+	<table>
+		<tr>
+			<td>:first</td>
+			<td>选中第1行</td>
+		</tr>
+		<tr>
+			<td>:</td>
+			<td>选中第2行</td>
+		</tr>
+		<tr>
+			<td>:last</td>
+			<td>选中第3行</td>
+		</tr>
+	</table>
+</body>
+</html>

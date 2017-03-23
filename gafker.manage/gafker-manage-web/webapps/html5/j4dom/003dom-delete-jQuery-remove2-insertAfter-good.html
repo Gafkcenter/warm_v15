@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				$("button").click(function() {
+					// var $p =$("p").remove();
+					$("p").insertAfter("div");
+				});
+			});
+		</script>
+<title>DOM-删除内容--Remove移出</title>
+</head>
+<body>
+	注意：通过jquery删除内容-本例将删除的移到了最后(移动到div外面去了，如果实际应用删除就行了，通过insertBefore主要是看效果)。
+	<br /> JavaScript实现：remove([selector])删除本身和子元素;
+	<p>段落文本1</p>
+	<div>布局文本</div>
+	<p>段落文本2</p>
+	<button>清除段落文本</button>
+</body>
+</html>

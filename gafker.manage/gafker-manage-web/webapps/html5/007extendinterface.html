@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+			jQuery.fn.extend({
+				check : function() {
+					return this.each(function() {
+						this.checked = true;
+					});
+				},
+				uncheck : function() {
+					return this.each(function() {
+						this.checked = false;
+					});
+				}
+			});
+			$(function() {
+				$("input[type=checkbox]").check().css("border", "solid 2px yellow");
+				$("input[type=radio]").uncheck().css("border", "solid 2px yellow");
+			});
+
+		</script>
+<title>jQuery扩展接口</title>
+</head>
+<body>
+	<a href="#">css效果没有出现<br /></a>
+	<br />
+	<input type="radio" />
+	<input
+		type="radio"
+		checked="checked"
+	/>
+	<input type="checkbox" />
+	<input
+		type="checkbox"
+		checked="checked"
+	/>
+</body>
+</html>

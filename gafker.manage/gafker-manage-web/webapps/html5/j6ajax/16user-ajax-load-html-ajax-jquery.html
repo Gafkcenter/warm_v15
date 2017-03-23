@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			$(function() {
+				$("input").click(function() {
+					var str = ($.ajax({
+							url : "hello.html",
+							async : false
+						})).responseText;
+						$("div").html(str);
+				});
+			});
+		</script>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+div {
+	color: white;
+	border: solid 2px #FFCCFF;
+	background: blue;
+}
+</style>
+<title>事件处理-事件处理模型</title>
+</head>
+<body>
+	<input
+		type="button"
+		value="向服务器发出异步请求"
+	/>
+	<div></div>
+</body>
+</html>

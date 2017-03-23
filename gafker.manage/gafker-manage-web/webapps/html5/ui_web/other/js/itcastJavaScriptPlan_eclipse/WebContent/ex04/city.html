@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>test01.html</title>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=UTF-8"
+>
+</head>
+<body>
+	<select
+		id="province"
+		name="province"
+	>
+		<option value="">请选择....</option>
+		<option value="吉林省">吉林省</option>
+		<option value="辽宁省">辽宁省</option>
+		<option value="山东省">山东省</option>
+	</select>
+	<select
+		id="city"
+		name="city"
+	>
+		<option value="">请选择.....</option>
+	</select>
+</body>
+<script language="JavaScript">
+  	 window.onload=function(){
+		var provinceElement=document.getElementById("province");
+		provinceElement.onchange=function(){
+				
+		   //获取 <select id="city" name="city">
+		    var cityElement=document.getElementById("city");
+			//获取	cityElement 所有的子元素<option>		
+			var optionElements=cityElement.getElementsByTagName("option");
+				
+	        //清除 <select id="city" name="city"> 下拉选的值
+		    //从后往前删除
+		    for(var i=optionElements.length-1;i>0;i--){
+				cityElement.removeChild(optionElements[i]);
+			}
+
+			//读出xml文件
+		     var xmlDoc=parseXML("cities.xml");
+			 
+			 //获取所有的<province name="吉林省"> 标签
+			 var provincexmlElements=xmlDoc.getElementsByTagName("province");
+			 //alert(provincexmlElements.length);
+			 
+			 //获取变化的省的信息
+			 //alert(this.value);
+			 var provincexmlDocElement;
+			 
+			 for(var i=0;i<provincexmlElements.length;i++){
+			 	//<province name="吉林省">
+				var provincexmlElement=provincexmlElements[i];
+				//alert(provincexmlElement.getAttribute("name"));
+				if(this.value==provincexmlElement.getAttribute("name")){
+					provincexmlDocElement=provincexmlElement;
+					break;
+				}
+			 }
+			 
+			 if(provincexmlDocElement!=null){
+			 	   /*
+			 	    *<city>长春</city>
+		             <city>吉林市</city>
+			 	    */
+				var cityxmlElements=provincexmlDocElement.getElementsByTagName("city");
+				
+				for(var i=0;i<cityxmlElements.length;i++){
+					//获取一个城市节点  <city>长春</city> 
+					var cityxmlElement=cityxmlElements[i];
+					
+					//获取"长春"
+					var cityValue=cityxmlElement.firstChild.nodeValue;
+					
+					//<option><option>
+					var optionElement=document.createElement("option");
+					
+					//<option value="长春"><option>
+					optionElement.setAttribute("value",cityValue);
+					
+					//<option value="长春">长春<option>
+					var textElement=document.createTextNode(cityValue);
+					optionElement.appendChild(textElement);
+					
+					//添加到<select id="city" name="city">
+					cityElement.appendChild(optionElement);		
+				}
+		
+			 }			
+		}
+		
+	 }
+	 
+///////////////////////////////////////////////////////////////////////////////////////////////
+	 function parseXML(filename){
+		   var xmlDoc;
+		   try { //Internet Explorer
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			} 
+			catch (e) {
+				try { //Firefox, Mozilla, Opera, etc.
+					xmlDoc = document.implementation.createDocument("", "", null);
+				} 
+				catch (e) {
+				}
+			}
+			//关闭异步加载，这样确保在文档完全加载之前解析器不会继续脚本的执行。 
+			xmlDoc.async=false;
+			//解析器加载名为 "xxx.xml" 的 XML 文档
+			xmlDoc.load(filename);
+			return xmlDoc;	
+    }
+  </script>
+</html>

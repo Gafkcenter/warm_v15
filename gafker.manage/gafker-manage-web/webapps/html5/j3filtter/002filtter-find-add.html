@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$(".red").siblings("p").add("h1").css({
+					"border" : "solid 1px red"
+				});
+			});
+		</script>
+<title>过滤器/-查找</title>
+</head>
+<body>
+	查找兄弟:
+	<br /> -siblings([expr])查兄弟(包括上下同级兄弟所有或指定元素，不包括自己)。
+	<br />
+	<h1>回乡偶书</h1>
+	<h2>贺知章</h2>
+	<p class="blue">少小离家老大回，</p>
+	<p>乡音无改鬓毛衰。</p>
+	<p class="red">儿童相见不相识，</p>
+	<p>笑问客从何处来。</p>
+</body>
+</html>

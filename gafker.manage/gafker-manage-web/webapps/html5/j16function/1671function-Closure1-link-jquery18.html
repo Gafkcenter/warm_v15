@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//使用闭包的效果与不使用闭包效果的对比 
+			function f(x){
+				var a =x;
+				var b =function(){
+					return a;
+				};
+				a++;
+				return b;
+			}
+			var c=f(5);
+			//上一步调用完成后即销毁,如何返回a变化后的值呢？就是闭包函数起到的作使用a变化后的值得以保存。
+			alert(c());//传入5出来时执行了闭包操作返回了6;
+		</script>
+<style type="text/css">
+body {
+	background-image: url('/fileupload/season/640960.jpg');
+	background-repeat: repeat;
+}
+</style>
+<title>call() apply()测试</title>
+</head>
+<body>
+	<h1>alert 后台执行</h1>
+	<h1>闭包1</h1>
+	<h1>认识闭包</h1>
+	<img src="../../images/flow/JavaScript_localfunction-env.jpg" />
+</body>
+</html>

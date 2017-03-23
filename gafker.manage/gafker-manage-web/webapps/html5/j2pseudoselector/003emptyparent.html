@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("div:parent").css("color", "red");
+				$("div:empty").css("border", "solid 1px #00d");
+			});
+		</script>
+<title>伪类选择器/-包含判断选择器 selector</title>
+</head>
+<body>
+	包含判断选择器:empty为空,:parent还为空
+	<br />
+	<div></div>
+	<div>我有内容,但我没有边框，我前后两个div没有内容但有边框</div>
+	<div></div>
+</body>
+</html>

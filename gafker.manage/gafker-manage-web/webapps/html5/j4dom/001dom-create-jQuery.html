@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				var $div = $("<div title='盒子'>DOM TEST</div>");
+				$("body").append($div);
+			});
+		</script>
+<title>DOM-创建接点-创建元素</title>
+</head>
+<body>
+	注意：通过jQuery创建带内容的DIV盒子并在文档中展示。
+	<br /> jQuery实现:$("body").append($(html));
+</body>
+</html>

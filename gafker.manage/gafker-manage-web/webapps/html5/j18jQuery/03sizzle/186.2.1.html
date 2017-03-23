@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*构建jQuery 对象
+			*/
+			//1.Sizzle引擎
+			/**
+			 *主要包括：
+			 * Sizzle()	核心构造器
+			 * matches()	核心功能1 匹配
+			 * find()		核心功能2 查找
+			 * filter()		核心功能3 过滤
+			 *context:上下文  jQuery查询起始位置
+			 */
+			//Sizzle 的独立空间
+			(function() {
+				var chunker = /((?:\((?:\([^()]+\)|[^\]+\)+\)|\[(?:\[[]^[\]]*\]|['''][^''']*[''']|[^[\]''']+)+\]|\\.|[^>+~,(\[\\]+)+|[>+~])(\s*,\s*)?/g, done = 0, toString = Object.prototype.toString;
+				//Sizzle 选择器引擎构造器函数
+				//参数说明
+				var Sizzle = function(selector, context, results, seed) {
+					//@todo
+					results = results || [];
+					context = context || docuemnt;
+					if (context.nodeType !== 1 && context.nodeType !== 9)
+						return;
+					if (!selector || typeof selector !== "string") {
+						return results;
+					}
+					var parts = [], m, set, checkSet, check, mode, extra, prune = true;
+					chunker.lastIndex = 0;
+					while (( m = chunker.exec(selector)) !== null) {
+						parts.push(m[1]);
+						if (m[2]) {
+							extra = RegExp.rightContext;
+							break;
+						}
+					}
+					if (parts.length > 1 && origPOS.exec(selector)) {
+						if (parts.length === 2 && Expr.relative[parts[0]]) {
+							set = posProcess(parts[0] + parts[1], context);
+						} else
+							set = Expr.relative[parts[0]] ? [context] : Sizzle(parts.shift(), context);
+						while (parts.length) {
+							selector = parts.shift();
+							if (Expr.relative[selector])
+								selector += parts.shift();
+							set = posProcess(selector, set);
+						}
+					} else {
+						var ret = seed ? {
+							expr : parts.pop(),
+							set : makeArray(seed)
+						} : Sizzle.find(parts.pop(), parts.length === 1 && context.parentNode ? context.parentNode : context, isXML(context));
+						set = Sizzle.filter(ret.expr, ret.set);
+						if (parts.length > 0) {
+							checkSet = makeArray(set);
+						} else {
+							prune = false;
+						}
+						while (parts.length) {
+							var cur = parts.pop(), pop = cur;
+							if (!Expr.relative[cur]) {
+								cur = "";
+							} else {
+								pop = parts.pop();
+							}
+							if (pop == null) {
+								pop = context;
+							}
+							Expr.relative[cur](checkSet, pop, isXML(context));
+						}
+					}
+					if (!checkSet) {
+						checkSet = set;
+					}
+					if (!checkSet) {
+						throw "Syntax error,unrecognized expression:" + (cur || selector);
+					}
+					if (toString.call(checkSet) === "[object Array]") {
+						if (!prune) {
+							results.push.apply(results, checkSet);
+						} else if (context.nodeType === 1) {
+							for (var i = 0; checkSet[i] != null; i++) {
+								if (checkSet[i] && (checkSet[i] === true || checkSet[i].nodeType === 1 && contains(context, checkSet[i]))) {
+									results.push(set[i]);
+								}
+							}
+						} else {
+							for (var i = 0; checkSEt[i] != null; i++) {
+								if (checkSet[i] && checkSet[i].nodeType === 1) {
+									results.push(set[i]);
+								}
+							}
+						}
+					} else {
+						makeArray(checkSet, results);
+					}
+					if (extra) {
+						Sizzle(extra, context, results, seed);
+						if (sortOrder) {
+							hasDuplicate = false;
+							results.sort(sortOrder);
+							if (hasDuplicate) {
+								for (var i = 1; i < results.length; i++) {
+									if (result[i] === reuslt[i - 1]) {
+										results.splice(i--, 1);
+									}
+								}
+							}
+						}
+					}
+					return results;
+				};
+				Sizzle.matches = function(expr, set) {
+					//@todo
+				};
+				Sizzle.find = function(expr, context, isXML) {
+					//@todo
+				};
+				Sizzle.filter = function(expr, set, inplace, not) {
+					//@todo
+				};
+				//Sizzle表达式对象
+				var Expr = Sizzle.selectors = {
+					//@todo
+				};
+				//......
+				//省略其它辅助性工具和逻辑代码
+				//暴露接口
+				jQuery.find = Sizzle;
+				jQuery.filter = Sizzle.filter;
+				jQuery.expr = Sizzle.selectors;
+				jQuery.expr[":"] = jQuery.expr.filters;
+				//定义的公共函数
+				Sizzle.selectors.filters.hidden = function(elem) {
+				};
+				Sizzle.selectors.filters.visible = function(elem) {
+				};
+				Sizzle.selectors.filters.animated = function(elem) {
+				};
+				jQuery.multiFilter = function(expr, elems, not) {
+				};
+				jQuery.dir = function(elem, dir) {
+				};
+				jQuery.nth = function(cur, result, dir, elem) {
+				};
+				jQuery.sibling = function(n, elem) {
+				};
+				return;
+				window.Sizzle = Sizzle;
+			})();
+		</script>
+<style type="text/css">
+</style>
+<title>构建jQuery 对象</title>
+</head>
+<body>
+	<div>
+		<h4>jQuery 4种构建方式</h4>
+		* Sizzle() 核心构造器 <br /> * matches() 核心功能1 匹配 <br /> * find() 核心功能2 查找
+		<br /> * filter() 核心功能3 过滤 <br />
+	</div>
+</body>
+</html>

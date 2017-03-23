@@ -1,0 +1,6 @@
+<!--windows关闭端口占用-->
+netstat -aon|findstr "8082"  查端口
+tasklist|findstr "3432"      查PID
+taskkill /F /pid  3432			 杀进程PID
+taskkill /f /t /im Tomcat8.exe		杀程序
+taskkill /f /t /im javaw.exe

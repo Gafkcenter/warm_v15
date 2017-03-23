@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="gb2312"?>
+<chart caption='cd类别对照表' baseFontSize='18' xAxisName='类别'
+	yAxisName='数量' yAxisMinValue='15000' showValues='1'
+	alternateHGridColor='FCB541' maxColWidth="60" baseFontColor='666666'
+	lineColor='FCB541'>
+	<set label='民乐' value='6' />
+	<set label='流行音乐' value='8' />
+	<set label='外国歌曲' value='1' />
+	<set label='摇滚乐' value='6' />
+
+	<styles>
+		<definition>
+			<style name='Anim1' type='animation' param='_xscale' start='0'
+				duration='1' />
+			<style name='Anim2' type='animation' param='_alpha' start='0'
+				duration='0.6' />
+			<style name='DataShadow' type='Shadow' alpha='40' />
+		</definition>
+		<application>
+			<apply toObject='DIVLINES' styles='Anim1' />
+			<apply toObject='HGRID' styles='Anim2' />
+			<apply toObject='DATALABELS' styles='DataShadow,Anim2' />
+		</application>
+	</styles>
+
+</chart> 

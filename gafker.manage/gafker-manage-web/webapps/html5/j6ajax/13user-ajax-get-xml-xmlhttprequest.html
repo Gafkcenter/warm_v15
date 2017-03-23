@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			if (window.XMLHttpRequest) {
+				var xmlhttprequest = new XMLHttpRequest();
+			} else if (window.ActiveXObject) {
+				//IE  浏览器
+				try {
+					var xmlhttprequest = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(e) {
+					try {
+						var xmlhttprequest = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch(e) {
+					}
+				}
+			}
+			window.onload = function() {
+				var input = document.getElementsByTagName("input")[0];
+				var p = document.getElementsByTagName("p")[0];
+				input.onclick = function() {
+					xmlhttprequest.open("GET", "/warm/xml", false);
+					xmlhttprequest.onreadystatechange = response;
+					xmlhttprequest.send(null);
+				}
+			}
+			function response() {
+				if (xmlhttprequest.readyState == 4) {
+					if (xmlhttprequest.status == 200 || xmlhttprequest.status == 0) {
+						//处理xml返回信息
+						var data = xmlhttprequest.responseXML;
+						var node = data.getElementsByTagName("userName")[0];
+						var text = node.firstChild.data;
+						var node = data.getElementsByTagName("quanlity")[0];
+						var text1 = node.firstChild.data;
+						alert("姓名:"+text+" 数量："+text1);
+					}
+				}
+			}
+		</script>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+	color: white;
+	border: solid 2px #FFCCFF;
+	background: blue;
+}
+</style>
+<title>事件处理-事件处理模型</title>
+</head>
+<body>
+	<input
+		type="button"
+		value="向服务器发出异步请求"
+	>
+	</input>
+	<p></p>
+</body>
+</html>

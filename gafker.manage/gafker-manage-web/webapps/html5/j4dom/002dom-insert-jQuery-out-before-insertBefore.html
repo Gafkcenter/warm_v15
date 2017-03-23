@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function(){
+				$("<span>小图标</span>").insertBefore($("li img"));
+			});
+		</script>
+<title>DOM-创建接点-插入元素-外部插入</title>
+</head>
+<body>
+	注意：通过jQuery 1. after和insertAfter的两种方式实现图片后插文件名。2.before
+	和insertBefore的两种方式实现图片前插入文件名。
+	<br />
+	jQuery实现：after(context|fn(index,html))后插入,insertAfter(target)被后插入;before(context|fn(index,html))前置插入,insertBefore(target)被前置插入;
+	<h2>图片列表</h2>
+	<ul class="container">
+		<li><img src="../../images/icon/icon (1).png" /></li>
+		<li><img src="../../images/icon/icon (2).png" /></li>
+	</ul>
+</body>
+</html>

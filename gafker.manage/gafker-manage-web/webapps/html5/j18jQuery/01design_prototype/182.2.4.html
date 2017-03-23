@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<!-- <script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+			/*
+			* jQuery 框架过程
+			*/
+			//---定义构造函数
+			//1.命名jQuery
+			//2.绑定prototype属性-指向Prototype原型对象（原型对象可以定义类的继承属性和方法）
+			//3.别名定义：为jQuery.prototype定义别名
+			//4.别名定义：为jQuery定义别名
+			//5.为jQuery 框架添加两个成员（属性和方法）
+			//---返回jQuery对象
+			//6.第一次试用。new后使用jQuery
+			//7.改善：调用方式--直接返回jQuery对象
+			//8.第二次试用。jQuery方式调用
+			//9.改善：浏览器中使用出现内存外溢出报警--出现了死循环引用
+			//10.第三次试用。jQuery方式调用
+			//---设计作用域
+			//11.为原型init方法添加属性方法
+			//12.第四次试用。查看init .length长度与原型 .length长度
+			//13.改善：改善破坏作用域独立性的问题
+			//		       即 将init() 构造器中的this和jQuery.fn对象中的this关键字隔离开来
+			//14.第五次试用 jQuery.fn内成员无法访问。
+			//15.改善：跨域访问问题    解决方案：原型传递
+			//16.第六次试用  测试原型传递后的效果。
+			//17.设计选择器
+			//18.设计迭代器 自定义的
+			//19.设计扩展接口 简单测试
+			//20.设计扩展接口 对象合并
+			//21.jQuery解决参数传送问题,可以通过此方式覆盖默认值
+			//22.设计名字空间 1   noConfilit()
+			//23.设计名字空间2   noConfilit() --权限作用域
+			//24.设计名字空间 3   noConfilit() --实现
+			//闭包范围-外部不能使用
+			(function() {
+				var window = this, 
+				undefined, 
+				_jQuery = window.jQuery, 
+				_$ = window.$, 
+				jQuery = window.jQuery = window.$ = function(selector, context) {
+					return new jQuery.fn.init(selector, context);
+				}, 
+				quickExpr = /^[^<]*(<(.|\s)+>)[^>]*$|^#([\w-]+)$/, 
+				isSimple = /^.[^:#\[\.,]*$/;
+				jQuery.fn=jQuery.prototype={
+					init:function(selector,context){}
+				};
+			})();
+		</script>
+<style type="text/css">
+</style>
+<title>jQuery 框架过程</title>
+</head>
+<body>
+	<div>1</div>
+</body>
+</html>

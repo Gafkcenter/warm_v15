@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+>
+<title>添加用户</title>
+</head>
+<script language="JavaScript">
+		window.onload = function(){
+			document.getElementById("addUser").onclick = function(){
+				/*
+				 * 1、获取姓名、email、电话的值
+				 * 2、利用dom动态拼接：
+				 * 			<tr>
+								<td>Tom</td>
+								<td>tom@tom.com</td>
+								<td>5000</td>
+								<td><a href="deleteEmp?id=Tom">Delete</a></td>
+							</tr>
+					3、把游离状态的tr追加到tbody上
+				 */
+				/****************************************************************/
+					var name = document.getElementById("name").value;
+					var email = document.getElementById("email").value;
+					var tel = document.getElementById("tel").value;
+				/******************************************************************/
+					/*
+					 * 拼接的顺序是从里向外
+					 * 		<tr>
+					 * 			<td>Tom</td>
+								<td>tom@tom.com</td>
+								<td>5000</td>
+								<td><a href="deleteEmp?id=Tom">Delete</a></td>
+							</tr>
+					 */
+					var nameTD = document.createElement("td");//<td></td>
+					var nameTextNode = document.createTextNode(name);
+					nameTD.appendChild(nameTextNode);//<td>${name}</td>
+					
+					var emailTD = document.createElement("td");
+					var emailTextNode = document.createTextNode(email);
+					emailTD.appendChild(emailTextNode);//<td>${email}</td>
+					
+					var telTD = document.createElement("td");
+					var telTextNode = document.createTextNode(tel);
+					telTD.appendChild(telTextNode);//<td>${tel}</td>
+					
+					//<td><a href="deleteEmp?id=Tom">Delete</a></td>
+					var delA = document.createElement("a");//<a></a>
+					var delTextNode = document.createTextNode("Delete");
+					delA.appendChild(delTextNode);//<a>Delete</a>
+					var delTD = document.createElement("td");//<td></td>
+					
+					delTD.appendChild(delA);
+					
+					delA.setAttribute("style","cursor:pointer");
+					
+					delA.onclick = function(){
+						if(confirm("您确认要删除吗?")){
+							this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+						}
+					}
+					
+					
+					var TR = document.createElement("tr");
+					TR.appendChild(nameTD);
+					TR.appendChild(emailTD);
+					TR.appendChild(telTD);
+					TR.appendChild(delTD);
+				/******************************************************************/
+					/*
+					 * 把整个tr追加到tbody上
+					 */
+					var tbodyElement = document.getElementsByTagName("tbody")[0];
+					tbodyElement.appendChild(TR);
+				
+				/*******************************************************************/
+			}
+		}
+	</script>
+<body>
+	<center>
+		<br>
+		<br> 添加用户:<br>
+		<br> 姓名: <input
+			type="text"
+			name="name"
+			id="name"
+		/>&nbsp;&nbsp; email: <input
+			type="text"
+			name="email"
+			id="email"
+		/>&nbsp;&nbsp; 电话: <input
+			type="text"
+			name="tel"
+			id="tel"
+		/><br>
+		<br>
+		<button id="addUser">提交</button>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<br>
+		<table
+			id="usertable"
+			border="1"
+			cellpadding="5"
+			cellspacing=0
+		>
+			<tbody>
+				<tr>
+					<th>姓名</th>
+					<th>email</th>
+					<th>电话</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td>Tom</td>
+					<td>tom@tom.com</td>
+					<td>5000</td>
+					<td><a href="deleteEmp?id=Tom">Delete</a></td>
+				</tr>
+				<tr>
+					<td>Jerry</td>
+					<td>jerry@sohu.com</td>
+					<td>8000</td>
+					<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>�����б�ɫ�͸���</title>
+<style type="text/css">
+table {
+	border: 1px red solid;
+	width: 500px;
+	margin: auto;
+}
+
+td {
+	border: 1px blue solid;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+th {
+	background-color: maroon;
+}
+
+.one {
+	background-color: blue;
+}
+
+.two {
+	background-color: green;
+}
+
+.over {
+	background-color: aqua;
+}
+</style>
+<script type="text/javascript">
+    	/*
+    		�����б�ɫ��
+    		˼·��
+    		��̬�Ļ�ȡtable����������У�Ȼ��̬�ĸ���Щ������class����
+    	*/
+    	//������ҳ��������֮��Ҫִ�к���
+    	window.onload = function(){
+    		//���ݱ�ǩ����ȡtable��ǩ,��ȡ������ҳ�������е�table��ǩ����
+    		var table = document.getElementsByTagName("table")[0];
+    		
+    		//��ȡtable�µ�������
+    		var rows = table.rows;
+    		//����ÿ�У���̬�ĸ�ÿ�����class����
+    		for(var i=1;i<rows.length;i++){
+    			//�жϵ�ǰ��ȡ�������������л���ż����
+    			if( i%2==0 ){
+    				//ȡ����ǰ����ж���
+    				rows[i].className = "one";
+    			}else{
+    				rows[i].className = "two";
+    			}
+    			//��������ĳһ��֮ǰ��Ҫ�����еı�����ɫ��ס
+    			var classname;
+    			//��̬�ĸ����ÿ������¼�
+    			rows[i].onmouseover = function(){
+    				classname = this.className;
+    				this.className = "over";
+    			}
+				rows[i].onmouseout = function(){
+					this.className = classname;
+    			}
+    		}
+    	}
+    
+    </script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>����</th>
+			<th>����</th>
+			<th>��ַ</th>
+		</tr>
+		<tr>
+			<td>�߽�</td>
+			<td>18</td>
+			<td>����</td>
+		</tr>
+		<tr>
+			<td>���</td>
+			<td>16</td>
+			<td>�Ϻ�</td>
+		</tr>
+		<tr>
+			<td>��ʿ��</td>
+			<td>22</td>
+			<td>��ݸ</td>
+		</tr>
+		<tr>
+			<td>³��</td>
+			<td>29</td>
+			<td>����</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+		<tr>
+			<td>����</td>
+			<td>13</td>
+			<td>�׶�԰</td>
+		</tr>
+	</table>
+</body>
+</html>

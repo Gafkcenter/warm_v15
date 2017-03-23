@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.6.4.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			function browser(str) {
+				var userAgent = navigator.userAgent.toLowerCase();
+				alert(userAgent);
+				switch(str) {
+				case "ie":
+					return /msie/.test(userAgent) && !/opera/.test(userAgent);
+				case "ff":
+					return /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent);
+				case "sa":
+					return /webkit/.test(userAgent);
+				case "op":
+					return /opera/.test(userAgent);
+				case "ch":
+					return /chrome/.test(userAgent);
+				default:
+					return false;
+				}
+			}
+			window.onload=function(){
+				browser("ie")&&(useragent="当前浏览器是IE浏览器")||
+				browser("ff")&&(useragent="当前浏览器是Firefox浏览器")||
+				browser("sa")&&(useragent="当前浏览器是Safari浏览器")||
+				browser("op")&&(useragent="当前浏览器是Opera浏览器")||
+				browser("ch")&&(useragent="当前浏览器是Chrome浏览器");
+				alert(useragent+" version:"+jQuery.browser.version);
+			}
+		</script>
+<style type="text/css">
+.bg {
+	background: blue;
+}
+
+div {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: red;
+	left: 0px;
+	top: 50px;
+	display: none;
+}
+</style>
+<title>浏览器识别加强版</title>
+</head>
+<body></body>
+</html>

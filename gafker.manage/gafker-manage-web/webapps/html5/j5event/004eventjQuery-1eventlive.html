@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.6.4.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			$(function() {
+				//live和bind都有绑事件的功能，live只能绑一个事件，但绑定后只要生成的相同元素都会有这个绑定的事件；可以通过die解除委派功能，这样作用就和bind类似了。
+				//bind:可能多次绑定多个事件，但没有像live 那样后续生成的相同元素都有绑定的这个事件
+				$("p").live("click", function() {
+					$(this).after('<p>段落文本</p>');
+				});
+			});
+		</script>
+<style type="text/css">
+p {
+	color: white;
+	border: solid 2px #FFCCFF;
+	background: blue;
+}
+</style>
+<title>事件处理-jquery事件应用-委派事件</title>
+</head>
+<body>
+	1. 0 级raw code,
+	<br /> --DOM 2级
+	addEventListener(type,fn,useCapture),removeEventListener(type,fn,useCapture),stopPropagegation()
+	<br /> --IE attachEvent(type,fn),cancelBubble属性，detachEvent()
+	<br /> 2.jquery:
+	<br /> 绑定:bind(),one(),unbind();
+	<br />
+	触发:trigger(eventType,extraParameters),trigger(event),triggerHandler();
+	<br /> 经过：toggle(handler(eventObject),...n),hover()
+	<br />
+	委派:live(eventType,handler),live(eventType,eventData,handler),die(),die(eventType,[handler]),ready();
+	<br /> 《事件控制》
+	<p>段落文本</p>
+</body>
+</html>

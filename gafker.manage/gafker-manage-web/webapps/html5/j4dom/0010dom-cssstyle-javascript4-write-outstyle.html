@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			window.onload = function() {
+				var p = document.getElementsByTagName("p")[0];
+				var cssRules = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
+				cssRules[0].style.color="red";
+				//数组顺序0开始以实际书写顺序取值
+				alert("颜色值为：" + cssRules[0].style.color+" 加粗为：" + cssRules[0].style.fontWeight);
+			}
+		</script>
+<style type="text/css">
+.red {
+	font-weight: bold;
+}
+
+a {
+	background: #fcf;
+}
+</style>
+<title>DOM-类操作--class</title>
+</head>
+<body>
+	<a
+		href="http://www.gafker.com/"
+		title="一个充满爱心的网站"
+	>主页</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>社区</a>
+	<a
+		href="http://www.gafker.com/t/l"
+		title="一个充满爱心的网站"
+	>新闻</a>
+	<br /> 1.内部样式读写，nodeObject.style.color;
+	外部样式读写，document.styleSheets[0].cssRules||document.styleSheets[0].rules,insertRule("",n)--非IE,addRule("","",n)--IE;
+	<br />
+	2.css(propertyName),css(propertyName,value),css(propertyName,fn(index,value)),css(map);
+	<br /> 绝对定位：offset(),offset(coordinates),offset(fn(index,coords));
+	<br /> 相对定位：position()
+	<br />
+	<p class="red">段 落文本</p>
+</body>
+</html>

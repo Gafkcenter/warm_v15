@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				alert("加载数据1");
+			});
+			$(function() {
+				alert("加载数据2");
+			});
+			$(function() {
+				alert("加载数据3");
+			});
+			$(function() {
+				alert("加载数据4");
+			});
+		</script>
+<title>jquery ready AND Window.load</title>
+</head>
+<body>
+	<a href="#">1.ready 在构造DOM模型后执行，能够确保文档显示和初始化设置保持同步<br />2.load
+		在html 加载完毕后执行，还能达到这种效果
+	</a>
+	<br /> 3.window.onload = function() {}这种方式只能加载最后一个window.onload的内容
+	<br /> 4.jquery 可以随时使用ready
+	<br />
+</body>
+</html>

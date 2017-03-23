@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+			$(function() {
+				$('<input type="button" value="第一个按钮"/><input type="button" value="第二个按钮"/><input type="button" value="删除按钮事件处理函数"/><input type="button" value="隐藏或显示文本"/>').appendTo($('body'));
+				$('input[type="button"]').eq(0).click(function() {
+					alert('是第1个按钮的事件处理函数');
+				}).end().eq(1).click(function() {
+					$('input[type="button"]:eq(0)').trigger('click');
+				}).end().eq(2).click(function() {
+					$('input[type="button"]:eq(0)').unbind('click');
+				}).end().eq(3).toggle(function(){$('.panel').hide('slow');},function(){$('.panel').show('slow');});
+			});
+		</script>
+<title>HelloWorld</title>
+</head>
+<body>
+	<div
+		class="panel"
+		style="background: #0f0; color: #F0F;"
+	>链式编程演示,jQuery1.8.3以上的版本无法执行显示隐藏按钮</div>
+</body>
+</html>

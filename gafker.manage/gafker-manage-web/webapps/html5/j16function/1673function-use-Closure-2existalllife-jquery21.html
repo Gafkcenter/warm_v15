@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			* 
+			*/
+			//使用闭包的效果与不使用闭包效果的对比 
+			function f(){
+				var a=1;
+				//负责动态显示内容
+				b=function(){
+					alert(a);
+				};
+				//变化值1
+				c=function(){
+					a++;
+				};
+				//变化值2
+				d=function(x){
+					a=x;
+				};
+			}
+		</script>
+<style type="text/css">
+body {
+	background-image: url('/fileupload/season/640960.jpg');
+	background-repeat: repeat;
+}
+</style>
+<title>call() apply()测试</title>
+</head>
+<body>
+	<h1>alert 后台执行</h1>
+	<h1>闭包1</h1>
+	<h1>1. 实时跟踪并存储动态环境中的数据</h1>
+	<h1>2. 闭包始终存在，不会因外部函数环境的注销而消失*****</h1>
+	<h1>3. 利用装饰存储变量所有变化的值</h1>
+	<h1>4. 利用同一个闭包体生成多个闭包（同一闭包通过分别引用能在当前环境中生成多个闭包）</h1>
+	<br />
+	<button onclick="f()">按钮1：(f())()</button>
+	初始化闭包(不初始化后面就报编译错误)
+	<br />
+	<button onclick="b()">按钮2：(b=function(){alert(a);})()</button>
+	显示闭包a的动态值负责3，4结果显示
+	<br />
+	<button onclick="c()">按钮3：(c=function(){a++;})()</button>
+	这个闭包给a+1；
+	<br />
+	<button onclick="d(100)">按钮4：(d=function(x){a=x;})()</button>
+	这个闭包给a=100函数传入的；
+	<br />
+	<img src="../../images/flow/JavaScript_localfunction-env.jpg" />
+</body>
+</html>

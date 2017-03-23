@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>insertBefore.html</title>
+<meta
+	http-equiv="keywords"
+	content="keyword1,keyword2,keyword3"
+>
+<meta
+	http-equiv="description"
+	content="this is my page"
+>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=UTF-8"
+>
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+</head>
+<body>
+	<ul>
+		<li
+			id="cq"
+			name="chongqing"
+		>重庆</li>
+		<li
+			id="sh"
+			name="shanghai"
+		>上海</li>
+		<li
+			id="bj"
+			name="beijing"
+		>北京</li>
+	</ul>
+</body>
+<script language="JavaScript">
+  		// 插入新的节点 <li id="tj" name="tianjin">天津</li> 到<li id="sh" name="shanghai">上海</li>这个节点
+	    // 如上海节点是最后一个节点插入到该节点的<li id="sh" name="shanghai">上海</li>的后面，
+	    // 否则插入到该节点的前面
+	
+	    //创建 <li id="tj" name="tianjin">天津</li>
+	    var tjElement=document.createElement("li");
+	    tjElement.setAttribute("id","tj");
+	    tjElement.setAttribute("name","tianjin");
+	    var textElement=document.createTextNode("天津");
+		tjElement.appendChild(textElement);
+	 
+	 
+		//获取 <li id="sh" name="shanghai">上海</li>
+		var targetElement=document.getElementById("sh");
+	
+	    //调用该函数
+		beforeAfter(tjElement,targetElement);
+
+       /*
+        * 确定插入节点的位置
+        */
+	    function beforeAfter(newElement,targetElement){
+			
+	       //获取目标节点的父节点 <ul>
+	       var ulElement=targetElement.parentNode;
+		
+		
+		  //如目标节点是最后一个节点 新的节点插入到目标节点的后面
+		   if(ulElement.lastChild==targetElement){
+		   	  ulElement.appendChild(newElement);
+		   }else{
+		   	//如目标节点不是最后一个节点 新的节点插入到目标节点的前面
+			 ulElement.insertBefore(newElement,targetElement);
+		   }
+		}
+
+  </script>
+</html>

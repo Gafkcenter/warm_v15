@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script type="text/javascript">
+			$(function() {
+				$("li.l31").offsetParent(".u1").css({
+					"border" : "solid 1px red",
+					"margin" : "10px"
+				});
+			});
+		</script>
+<title>过滤器/-查找</title>
+</head>
+<body>
+	向上查找所有或指定祖先、父:
+	<br />
+	-parents([expr])找祖先，返回0、多个元素；从父开始匹配。-parent()找父-parentsUntil([selector])在祖先里找部分;
+	<br /> -parentsUntil([selector])
+	在parents()祖先结果里截取部分祖先；--offsetParent()查当前元素的第一个定位祖先元素,最远的；--closest(expr,[context])查找指定父只返回0、1个元素，从当前元素匹配，（最近的一个），主要为事件委派设计
+	<br /> 1.children([expr])
+	带参只查儿子，不包括标签注释空元素；2.find()查所有后代包括儿子,不包括标签注释空元素；3.contents()查所有后代包括儿子,包括标签注释空元素。
+	<br />
+	<ul class="u1">
+		一级菜单
+		<li class="l1">1</li>
+		<li class="l2">2
+			<ul class="u2">
+				二级菜单
+				<li class="l21">21</li>
+				<li class="l22">22
+					<ul class="u3">
+						三级菜单
+						<li class="l31">31</li>
+						<li class="l32">32</li>
+						<li class="l33">33</li>
+					</ul>
+				</li>
+				<li class="item-c">C</li>
+			</ul>
+		</li>
+		<li class="l3">3</li>
+	</ul>
+</body>
+</html>

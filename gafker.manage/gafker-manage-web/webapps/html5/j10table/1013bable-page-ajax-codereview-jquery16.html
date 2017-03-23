@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8"
+/>
+<script
+	src="../../js/jquery-1.8.3.min.js"
+	type="text/javascript"
+></script>
+<script
+	type="text/javascript"
+	src="../../js/json2.js"
+></script>
+<script type="text/javascript">
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			//开启Ajax
+			var request;
+			function createXMLHttpRequest()// 创建XMLHttpRequest对象函数
+			{
+				if (window.XMLHttpRequest) {
+					request = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					try {
+						request = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch ( e ) {
+						try {
+							request = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch ( e ) {
+							alert("初始化XMLHttpRequest对象失败，请检查浏览器是否支持XMLHttpRequest组件。");
+						}
+					}
+				}
+			}
+
+			createXMLHttpRequest();
+			//选择页码
+			function check(n) {
+				var coun = 1;
+				var cur = parseInt(document.getElementById("cur").innerHTML);
+				document.getElementById("up").style.display = "none";
+				if (n == 1) {
+					coun = (cur - 1) * 5 + 1;
+					docuement.getElementById("cur").innerHTML = cur - 1;
+					docuement.getElementById("down").style.display = "inline";
+					if (cur <= 2) {
+						document.getElenentById("up").style.display = "none";
+					} else {
+						document.getElementById("up").style.display = "inline";
+					}
+				}
+				if (n == 2) {
+					coun = (cur + 1) * 5 - 1;
+					document.getElementById("cur").innerHTML = cur + 1;
+					document.getElementById("up").style.display = "inline";
+					if (cur >= 6) {
+						document.getElementById("down").style.display = "none";
+					} else {
+						document.getElementById("down").style.display = "inline";
+					}
+				}
+				request.open("GET", "/warm/listxml?coun=" + coun, true);
+				request.onreadystatechange = updatePage;
+				request.send(null);
+			};
+
+			//更新页码
+			function updatePage() {
+				var info = document.getElementById("info");
+				if (request.readyState == 1) {
+					info.innerHTML = "<img src='../../images/icon/loading.gif'/>,连接中......";
+				} else if (request.readyState == 2 || request.readyState == 3) {
+					info.innerHTML = "<img src='../../images/icon/loading.gif'/>,读取数据中......";
+				} else if (request.readyState == 4) {
+					if (request.status == 200) {
+						// var xml = request.responseXML;
+						var text = request.responseText;
+						// info.innerHTML = showXml(xml);
+						info.innerHTML = showJsonList(text);
+					} else {
+						alert(request.status);
+					}
+				}
+			};
+			//显示JSONList
+			function showJsonList(jsonList) {
+				//引入json2.js https://github.com/douglascrockford/JSON-js
+				var data = JSON.parse(jsonList);
+				var str = "<table>";
+				str += "<tr>";
+				for (var name in data[0]) {
+					str += "<td>" + name + "</td>";
+				}
+				str += "</tr>";
+				for (var i = 0; i < data.length; i++) {
+					str += "<tr>";
+					for (var name in data[i]) {
+						str += "<td>" + data[i][name] + "</td>";
+					}
+					str += "</tr>";
+				}
+				str += "</table>";
+				return str;
+			};
+
+			//显示XML结果  没有实现后台
+			function showXml(xml) {
+				var count = "";
+				var html = "";
+				var items = xml.getElementsByTagName("item");
+				html += "<table><tr><th></th></tr></table>";
+				for (var i = 0; i < items.length; i++) {
+					html += "<tr>";
+					for (var n = 0; n < child.length; n++) {
+						if (child[n].nodeType == 1) {
+							html += "<td>";
+							html += child[n].firstChild.data;
+							html += "</td>";
+						}
+					}
+					html += "</tr>";
+				}
+				html += "</table>";
+			};
+		</script>
+<style type="text/css">
+table {
+	font-size: 12px;
+	width: 100%;
+	table-layout: fixed;
+	empty-cells: show;
+	border-collapse: collapse;
+	margin: 0 auto;
+	border: 1px solid #cad9ea;
+	color: #666;
+}
+
+th {
+	background-image: url(../../images/icon/th_bg1.gif);
+	background-repeat: repeat-x;
+	height: 30px;
+	cursor: pointer;
+}
+
+td, th {
+	border: 1px solid #cad9ea;
+	padding: 0 1em 0;
+}
+
+.btn {
+	cursor: pointer;
+	background-color: yellow;
+	border: solid 2px blue;
+}
+
+.red {
+	color: red;
+}
+</style>
+<title>ajax分布查询系统</title>
+</head>
+<body onload="check();">
+	<h1>Ajax 分页</h1>
+	<p>
+		<span
+			class="btn"
+			id="up"
+			onclick="check(1)"
+		>上一页</span><span
+			class="btn"
+			id="down"
+			onclick="check(2)"
+		>下一页</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>第<span
+			class="red"
+			id="cur"
+		>1</span>页
+		</span>
+	</p>
+	<div id="info">1</div>
+</body>
+</html>
