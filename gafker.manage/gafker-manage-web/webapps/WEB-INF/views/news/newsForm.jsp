@@ -17,7 +17,7 @@
 <form:hidden path="createBy" id="createBy" value="${user.id}"/>
 <label for="id">收藏编号:</label>
 <form:input path="id" id="id" readonly="true" cssErrorClass="error"/>
-<form:errors path="id" cssClass="error"/>
+<form:errors path="id" cssClass="error"/><br/>
 <label for="namecn">名称:</label>
 <form:input path="namecn" id="namecn" cssErrorClass="error"/>
 <form:errors path="namecn" cssClass="error"/><br/>

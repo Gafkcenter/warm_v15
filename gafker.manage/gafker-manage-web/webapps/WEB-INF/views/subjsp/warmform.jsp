@@ -13,7 +13,7 @@ color: red;
 -->
 </style>
 
-<div id="global">
+<div id="global" style="margin: 0px; width: 93.5%">
 				<form:form action="${pageContext.request.contextPath}/t/save" method="POST" commandName="sendwishes">
 					送给<form:input path="teachers" name="teachers" value="亲" />的祝福.<br/> 
 					<form:hidden path="warmfile" name="warmfile" id="warmfile" value="" /><br/> 
@@ -21,7 +21,7 @@ color: red;
 					图片祝福:<jsp:include page="../file/images/canvas.jsp"></jsp:include><br/>
 					祝福词:
 					</span>
-					<form:textarea path="content" maxlength="500" id="textarea" cssErrorClass="error"/>
+					<form:textarea path="content" id="textarea" cssErrorClass="error"/>
 					<form:errors path="content" cssClass="error"/>
 					<br/>
 					<c:if test="${not empty user}">

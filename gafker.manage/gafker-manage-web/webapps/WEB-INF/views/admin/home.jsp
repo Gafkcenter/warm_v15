@@ -8,7 +8,7 @@
     </c:catch>
     <c:out value="${importError0}"></c:out>
     
-<div id="syshead"><h1>${user.username}的家园&nbsp;Warm系统</h1></div>
+<div id="syshead"><h1>${user.username}的家园</h1></div>
 <div class="divcss5-right">欢迎<b>${user.username}</b>登录&nbsp;<a href="<c:url value='/security/logout'/>"><button>退出登录</button></a></div>
 <div id="global">
 <!-- 

@@ -51,7 +51,7 @@ text-align: center;
      <img src="${pageContext.request.contextPath}/security/regcode" alt="验证码" id="checkimagecode"/>
      </a><br/>
      <input type="submit"  id="submit"  name="submit" value="进入家园"/>&nbsp;
-     <a href="${pageContext.request.contextPath}/user/register" style="color:blue;font-size:2px;">注册家园</a>
+     <a href="${pageContext.request.contextPath}/user/register" style="color:blue;font-size:1em;">注册家园</a>
 </form:form>
 </div>
     <jsp:include page="../bottom.jsp"></jsp:include>

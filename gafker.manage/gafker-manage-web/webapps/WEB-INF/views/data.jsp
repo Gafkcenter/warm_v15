@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="top.jsp"></jsp:include>
-<br/>
 <section class="cont" id="speed_s" >
 	<c:if test="${wishes!= null || fn:length(wishes) > 0}">
 		<nav class="nav" id="nav" >

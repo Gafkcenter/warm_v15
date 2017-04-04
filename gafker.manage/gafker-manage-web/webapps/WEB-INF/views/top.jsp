@@ -47,16 +47,16 @@ function checkFile(obj){   
 <div align="right" style="margin-right: 5%" >
 	
 <c:if test="${empty user}" >
-	欢迎第${vCount}位成员<b>来访者</b>
-	<a href="${pageContext.request.contextPath}/admin/home" title="进入家园,要先登录" style="color:blue;">进入家园</a>&nbsp;
-	<a href="${pageContext.request.contextPath}/security/login">登录家园</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	欢迎<b>来访者</b>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/admin/home" title="进入家园,要先登录" style="color:blue;">家园中心</a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/security/login">登录</a>&nbsp;
 </c:if>
 <c:if test="${not empty user}" >
-	欢迎第${vCount}位成员<b> ${user.username}</b> 
-	<a href="${pageContext.request.contextPath}/admin/home" title="进入家园,要先登录" style="color:blue;">进入家园</a>&nbsp;
-	<a href="javascript:alert('暂时不提供！');" title="完善个人资料">修改个人资料</a>&nbsp;
-	<a href="${pageContext.request.contextPath}/security/logout">退出家园</a>
+	欢迎<a href="javascript:alert('暂时不提供！');" title="完善个人资料"><b> ${user.username}</b> </a>
+	<a href="${pageContext.request.contextPath}/admin/home" title="进入家园,要先登录" style="color:blue;">家园中心</a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/security/logout">退出</a>&nbsp;
 </c:if>
+第${vCount}次
 </div>
 	<nav class="nav" id="nav" >
 		<div class="banner" id="banner" >
