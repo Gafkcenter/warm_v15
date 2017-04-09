@@ -20,6 +20,7 @@ maximum-scale=1.0, user-scalable=no" >
 <meta http-equiv="Access-Control-Allow-Origin" content="*" >
 <meta name="keywords" content="温暖,节日,祝福,上海,安徽,族谱,世界,传承,绿福客" />
 <meta name="description" content="温暖,节日,祝福,上海,安徽,族谱,世界,传承,绿福客" />
+<script src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js" type="text/javascript"></script>
  <script type="text/javascript">
 function checkFile(obj){   
 	        var file = obj.files[0];      

@@ -20,9 +20,9 @@
 溯源名称：${trace.namecn}  <br/>
 溯源标题：${trace.title}  <br/>
 产品名称 ：${trace.productName}-<a href="${pageContext.request.contextPath}/tr/${trace.familyproductFk}/trace" title="查询这个农产品的溯源信息">${trace.familyproductFk}</a>  <br/>
-溯源时间：<fmt:formatDate value="${trace.createtime}" type="date"/>  <br/>
-溯源内容：<textarea cols="50%" rows="3">${trace.contentobj}</textarea>  <br/>
-溯源级别：${trace.showlevel}  <br/>
+溯源时间：<fmt:formatDate value="${trace.createtime}" type="both"/>  <br/>
+溯源内容：<textarea cols="50%" rows="3" readonly="readonly">${trace.contentobj}</textarea>  <br/>
+<!-- 溯源级别：${trace.showlevel}  <br/> -->
 <hr/>
 </c:forEach>
 </c:if>

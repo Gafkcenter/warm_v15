@@ -18,8 +18,8 @@
 溯源名称：${namecn}  <br/>
 溯源标题：${title}  <br/>
 产品名称 ：${familyproductFk}  <br/>
-溯源时间：<fmt:formatDate value="${createtime}" type="date"/>  <br/>
-溯源内容：<textarea cols="50%" rows="3">${contentobj}</textarea>  <br/>
-溯源级别：${showlevel}  <br/>
+溯源时间：<fmt:formatDate value="${createtime}" type="both"/>  <br/>
+溯源内容：<textarea cols="50%" rows="3" readonly="readonly">${contentobj}</textarea>  <br/>
+<!-- 溯源级别：${showlevel}  <br/> -->
 </c:if>
 </div>

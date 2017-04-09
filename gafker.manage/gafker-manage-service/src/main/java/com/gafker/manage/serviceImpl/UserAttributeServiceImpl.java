@@ -35,27 +35,37 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 	UserattributeMapper userattributeMapper;
 	@Value("${default.qrcode.size}")
 	private int qrcodesize;
-	
+
 	@Value("${qrcode.url.user.prefix}")
 	private String userPrefix;
-	
+
 	@Value("${upload.file.path.root}")
 	private String savePath;
-	
+
 	@Value("${upload.file.record.root}")
 	private String recordRoot;
 
 	@Value("${qrcode.file.show.prefix}")
 	private String qrcodePathPrefix;
 
+	@Value("${default.login.password}")
+	private String defaultPassword;
+
 	@Override
 	@CachePut(value = "family_user", key = "'user'+#user.id")
 	public int saveInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res, MultipartFile files)
 			throws Exception {
-		String uuidFullName = FileUtils.getUuidFullName("demo.png");
+		String uuidFullName = FileUtils.getUuidFullName("demo.png", savePath);
 		user.setQrcode(uuidFullName);
+		String userPassword = user.getPassword();
+		if (userPassword == null)
+			user.setPassword(defaultPassword);
 		String md5Password = CryptographyUtil.md5(user.getPassword(), null);
 		user.setPassword(md5Password);
+		if(user.getFamilynamesFk()==null)
+			user.setFamilynamesFk(505l);
+		user.setCreatetime(new Date());
+		user.setUpdatetime(new Date());
 		int insert = userattributeMapper.insert(user);
 		this.generaterQrcodeImage(user, uuidFullName);
 		return insert;
@@ -63,7 +73,7 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 
 	private void generaterQrcodeImage(Userattribute user, String uuidFullName) throws IOException, WriterException {
 		String urlQrcode = userPrefix.replace("%", user.getId().toString());
-		String saveQrcodePath = savePath+uuidFullName;
+		String saveQrcodePath = savePath + uuidFullName;
 		BarcodeFactory.nowhitecode(urlQrcode, qrcodesize, qrcodesize, saveQrcodePath);
 	}
 
@@ -75,7 +85,7 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 	}
 
 	@Override
-	@Cacheable(value="family_user",key="'user'+#id")
+	@Cacheable(value = "family_user", key = "'user'+#id")
 	public Userattribute selectByPrimaryKey(Long id) {
 		Userattribute user = userattributeMapper.selectByPrimaryKey(id);
 		if (user != null) {
@@ -110,7 +120,7 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 	@Override
 	@CacheEvict(value = "family_user", key = "'user'+#record.id")
 	public int updateByPrimaryKey(Userattribute record) throws Exception {
-		String qrcode=recordRoot+record.getQrcode();
+		String qrcode = recordRoot + record.getQrcode();
 		record.setQrcode(qrcode);
 		record.setUserqrcode(qrcode);
 		record.setUpdatetime(new Date());
@@ -238,7 +248,7 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @param username
@@ -256,6 +266,15 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 				isexist = true;
 		}
 		return isexist;
+	}
+
+	@Override
+	public Userattribute setUserContactPhone(Long id) throws Exception {
+		Userattribute user = userattributeMapper.selectByPrimaryKey(id);
+		if (user != null && !(user.getPhonenum() != null)) {
+			user.setPhonenum("18133064619");
+		}
+		return user;
 	}
 
 }

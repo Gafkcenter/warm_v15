@@ -95,7 +95,8 @@ public class FamilybranchServiceImpl implements FamilybranchService {
 	public List<Familybranch> listByCondition(Familybranch c) throws Exception {
 		FamilybranchExample example = new FamilybranchExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andFamilynameidEqualTo(c.getFamilynameid());
+		if (c.getFamilynameid() != null)
+			criteria.andFamilynameidEqualTo(c.getFamilynameid());
 		List<Familybranch> oneBranchList = familybranchMapper.selectByExample(example);
 		return oneBranchList;
 	}

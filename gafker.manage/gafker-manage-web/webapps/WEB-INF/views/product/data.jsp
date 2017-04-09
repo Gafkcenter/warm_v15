@@ -20,7 +20,8 @@
 	<!-- <th>价格级别</th>
 	<th>状态</th>
 	<th nowrap>上架时间</th><th nowrap>生产时间</th>-->
-	<th nowrap>信息查询&nbsp;||&nbsp;产品溯源</th>
+	<th nowrap>信息查询</th>
+	<th nowrap>产品溯源</th>
 	<th>农产品图片</th>
 	<!-- <th>农产品介绍</th> -->
 	</tr>
@@ -39,7 +40,8 @@
 	<td>${product.productstatus}</td>-->
 	<!-- <td><fmt:formatDate value="${product.onshelvestime}" type="date"/></td>
 	<td><fmt:formatDate value="${product.productdate}" type="date"/></td> -->
-	<td><img src="${product.qrcode}" width="100px" alt="农产品信息查询"/>&nbsp;<img src="${product.qrtracea}" alt="农产品生产查询" id="qrcode"/></td>
+	<td><img src="${product.qrcode}" width="100px" alt="农产品信息查询"/></td>
+	<td><img src="${product.qrtracea}" alt="农产品生产过程查询" id="qrcode"/></td>
 	<td>
 	<img src="${product.defaultimages}" alt="农产品图片" class="imgwidth"/><br/>
 	<a href="#" title="${product.imageslistobj}">更多图片</a>

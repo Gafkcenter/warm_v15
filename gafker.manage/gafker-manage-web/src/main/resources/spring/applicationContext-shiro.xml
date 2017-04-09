@@ -68,8 +68,10 @@
                 /admin/**=authc 
                 /news/l/i/**=anon
                 /news/**=authc 
-                /tr/**=authc 
+                /tr/**=anon
+                /p/t/**=anon
                 /p/**=authc
+                /fileupload/*=anon
             </value>  
         </property>  
     </bean>  

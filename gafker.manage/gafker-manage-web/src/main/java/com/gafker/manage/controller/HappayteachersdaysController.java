@@ -40,7 +40,7 @@ import com.gafker.manage.service.utils.CookiesUtil;
 @RequestMapping("t")
 public class HappayteachersdaysController {
 
-	private static Logger logger1 = LogManager.getLogger(HappayteachersdaysController.class);
+	private static Logger LOGGER = LogManager.getLogger(HappayteachersdaysController.class);
 
 	@Autowired
 	HappayteachersdayService happayteachersdaysService;
@@ -68,12 +68,6 @@ public class HappayteachersdaysController {
 		if (result.hasErrors()) {
 			m.addAttribute("sendwishes", sendwishes);
 			return "data";
-		}
-		Cookie[] cookies = req.getCookies();
-		for (Cookie cookie : cookies) {
-			if ("userId".equals(cookie.getName()) && !"".equals(cookie.getValue())) {
-				sendwishes.setStudents(cookie.getValue());
-			}
 		}
 		happayteachersdaysService.saveInfo(sendwishes, req, res, null);
 		return "redirect:/t/l";

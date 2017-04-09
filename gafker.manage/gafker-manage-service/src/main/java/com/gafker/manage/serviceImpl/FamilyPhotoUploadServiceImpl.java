@@ -57,7 +57,7 @@ public class FamilyPhotoUploadServiceImpl implements FileService {
 		MultipartFile file = m.getMultipartFile();
 		String filename = file.getOriginalFilename();
 		// 2017/3/xxx.jpg /fileUpload/2017/3/xxx.jpg
-		String uuidFullName = FileUtils.getUuidFullName(filename);
+		String uuidFullName = FileUtils.getUuidFullName(filename,savePath);
 		try {
 			// d:/fileUpload/2017/3/xxx.jpg /fileUpload/2017/3/xxx.jpg
 			String saveRealPath = savePath + uuidFullName;

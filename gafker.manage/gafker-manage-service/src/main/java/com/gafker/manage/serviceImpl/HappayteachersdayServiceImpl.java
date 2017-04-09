@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,7 +28,6 @@ import com.gafker.manage.pojo.request.HappayteachersdaysRequest;
 import com.gafker.manage.service.HappayteachersdayService;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.utils.BarcodeFactory;
-import com.gafker.manage.service.utils.CookiesUtil;
 import com.gafker.manage.service.utils.FileUtils;
 
 @Service("happayteachersdaysService")
@@ -97,7 +95,8 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 
 	public int saveInfo(HappayteachersdaysRequest record, HttpServletRequest req, HttpServletResponse res,
 			MultipartFile files) throws Exception {
-		String userId = null;
+		Userattribute c = null;
+		String userId = "0";
 		/**
 		 * 1.生成用户信息和用户二维码信息（如果用户没有登录或新用户）； 2.生成记录的二维码并保存。 3.分配用户默认组信息。
 		 */
@@ -115,24 +114,17 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 			filePath.setSourceFilePath(filePath.getFileUUidFullName());
 			filePath.setFileOriginalFilename(null);
 		}
-		logger1.debug(filePath.toString());
-		Userattribute user = new Userattribute();
-		Cookie[] cookies = req.getCookies();
-		Boolean exist = false;
-		if (cookies.length > 0) {
-			for (Cookie cookiex : cookies) {
-				Boolean boo = "userId".equals(cookiex.getName()) && !"".equals(cookiex.getValue());
-				if (boo) {
-					userId = cookiex.getValue();
-					exist = true;
-					break;
-				}
-			}
-		}
-		if (!exist) {
-			// 2 用户没有Cookie记录就新增用户 3 生成用户登录二维码
-			userId = registUser(record, req, res, files, filePath, user);
-		}
+		// 查出发送者接收者id.
+		c = new Userattribute();
+		c.setUsername(record.getTeachers());
+		c = userattributeService.findByCondition(c);
+		if (c != null)
+			record.setTeachers(c.getId().toString());
+		c = new Userattribute();
+		c.setUsername(record.getStudents());
+		c = userattributeService.findByCondition(c);
+		if (c != null)
+			record.setStudents(c.getId().toString());
 		// 保存
 		record.setImagespath(filePath.getFileUUidName());
 		record.setGoodpoints(1l);
@@ -140,6 +132,7 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 		record.setIsshow(0);
 		int result = happayteachersdaysMapper.insert(record);
 		// 4.生成记录二维码，按规格生成，上传图片uuid完整名+qrcode.jpg
+		userId = c.getId().toString();
 		String warmqrcode = warmPrefix.replace("%", record.getId().toString()).replace("@", userId);
 		// 有图分享二维码。
 		try {
@@ -154,35 +147,6 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 		record.setQrcode(filePath.getFileUUidName() + qrcodeRecordSuffix);
 		happayteachersdaysMapper.updateByPrimaryKeySelective(record);
 		return result;
-	}
-
-	private String registUser(HappayteachersdaysRequest record, HttpServletRequest req, HttpServletResponse res,
-			MultipartFile files, FileResponse filePath, Userattribute user) throws Exception {
-		String userqrcode = filePath.getFileUUidFullName() + qrcodeUserSuffix;
-		user.setCreatetime(new Date());
-		user.setUpdatetime(new Date());
-		user.setUserqrcode(filePath.getFileUUidName() + qrcodeUserSuffix);
-		user.setUsername(record.getStudents());
-		user.setPassword(defaultPassword);
-		user.setHeadimage(recordRoot + defaultImagesName);
-		Userattribute c=new Userattribute();
-		c.setUsername(user.getUsername());
-		Userattribute userattribute = userattributeService.findByCondition(c);
-		if(null == userattribute){
-			userattributeService.saveInfo(user, req, res, files);
-			req.getSession().setAttribute("user", user);
-			String urlQrcode = userPrefix.replace("%", user.getId().toString());
-			// 3.生成新用户二维码
-			BarcodeFactory.encode(urlQrcode, qrcodesize, qrcodesize, filePath.getFileUUidFullName(), userqrcode);
-		}else{
-			user.setId(userattribute.getId());
-			user.setQrcode(userattribute.getQrcode());
-			req.getSession().setAttribute("user", userattribute);
-		}
-		CookiesUtil.setCookies(user.getUsername(), req, res, user.getId().toString());
-		CookiesUtil.setCookie(res, "user", user.toString(), "/");
-		record.setStudents(user.getId().toString());
-		return user.getId().toString();
 	}
 
 	public int updateInfo(HappayteachersdaysRequest record) {
@@ -212,16 +176,28 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 	}
 
 	private void setImageOrQrcodePrefix(List<Happayteachersdays> data) throws Exception {
-		Userattribute user;
+		Userattribute userStudent;
+		Userattribute userTeacher;
 		if (data != null) {
 			for (Happayteachersdays d : data) {
-				user = userattributeService.selectByPrimaryKey(Long.valueOf(d.getStudents()));
+				long studentId = 0,teacherId=0;
+				try {
+					studentId = Long.valueOf(d.getStudents());
+					teacherId = Long.valueOf(d.getTeachers());
+				} catch (Exception e) {
+					continue;
+				}
+				userStudent = userattributeService.selectByPrimaryKey(studentId);
+				userTeacher = userattributeService.selectByPrimaryKey(teacherId);
 				d.setStudents(nickName);
-				if (user != null) {
-					d.setStudents(user.getUsername());
+				if (userStudent != null) {
+					d.setStudents(userStudent.getUsername());
+				}
+				if (userTeacher != null) {
+					d.setTeachers(userTeacher.getUsername());
 				}
 				d.setImagespath(qrcodePathPrefix + d.getImagespath());
-				d.setQrcode(qrcodePathPrefix+d.getQrcode());
+				d.setQrcode(qrcodePathPrefix + d.getQrcode());
 			}
 
 		}

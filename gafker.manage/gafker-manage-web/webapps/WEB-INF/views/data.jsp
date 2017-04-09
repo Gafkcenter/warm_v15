@@ -8,51 +8,21 @@
 		<nav class="nav" id="nav" >
 			<c:forEach var="item" items="${wishes}" varStatus="status" >
 				<c:if test="${status.count==1}">
-					<table class="loan-li" cellpadding="0" cellspacing="0" style="width: 100%">
 						<jsp:include page="subjsp/warmform.jsp"></jsp:include>
-						<tr> <td colspan="2">
-								<table style="width: 100%">
-									<tr> <td>分享码</td>
-										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录码</td>
-									</tr>
-									<tr>
-										<td><img src="${item.qrcode}" class="err-product"/></td>
-										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${user.userqrcode}" width="120px"/></td>
-									</tr>
-									<tr>
-										<td><hr /></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
+						<div><span>分享码</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录码</span></div>
+						<div><span><img src="${item.qrcode}" class="err-product"/></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${user.userqrcode}" width="120px"/></span></div>
+				<hr/>		
 				</c:if>
-				<table  class="loan-li"  cellpadding="0" cellspacing="0"  style="width: 100%">
-					<tr>
-						<td>
-						<img src='${item.imagespath}' width="99px" height="99px"  class="err-product"/>
-						</td>
-						<td><p>
-								【${item.students}】送给【${item.teachers}】的祝福：
-								<a href="${pageContext.request.contextPath}/t/update/${item.id}" >${item.goodpoints}
-								<img src="${pageContext.request.contextPath}/images/good.png" width="5%" height="" >
-								</a>
-							</p> 
-							<p class="loan-t">
-								<a href="#"><em>${fn:substring(item.content, 0, 200)}</em></a>
-							</p>
-							<p class="clear">
-								祝福日期：
-								<fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss" />
-							</p>
-							<p class="count">
-								<span></span>
-							</p></td>
-					</tr>
-					<tr>
-						<td><hr /></td>
-					</tr>
-				</table>
+				<div class ="full" style="white-space: nowrap;width: 90%;">
+				<em>【${item.students}】祝福【${item.teachers}】:<a href="${pageContext.request.contextPath}/t/update/${item.id}" >${item.goodpoints}
+								<img src="${pageContext.request.contextPath}/images/good.png" width="5%"></a></em>
+				</div>
+				<div>
+				<span><img src='${item.imagespath}' width="99px" height="99px"  class="err-product"/></span>
+				<span><p class="clear" style="color: green;">${fn:substring(item.content, 0, 200)}</p></span>
+				</div>
+				<div><p class="clear" style="color: grey;"><em>日期：<fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss" /></em></p></div>
+				<hr/>
 			</c:forEach>
 		</nav>
 	</c:if>

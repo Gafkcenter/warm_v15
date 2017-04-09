@@ -36,8 +36,8 @@ text-align: center;
 <spring:message code="gafker.test.name"></spring:message>
 <spring:message code="welcome"></spring:message>
 -->
-<form:form commandName="userattribute" id="userattribute" name="userattribute" action="${pageContext.request.contextPath}/security/dologin" method="post">
 	${message}<br/>
+<form:form commandName="userattribute" id="userattribute" name="userattribute" action="${pageContext.request.contextPath}/security/dologin" method="post">
 	<form:errors path="*" cssClass="error"/><br/>
      <label for="username" >昵称名字</label> 
      <form:input  name="username" path="username" maxLength="40"  cssErrorClass="error"/>

@@ -14,6 +14,7 @@ public class HappayteachersdaysRequest extends Happayteachersdays {
 	private  double endMiniSecond;
 	private long user;
 	private long friend;
+	private int isStudents;//0学生1老师
 	
 	public String getRequestUri() {
 		return requestUri;
@@ -56,6 +57,12 @@ public class HappayteachersdaysRequest extends Happayteachersdays {
 	}
 	public void setWarmfile(String warmfile) {
 		this.warmfile = warmfile;
+	}
+	public int getIsStudents() {
+		return isStudents;
+	}
+	public void setIsStudents(int isStudents) {
+		this.isStudents = isStudents;
 	}
 	
 }

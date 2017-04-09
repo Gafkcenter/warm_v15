@@ -721,8 +721,8 @@ input, label, select {
 
 .loan-li p {
 	font-size: 13px;
-	height: 24px;
-	line-height: 24px;
+	 height: 24px; 
+	 line-height: 24px; 
 	color: #b7b7b7;
 	padding-left: 8px
 }

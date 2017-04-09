@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.gafker.manage.pojo.Familyproduct;
 import com.gafker.manage.pojo.FamilyproductExample;
 import com.gafker.manage.pojo.FamilyproductExample.Criteria;
+import com.gafker.manage.pojo.Userattribute;
 import com.gafker.manage.pojo.form.FamilyproductForm;
 import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.FamilyproductService;
+import com.gafker.manage.service.UserAttributeService;
 
 /**
  * p:product
@@ -33,6 +35,9 @@ public class FamilyproductController implements BaseController<FamilyproductForm
 
 	@Autowired
 	FamilyproductService familyproductService;
+	
+	@Autowired
+	UserAttributeService userAttributeService;
 	
 	@Override
 	@RequestMapping(value={"s","/"},method=RequestMethod.GET)
@@ -148,8 +153,15 @@ public class FamilyproductController implements BaseController<FamilyproductForm
 		Criteria criteria = c.createCriteria();
 		criteria.andCreatebyEqualTo(userId).andIdEqualTo(productId);
 		Familyproduct product = familyproductService.findByCondition(c);
+		Userattribute userInfo = userAttributeService.setUserContactPhone(userId);
 		m.addAttribute("product", product);
+		m.addAttribute("userInfo", userInfo);
 		return "product/details";
+	}
+	@RequestMapping(value="/t/{userId}/{productId}",method=RequestMethod.GET)
+	public String findByTwoConditonTra(@PathVariable Long userId,@PathVariable Long productId, Model m) throws Exception {
+		String viewString = this.findByTwoConditon(userId, productId, m);
+		return viewString;
 	}
 
 	@Override

@@ -10,6 +10,11 @@
 *.iml
 .metadata
 .recommenders
+/gafker.common/target/*
+/gafker.manage/gafker-manage-mapper/target/*
+/gafker.manage/gafker-manage-pojo/target/*
+/gafker.manage/gafker-manage-service/target/*
+/gafker.manage/gafker-manage-web/target/*
 /RemoteSystemsTempFiles/*
 /Servers/*
 /indexes/*

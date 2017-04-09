@@ -78,7 +78,7 @@ public class FileUtils {
 	public static FileResponse setFileResponse(String path, String showPath, String originalFilename) {
 		FileResponse response = new FileResponse();
 		response.setFileOriginalFilename(originalFilename);
-		String uuidName = getUuidFullName(originalFilename);
+		String uuidName = getUuidFullName(originalFilename,path);
 		response.setFileUUidFullName(path + uuidName);
 		response.setFileUUidName(showPath + uuidName);
 		response.setSourceFilePath(path+originalFilename);
@@ -119,20 +119,27 @@ public class FileUtils {
 	 * @param originalFilename
 	 * @return
 	 */
-	public static String getUuidFullName(String originalFilename) {
+	public static String getUuidFullName(String originalFilename,String recordRoot) {
 		String suffic = originalFilename.substring(originalFilename.lastIndexOf("."));
-		String uuidName = getUuidName(suffic);
+		String uuidName = getUuidName(suffic,recordRoot);
 		return uuidName;
 	}
 	//创建文件夹并拼成完整带日期的uuid文件名。
-	public static String getUuidName(String suffix) {
+	/**
+	 * 
+	 * @param suffix
+	 * @param recordRoot 只能用来判断一下文件保存完整路径是否存在
+	 * @return
+	 */
+	public static String getUuidName(String suffix,String recordRoot) {
 		String uuidName = UUID.randomUUID().toString().replace("-", "") + suffix;
 		String path =getYearMonthDayPath(true);
-		File f=new File(path);
-		if(!f.exists()){
-			f.mkdirs();
+		String stringFile = path+uuidName;
+		File file = new File(recordRoot+path);
+		if(!file.exists()){
+			file.mkdirs();
 		}
-		return path+uuidName;
+		return stringFile;
 	}
 
 	/**
@@ -174,7 +181,7 @@ public class FileUtils {
 		String[] splitHead = split[0].split(";");//split[0]为文件类型头images/jpeg，split[1]base64字样
 		String suffix = splitHead[0].substring(splitHead[0].indexOf("/")+1);//取文件类型jpeg
 		String base64imgtemp=split[1];
-		String imageName = FileUtils.getUuidFullName("warm."+suffix);//传入主要是用后缀前面文件名不起作用
+		String imageName = FileUtils.getUuidFullName("warm."+suffix,recordRoot);//传入主要是用后缀前面文件名不起作用
 		/**
 		 * Base64上传图片
 		 */
@@ -185,7 +192,8 @@ public class FileUtils {
 					if(b<0)
 						b+=256;
 				}
-				OutputStream out=new FileOutputStream(recordRoot+File.separator+imageName);
+				String fileString = recordRoot+File.separator+imageName;
+				OutputStream out=new FileOutputStream(fileString);
 				out.write(byteArray);
 				out.close();
 		}

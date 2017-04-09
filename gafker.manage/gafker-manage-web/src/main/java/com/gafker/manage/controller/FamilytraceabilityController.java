@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.gafker.manage.pojo.Familyproduct;
 import com.gafker.manage.pojo.FamilytraceabilityExample;
 import com.gafker.manage.pojo.form.FamilytraceabilityForm;
 import com.gafker.manage.pojo.page.Page;
@@ -44,8 +45,11 @@ public class FamilytraceabilityController
 		if (!familyproductService.isExistPrimaryKey(productId)) {
 			m.addAttribute("message", productId + "没有这个产品！请先加入产品信息！");
 		}
-		m.addAttribute("trace", new FamilytraceabilityForm());
-		m.addAttribute("productId", productId);
+		Familyproduct product = familyproductService.selectByPrimaryKey(productId);
+		FamilytraceabilityForm trace = new FamilytraceabilityForm();
+		trace.setProductName(product!=null?product.getNamecn():"");
+		trace.setFamilyproductFk(productId);
+		m.addAttribute("trace", trace);
 		return "traceability/traceForm";
 	}
 
@@ -60,7 +64,7 @@ public class FamilytraceabilityController
 	public String save(@Valid @ModelAttribute FamilytraceabilityForm record, BindingResult b, Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int result = familytraceabilityService.saveSelective(record, request, response);
-		return "redirect:/tr/list";
+		return "redirect:/tr/"+record.getFamilyproductFk()+"/trace";
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gafker.manage.pojo.Familybranch;
 import com.gafker.manage.pojo.Familynames;
@@ -35,12 +36,14 @@ public class FamilybranchController implements BaseController<Familybranch, Page
 	@Override
 	@RequestMapping(value="s",method=RequestMethod.GET)
 	public String save(Model m) throws Exception {
-		List<Familynames> names = familynamesService.listAll();
-		List<Familybranch> branchlist = familybranchService.listAll();
-		m.addAttribute("branchlist", branchlist);
-		m.addAttribute("names", names);
+		this.showNamesList(m);
 		m.addAttribute("bran", new Familybranch());
-		return "admin/branch/branchform";
+		return "/admin/branch/branchform";
+	}
+
+	private void showNamesList(Model m) throws Exception {
+		List<Familynames> names = familynamesService.listAll();
+		m.addAttribute("names", names);
 	}
 
 	@Override
@@ -52,8 +55,9 @@ public class FamilybranchController implements BaseController<Familybranch, Page
 		}else{
 			m.addAttribute("message", "添加失败！");
 		}
+		this.showNamesList(m);
 		m.addAttribute("bran", record);
-		return "admin/branch/branchform";
+		return "/admin/branch/branchform";
 	}
 
 	@Override
@@ -121,7 +125,12 @@ public class FamilybranchController implements BaseController<Familybranch, Page
 	@Override
 	public String listByCondition(Familybranch c, Model m) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+				return null;
+	}
+	@RequestMapping(value="listbyname",method=RequestMethod.POST)
+	public @ResponseBody List<Familybranch> listByConditionAjax(Familybranch c) throws Exception {
+		List<Familybranch> json = familybranchService.listByCondition(c);
+		return json;
 	}
 
 	@Override

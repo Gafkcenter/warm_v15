@@ -67,9 +67,11 @@ $('#submittype').click(
 			<legend>增加字典类型</legend>
 			<!-- 类型编号
 			<form:input id="id" path="id" name="id" cssErrorClass="errorBox" tabindex="13" readonly="true" title="类型编号"/>
-			<br />  -->类型名称
+			<br />  -->类型名称：
 			<form:input id="namecn" path="namecn" name="namecn" cssErrorClass="errorBox" tabindex="14" title="类型名称"/>*字母,数字,下划线
 			<br/><span id="typeerror"></span><br/>
+			类型描述：<form:input id="description" path="description" name="description" cssErrorClass="errorBox" tabindex="14" title="类型描述"/>
+			<br/>
 		</fieldset>
 		<div id="buttons">
 			<label for="dummy"></label> 

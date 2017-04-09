@@ -14,4 +14,6 @@ public interface UserAttributeService extends  BaseService<Userattribute, Page, 
 	public Userattribute selectByPrimaryKey(Long id)throws Exception;
 	public void updateUserShareTimes(Userattribute user)throws Exception;
 	public boolean isUserExist(String username)throws Exception;
+	public Userattribute setUserContactPhone(Long id)throws Exception;
+	
 }

@@ -14,47 +14,49 @@ color: red;
 -->
 </style>
 <script type="text/javascript">
-    $(function(){
-        $("#global").each(function(){
-            var url = "area.json";
-            var areaJson;
-            var temp_html;
-            var oProvince = $(this).find(".familynamesFk");
-            var oCity = $(this).find(".branch");
-            //初始化省
-            var province = function(){
-                $.each(areaJson,function(i,province){
-                    temp_html+="<option value='"+province.p+"'>"+province.p+"</option>";
-                });
-                oProvince.html(temp_html);
-                city();
-            };
-            //赋值市
-            var city = function(){
-                temp_html = ""; 
-                var n = oProvince.get(0).selectedIndex;
-                $.each(areaJson[n].c,function(i,city){
-                    temp_html+="<option value='"+city.ct+"'>"+city.ct+"</option>";
-                });
-                oCity.html(temp_html);
-                district();
-            };
-            //选择省改变市
-            oProvince.change(function(){
-                city();
-            });
-            //获取json数据
-            $.getJSON(url,function(data){
-                areaJson = data;
-                province();
-            });
-        });
-    });
-    </script>
+			/*
+			* 文件备注，压缩时不保存
+			*/
+			/*!
+			* 压缩时保存备注
+			*/
+			//临时备注
+			//定义XMLHttpRequest 对象
+			//其它浏览器
+			$(function(){
+				$("#familynamesFk").change(function(event){
+			        $.ajax({
+			            url:"/admin/branch/listbyname",
+			            data:{familynameid:$("#familynamesFk").val()},
+			            type:"POST",
+			            dataType:"json",
+			            contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+			            timeout:50000,
+			            success:function(json){
+			            	//success执行异常
+			            	//alert("ffff"+json);
+			                var select_option;
+			                $.each(json.selected_option_value,function(i, item){
+			                    select_option = item;
+			                });
+			                var options_str = "";
+			                $("#branch").html("");
+			                $.each(json,function(i, item){
+			                        options_str += "<option value=\"" + item.id + "\" >" + item.namecn + "</option>";
+			        });
+			                $("#branch").append(options_str);
+			            },
+			            error:function(xhr, status){
+			               // alert("error");
+			            }
+			    })});
+			});
+		</script>
 <div id="syshead"><h1>Warm家谱信息-辈份信息</h1></div>
 <div id="global">
 <a href="javascript:alert('开发中...')" title="${pageContext.request.contextPath}/admin/gen/l">辈份列表</a>
-1.<a href="${pageContext.request.contextPath}/admin/branch/s">姓氏分支信息</a>
+1.<a href="${pageContext.request.contextPath}/admin/branch/s">姓氏分支信息</a><br/>
+			<c:out value="${message}"></c:out>
 	<form:form 
 		action="${pageContext.request.contextPath}/admin/gen/s"
 		method="POST" commandName="cur_generation" enctype="multipart/form-data" >
@@ -70,7 +72,6 @@ color: red;
 			<form:options  items="${names}"   itemValue="id" itemLabel="namecn"/>
 			</form:select>*
 			<br/>
-			<c:out value="${message}"></c:out>
 			<br/>家族辈份
 			<form:input id="namecn" path="namecn" name="namecn" cssErrorClass="errorBox" tabindex="2" title="家族辈份"/>*汉字
 			<br/>当前代数

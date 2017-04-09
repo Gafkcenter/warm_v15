@@ -36,12 +36,16 @@ public class FamilygenerationController implements BaseController<Familygenerati
 	@Override
 	@RequestMapping(value="s",method=RequestMethod.GET)
 	public String save(Model m) throws Exception {
-		List<Familynames> namesList = familynamesService.listAll();
+		this.showNamesList(m);
 		m.addAttribute("cur_generation", new Familygeneration());
-		m.addAttribute("names", namesList);
 		return "admin/generation/generationform";
 	}
 
+	private void showNamesList(Model m) throws Exception {
+		List<Familynames> names = familynamesService.listAll();
+		m.addAttribute("names", names);
+	}
+	
 	@Override
 	@RequestMapping(value="s",method=RequestMethod.POST)
 	public String save(@Valid Familygeneration record, Model m, BindingResult b) throws Exception {
@@ -53,8 +57,9 @@ public class FamilygenerationController implements BaseController<Familygenerati
 		}else{
 			m.addAttribute("message", "成功加入辈份信息,继续添加！");
 		}
+		this.showNamesList(m);
 		m.addAttribute("cur_generation", record);
-		return "redirect:admin/gen/s";
+		return "admin/generation/generationform";
 	}
 
 	@Override

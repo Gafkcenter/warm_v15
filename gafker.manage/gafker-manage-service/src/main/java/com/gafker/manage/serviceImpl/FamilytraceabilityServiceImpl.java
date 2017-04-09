@@ -1,5 +1,6 @@
 package com.gafker.manage.serviceImpl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -199,14 +200,22 @@ public class FamilytraceabilityServiceImpl implements FamilytraceabilityService 
 		if(null!=traceList && traceList.size()>0){
 			resultList=new ArrayList<FamilytraceabilityForm>();
 			for(Familytraceability result:traceList){
-				Familyproduct product = familyproductService.selectByPrimaryKey(result.getFamilyproductFk());
-				FamilytraceabilityForm orig=new FamilytraceabilityForm();
-				BeanUtils.copyProperties(orig, result);
-				orig.setProductName(product.getNamecn());
+				FamilytraceabilityForm orig = this.setProductName(result);
 				resultList.add(orig);
 			}
 		}
 		return resultList;
+	}
+
+	private FamilytraceabilityForm setProductName(Familytraceability result)
+			throws Exception, IllegalAccessException, InvocationTargetException {
+		Familyproduct product = familyproductService.selectByPrimaryKey(result.getFamilyproductFk());
+		FamilytraceabilityForm orig=new FamilytraceabilityForm();
+		BeanUtils.copyProperties(orig, result);
+		if(product !=null){
+			orig.setProductName(product.getNamecn());
+		}
+		return orig;
 	}
 
 	@Override

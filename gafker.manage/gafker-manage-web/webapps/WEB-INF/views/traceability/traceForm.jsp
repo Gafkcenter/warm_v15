@@ -18,10 +18,10 @@ ${message}
 <p>
 <label for="id">溯源编号:</label>
 <form:input path="id" id="id" readonly="true" cssErrorClass="error"/>
-<form:errors path="id" cssClass="error"/>
-<label for="familyproductFk">农产品编号:</label>
-<form:input path="familyproductFk" id="familyproductFk" value="${productId}" readonly="true" cssErrorClass="error"/>
-<form:errors path="familyproductFk" cssClass="error"/>
+<form:errors path="id" cssClass="error"/><br/>
+<form:hidden path="familyproductFk" id="familyproductFk" value="${trace.familyproductFk}"/>
+<label for="productName">农产品名称:</label>
+<form:input path="productName" id="productName" value="${trace.productName}" readonly="true"/><br/>
 <label for="namecn">溯源名称:</label>
 <form:input path="namecn" id="namecn" cssErrorClass="error"/>
 <form:errors path="namecn" cssClass="error"/><br/>

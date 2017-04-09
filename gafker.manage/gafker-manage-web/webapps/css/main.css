@@ -68,6 +68,10 @@ body{ text-align:center}
 .divcss5-right{ float:right}/* 居右对齐 */
 .divcss5-cent{margin:0 auto}/* 居中对齐 */
 
+div.full{
+	width: 100%;
+}
+
 #type{
 	text-align: left;
 }

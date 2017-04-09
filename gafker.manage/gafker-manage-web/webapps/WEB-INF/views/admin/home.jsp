@@ -25,13 +25,16 @@
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/activities/l">举行活动的农产品</a><br/>
 -->
 <hr/>
+<!-- 日常生活相关--> 
+<a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/bookstore/eat">家庭养生</a><br/>
+<hr/>
 <!-- 文件管理 -->
 <a href="${pageContext.request.contextPath}/f/l/${user.id}">家庭相册</a><br/>
 <!--
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/f/d">下载文件</a><br/>
  -->
 <!-- 公益社会服务相关 -->
-<a href="${pageContext.request.contextPath}/t/l" title="${pageContext.request.contextPath}/admin/wish/l">祝福</a><br/>
+<a href="${pageContext.request.contextPath}/t/l" title="${pageContext.request.contextPath}/admin/wish/l">暖心祝福</a><br/>
 <!-- 
 <a href="javascript:alert('建设中...');" alt="${pageContext.request.contextPath}/admin/hope/l" title="提出人,愿望价值,所需要时间,愿望受益人，实现人,愿望列表,本人实现完成时间,实际完成时间,别人帮助完成时间,愿望实现率">愿望树</a><br/>
  -->
@@ -44,8 +47,7 @@
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/home/l">家族树</a><br/>
  -->
 <hr/>
-<!-- 日常生活相关 
-<a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/bookstore/l">我家的食谱</a><br/>
+<!-- 
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/bookstore/l">书柜</a><br/>
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/clothespress/l">衣柜</a><br/>
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/collection/l">收藏柜</a><br/>

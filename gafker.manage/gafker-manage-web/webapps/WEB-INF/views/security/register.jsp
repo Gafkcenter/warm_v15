@@ -28,8 +28,8 @@ text-align: center;
     <form:form commandName="userattribute" id="userattribute" name="userattribute" action="${pageContext.request.contextPath}/user/register" method="post">
     ${message}<br/>
     <form:errors path="*" cssClass="error"/><br/>
-        <label for="familyidFk">姓氏</label> 
-        <form:select name="familyidFk" path="familyidFk" id="familyidFk">
+        <label for="familynamesFk">姓氏</label> 
+        <form:select name="familynamesFk" path="familynamesFk" id="familynamesFk">
         <option value="0">--选姓氏--</option>
         <form:options items="${names}" itemLabel="namecn" itemValue="id"/>
         </form:select> <br/>
