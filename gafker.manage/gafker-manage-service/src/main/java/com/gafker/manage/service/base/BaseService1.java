@@ -1,4 +1,4 @@
-package com.gafker.manage.service;
+package com.gafker.manage.service.base;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @param <C> 综合条件参数
  * @param <R> 返回的复合类型
  */
-public interface BaseService <T,P,C,R>{
+public interface BaseService1 <T,P,C,R>{
 public boolean isExistPrimaryKey(Long id) throws Exception;
 public int save(T record) throws Exception;//保存一个完整
 public int saveSelective(T record) throws Exception;//保存一个有值字段

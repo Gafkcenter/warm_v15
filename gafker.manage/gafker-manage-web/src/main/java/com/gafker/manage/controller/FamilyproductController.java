@@ -122,9 +122,11 @@ public class FamilyproductController implements BaseController<FamilyproductForm
 	}
 
 	@Override
+	@RequestMapping(value="l",method=RequestMethod.GET)
 	public String listAll(Model m) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Familyproduct> data = familyproductService.listAll();
+		m.addAttribute("productList", data);
+		return "product/data";
 	}
 
 	@Override
@@ -222,7 +224,4 @@ public class FamilyproductController implements BaseController<FamilyproductForm
 		m.addAttribute("productList", productList);
 		return "product/data";
 	}
-
-
-
 }

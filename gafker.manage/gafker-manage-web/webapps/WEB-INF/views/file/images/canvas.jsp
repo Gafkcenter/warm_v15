@@ -11,7 +11,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/localresize/lrz.bundle.js"></script>
 </head>
 <body>
-<input type="file" accept="image/*"><br/>
+<input type="file" accept="image/*" class="reg"><br/>
 <img id="uploadwarm"/>
 </body>
 <script>

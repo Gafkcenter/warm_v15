@@ -36,15 +36,18 @@
 		<table schema="fhadmin" tableName="familynews"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyphoto"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyproduct"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<table schema="fhadmin" tableName="familysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<!-- 
 		<table schema="fhadmin" tableName="familytraceability"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyworkhelp"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="feedback"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="happayteachersdays"><generatedKey column="id" sqlStatement="JDBC"/></table>
-		<table schema="fhadmin" tableName="sys_dict"><generatedKey column="id" sqlStatement="JDBC"/></table>
-		--> 	
+		<table schema="fhadmin" tableName="sys_dict"><generatedKey column="id" sqlStatement="JDBC"/></table>	
 		<table schema="fhadmin" tableName="sys_dict_type"><generatedKey column="id" sqlStatement="JDBC"/></table>
-		<!-- 
 		<table schema="fhadmin" tableName="sys_geo"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_jacket_size"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_shoes_size"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="userattribute"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="userbodysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		-->

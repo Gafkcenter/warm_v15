@@ -13,6 +13,7 @@
 	<a href="${pageContext.request.contextPath}/admin/home">管理首页</a>&nbsp;
 	<a href="${pageContext.request.contextPath}/p/s">添加我家的农产品</a>
 	<h3>农产品详情</h3>
+	<a href="javascript:alert('开发中。。。');" title="为该新产品：活动开启/定制活动" alt="${pageContext.request.contextPath}/ac/${product.id}">活动定制/开户</a><br />
 	<c:if test="${not empty product}">
 		<div>
 			<c:if test="${not empty userInfo}">农产品咨询：${userInfo.phonenum}</c:if>

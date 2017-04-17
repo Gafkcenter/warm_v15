@@ -8,8 +8,9 @@ import com.gafker.manage.pojo.Familyphoto;
 import com.gafker.manage.pojo.file.UploadedFile;
 import com.gafker.manage.pojo.form.FamilyphotoForm;
 import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.service.base.BaseService1;
 
-public interface FileService extends BaseService<FamilyphotoForm, Page, FamilyphotoForm, FamilyphotoForm>{
+public interface FileService extends BaseService1<FamilyphotoForm, Page, FamilyphotoForm, FamilyphotoForm>{
 	public String saveFile(UploadedFile m, HttpServletRequest req) throws Exception;
 
 	public List<Familyphoto> showAllPhoto(Familyphoto p) throws Exception;

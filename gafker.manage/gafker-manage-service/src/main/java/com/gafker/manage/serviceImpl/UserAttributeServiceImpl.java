@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,7 +51,6 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 	private String defaultPassword;
 
 	@Override
-	@CachePut(value = "family_user", key = "'user'+#user.id")
 	public int saveInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res, MultipartFile files)
 			throws Exception {
 		String uuidFullName = FileUtils.getUuidFullName("demo.png", savePath);

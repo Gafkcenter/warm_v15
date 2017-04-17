@@ -7,8 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gafker.manage.pojo.Userattribute;
 import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.service.base.BaseService1;
 
-public interface UserAttributeService extends  BaseService<Userattribute, Page, Userattribute, Userattribute>{
+public interface UserAttributeService extends  BaseService1<Userattribute, Page, Userattribute, Userattribute>{
 	public int saveInfo( Userattribute user,HttpServletRequest req,HttpServletResponse res,MultipartFile files)throws Exception;
 	public int qrcodeInfo( Userattribute user,HttpServletRequest req,HttpServletResponse res,MultipartFile files)throws Exception;
 	public Userattribute selectByPrimaryKey(Long id)throws Exception;

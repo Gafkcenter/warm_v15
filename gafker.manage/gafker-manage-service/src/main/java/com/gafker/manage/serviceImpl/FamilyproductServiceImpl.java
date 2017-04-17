@@ -190,8 +190,10 @@ public class FamilyproductServiceImpl implements FamilyproductService {
 
 	@Override
 	public List<Familyproduct> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		FamilyproductExample example=new FamilyproductExample();
+		example.setOrderByClause("id DESC");
+		List<Familyproduct> data = familyproductMapper.selectByExample(example);
+		return data;
 	}
 
 	@Override

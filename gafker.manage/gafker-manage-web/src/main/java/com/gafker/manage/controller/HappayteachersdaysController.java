@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.gafker.manage.pojo.Happayteachersdays;
 import com.gafker.manage.pojo.HappayteachersdaysExample;
@@ -69,8 +70,18 @@ public class HappayteachersdaysController {
 			m.addAttribute("sendwishes", sendwishes);
 			return "data";
 		}
+		//注册没有注册的用户
+		regUnRegUser(sendwishes, result, req, res, m);
 		happayteachersdaysService.saveInfo(sendwishes, req, res, null);
 		return "redirect:/t/l";
+	}
+
+	private void regUnRegUser(HappayteachersdaysRequest sendwishes, BindingResult result, HttpServletRequest req,
+			HttpServletResponse res, Model m) throws Exception {
+		HappayteachersdaysRequest data=new HappayteachersdaysRequest();
+		data.setTeachers(sendwishes.getTeachers());
+		data.setStudents(sendwishes.getStudents());
+		this.registerUserAjax(data, result, req, res, m);
 	}
 
 	/**
@@ -250,6 +261,36 @@ public class HappayteachersdaysController {
 		}
 		model.addAttribute("feedback", req.getParameter("feedback"));
 		return "data";
+	}
+	
+	public void registerUserAjax(HappayteachersdaysRequest data, BindingResult b, HttpServletRequest req,
+			HttpServletResponse res, Model model) throws Exception {
+		String teacher = new String(data.getTeachers().getBytes("ISO8859-1"),"UTF-8") ;
+		String student = new String(data.getStudents().getBytes("ISO8859-1"),"UTF-8");
+		if (teacher != null) {
+			Userattribute userattribute = new Userattribute();
+			userattribute.setUsername(data.getTeachers());
+			Userattribute userInfo = userAttributeService.findByCondition(userattribute);
+			if (userInfo == null) {
+				MultipartFile files = null;
+				userAttributeService.saveInfo(userattribute, req, res, files);
+			}
+		}
+		
+		if (student != null) {
+			Userattribute userattribute = new Userattribute();
+			userattribute.setUsername(data.getStudents());
+			Userattribute userInfo = userAttributeService.findByCondition(userattribute);
+			int result=0;
+			if (userInfo == null) {
+				//注册
+				MultipartFile files = null;
+				result = userAttributeService.saveInfo(userattribute, req, res, files);
+			}
+			if(result>0){
+				userAttributeService.updateByPrimaryKey(userattribute);
+			}
+		}
 	}
 
 	public List<Happayteachersdays> listTop20ExampleByUserId(HttpServletRequest req, HttpServletResponse res, Long id,

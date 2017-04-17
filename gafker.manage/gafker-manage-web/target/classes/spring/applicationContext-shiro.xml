@@ -69,9 +69,12 @@
                 /news/l/i/**=anon
                 /news/**=authc 
                 /tr/**=anon
+                /p/l=anon
                 /p/t/**=anon
+                /p/l/**=anon
                 /p/**=authc
                 /fileupload/*=anon
+                /size/**=authc
             </value>  
         </property>  
     </bean>  

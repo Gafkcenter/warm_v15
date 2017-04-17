@@ -132,8 +132,10 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 		record.setIsshow(0);
 		int result = happayteachersdaysMapper.insert(record);
 		// 4.生成记录二维码，按规格生成，上传图片uuid完整名+qrcode.jpg
-		userId = c.getId().toString();
-		String warmqrcode = warmPrefix.replace("%", record.getId().toString()).replace("@", userId);
+		String id = "0";
+		if (c != null)
+			id = c.getId().toString();
+		String warmqrcode = warmPrefix.replace("%", record.getId().toString()).replace("@", id);
 		// 有图分享二维码。
 		try {
 			BarcodeFactory.encode(warmqrcode, qrcodesize, qrcodesize, filePath.getSourceFilePath(),
@@ -180,7 +182,7 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 		Userattribute userTeacher;
 		if (data != null) {
 			for (Happayteachersdays d : data) {
-				long studentId = 0,teacherId=0;
+				long studentId = 0, teacherId = 0;
 				try {
 					studentId = Long.valueOf(d.getStudents());
 					teacherId = Long.valueOf(d.getTeachers());

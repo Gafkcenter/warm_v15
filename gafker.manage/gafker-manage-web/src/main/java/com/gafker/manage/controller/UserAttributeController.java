@@ -75,8 +75,8 @@ public class UserAttributeController {
 	@RequestMapping(value = "regwarmuser", method = RequestMethod.GET)
 	public void registerUserAjax(HappayteachersdaysRequest data, BindingResult b, HttpServletRequest req,
 			HttpServletResponse res, Model model) throws Exception {
-		String teacher = data.getTeachers() ;
-		String student = data.getStudents();
+		String teacher = new String(data.getTeachers().getBytes("ISO8859-1"),"UTF-8") ;
+		String student = new String(data.getStudents().getBytes("ISO8859-1"),"UTF-8");
 		if (teacher != null) {
 			Userattribute userattribute = new Userattribute();
 			userattribute.setUsername(data.getTeachers());
@@ -99,7 +99,6 @@ public class UserAttributeController {
 			}
 			if(result>0){
 				userAttributeService.updateByPrimaryKey(userattribute);
-				req.getSession().setAttribute("user", userattribute);
 			}
 		}
 	}

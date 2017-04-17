@@ -20,8 +20,8 @@
 	<!-- <th>价格级别</th>
 	<th>状态</th>
 	<th nowrap>上架时间</th><th nowrap>生产时间</th>-->
-	<th nowrap>信息查询</th>
-	<th nowrap>产品溯源</th>
+	<th nowrap>产品推广码</th>
+	<th nowrap>溯源记录</th>
 	<th>农产品图片</th>
 	<!-- <th>农产品介绍</th> -->
 	</tr>

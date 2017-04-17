@@ -26,6 +26,7 @@
 -->
 <hr/>
 <!-- 日常生活相关--> 
+<a href="${pageContext.request.contextPath}/size/${user.id}" title="用心关注关爱的人">爱心尺码</a><br/>
 <a href="javascript:alert('建设中...');" title="${pageContext.request.contextPath}/admin/bookstore/eat">家庭养生</a><br/>
 <hr/>
 <!-- 文件管理 -->
