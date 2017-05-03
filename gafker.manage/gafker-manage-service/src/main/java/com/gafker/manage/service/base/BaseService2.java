@@ -10,6 +10,13 @@ public interface BaseService2 <T,C,P>{
 	 * @return
 	 */
 	public int save(T s) throws Exception;
+	/**
+	 * 批量保存
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public int save(List<T> s) throws Exception;
 
 	/**
 	 * 更新

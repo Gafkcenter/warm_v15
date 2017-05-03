@@ -121,4 +121,10 @@ public class FamilySizeServiceImpl implements FamilySizeService {
 		}
 		return dataDesc;
 	}
+
+	@Override
+	public int save(List<FamilysizeForm> s) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
