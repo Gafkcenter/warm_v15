@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Phonenumberlist;
-import com.gafker.manage.pojo.PhonenumberlistExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Phonenumberlist;
+import com.gafker.manage.entity.PhonenumberlistExample;
 
 public interface PhonenumberlistMapper {
 

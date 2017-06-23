@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familygeo;
-import com.gafker.manage.pojo.FamilygeoExample;
+import com.gafker.manage.entity.Familygeo;
+import com.gafker.manage.entity.FamilygeoExample;
 
 public interface FamilygeoMapper {
 

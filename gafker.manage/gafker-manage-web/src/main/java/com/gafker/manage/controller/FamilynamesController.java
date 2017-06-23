@@ -13,8 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gafker.manage.pojo.Familynames;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Familynames;
+import com.gafker.manage.entity.Page;
 import com.gafker.manage.service.FamilynamesService;
 
 /**

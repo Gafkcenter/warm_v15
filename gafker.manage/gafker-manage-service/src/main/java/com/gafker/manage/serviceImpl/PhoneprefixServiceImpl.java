@@ -6,17 +6,18 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.shiro.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Phoneprefix;
+import com.gafker.manage.entity.PhoneprefixExample;
+import com.gafker.manage.entity.PhoneprefixExample.Criteria;
+import com.gafker.manage.enums.PhoneprefixStatus;
 import com.gafker.manage.mapper.PhoneprefixMapper;
-import com.gafker.manage.pojo.Phoneprefix;
-import com.gafker.manage.pojo.PhoneprefixExample;
-import com.gafker.manage.pojo.PhoneprefixExample.Criteria;
-import com.gafker.manage.pojo.enums.PhoneprefixStatus;
-import com.gafker.manage.pojo.form.PhoneprefixForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.PhoneprefixForm;
 import com.gafker.manage.service.PhoneprefixService;
 
 @Service
@@ -111,6 +112,29 @@ public class PhoneprefixServiceImpl implements PhoneprefixService {
 	public int save(List<PhoneprefixForm> s) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public PhoneprefixForm copyEntityToVoForm(Phoneprefix entity) throws Exception {
+		PhoneprefixForm d = null;
+		if (entity != null) {
+			d = new PhoneprefixForm();
+			BeanUtils.copyProperties(d, entity);
+		}
+		return d;
+	}
+
+	@Override
+	public List<PhoneprefixForm> copyEntityToVoForm(List<Phoneprefix> entity) throws Exception {
+		List<PhoneprefixForm> formList = null;
+		if (!CollectionUtils.isEmpty(entity)) {
+			formList = new ArrayList<PhoneprefixForm>();
+			for (Phoneprefix data : entity) {
+				PhoneprefixForm d = this.copyToFormList(data);
+				formList.add(d);
+			}
+		}
+		return formList;
 	}
 
 }

@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Phoneprefix;
-import com.gafker.manage.pojo.PhoneprefixExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Phoneprefix;
+import com.gafker.manage.entity.PhoneprefixExample;
 
 public interface PhoneprefixMapper {
     /**

@@ -7,9 +7,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.gafker.manage.pojo.response.FileBase64InfoResponse;
 import com.gafker.manage.service.FileBase64Service;
 import com.gafker.manage.service.utils.FileUtils;
+import com.gafker.manage.vo.FileBase64InfoResponse;
 
 @Service
 public class FileBase64ServiceImpl implements FileBase64Service {

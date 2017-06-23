@@ -2,7 +2,7 @@ package com.gafker.manage.mapper;
 
 import java.util.ArrayList;
 
-import com.gafker.manage.pojo.User;
+import com.gafker.manage.entity.User;
 
 /**
  * 

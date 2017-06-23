@@ -1,15 +1,21 @@
 package com.gafker.manage.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.shiro.util.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gafker.manage.pojo.PhoneuseuserExample;
-import com.gafker.manage.pojo.form.PhoneuseuserForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Familycalendar;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Phoneuseuser;
+import com.gafker.manage.entity.PhoneuseuserExample;
+import com.gafker.manage.pojo.FamilycalendarForm;
+import com.gafker.manage.pojo.PhoneuseuserForm;
 import com.gafker.manage.service.PhoneUseUserService;
 
 @Service
@@ -53,7 +59,7 @@ public static final Logger LOGGER = LogManager.getLogger(PhoneUseUserServiceImpl
 	}
 
 	@Override
-	public List<PhoneuseuserForm> selectByExample(PhoneuseuserExample c, Page p) throws Exception {
+	public List<PhoneuseuserForm> selectByExample(PhoneuseuserExample c, Page<?> p) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -74,6 +80,27 @@ public static final Logger LOGGER = LogManager.getLogger(PhoneUseUserServiceImpl
 	public int save(List<PhoneuseuserForm> s) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public PhoneuseuserForm copyEntityToVoForm(Phoneuseuser entity) throws Exception {
+		PhoneuseuserForm dest = null;
+		if (entity != null) {
+			dest = new PhoneuseuserForm();
+			BeanUtils.copyProperties(dest, entity);
+		}
+		return dest;
+	}
+
+	@Override
+	public List<PhoneuseuserForm> copyEntityToVoForm(List<Phoneuseuser> entity) throws Exception {
+		List<PhoneuseuserForm> desc = null;
+		if (!CollectionUtils.isEmpty(entity)) {
+			desc = new ArrayList<PhoneuseuserForm>();
+			for (Phoneuseuser en : entity)
+				desc.add(this.copyEntityToVoForm(en));
+		}
+		return desc;
 	}
 
 }

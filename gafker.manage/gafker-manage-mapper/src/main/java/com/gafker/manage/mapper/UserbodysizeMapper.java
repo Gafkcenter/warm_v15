@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Userbodysize;
-import com.gafker.manage.pojo.UserbodysizeExample;
+import com.gafker.manage.entity.Userbodysize;
+import com.gafker.manage.entity.UserbodysizeExample;
 
 public interface UserbodysizeMapper {
 

@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Feedback;
-import com.gafker.manage.pojo.FeedbackExample;
+import com.gafker.manage.entity.Feedback;
+import com.gafker.manage.entity.FeedbackExample;
 
 public interface FeedbackMapper {
 

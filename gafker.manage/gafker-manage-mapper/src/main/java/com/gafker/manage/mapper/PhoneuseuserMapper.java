@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Phoneuseuser;
-import com.gafker.manage.pojo.PhoneuseuserExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Phoneuseuser;
+import com.gafker.manage.entity.PhoneuseuserExample;
 
 public interface PhoneuseuserMapper {
     /**

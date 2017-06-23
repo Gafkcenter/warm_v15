@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familybranch;
-import com.gafker.manage.pojo.FamilybranchExample;
+import com.gafker.manage.entity.Familybranch;
+import com.gafker.manage.entity.FamilybranchExample;
 
 public interface FamilybranchMapper{
     /**

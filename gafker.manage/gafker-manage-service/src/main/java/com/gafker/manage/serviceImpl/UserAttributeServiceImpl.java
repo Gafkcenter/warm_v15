@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gafker.common.tools.CryptographyUtil;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.entity.UserattributeExample;
+import com.gafker.manage.entity.UserattributeExample.Criteria;
 import com.gafker.manage.mapper.UserattributeMapper;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.UserattributeExample;
-import com.gafker.manage.pojo.UserattributeExample.Criteria;
-import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.utils.BarcodeFactory;
 import com.gafker.manage.service.utils.FileUtils;

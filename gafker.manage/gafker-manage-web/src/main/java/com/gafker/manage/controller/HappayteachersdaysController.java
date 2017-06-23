@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gafker.manage.pojo.Happayteachersdays;
-import com.gafker.manage.pojo.HappayteachersdaysExample;
-import com.gafker.manage.pojo.HappayteachersdaysExample.Criteria;
-import com.gafker.manage.pojo.RecordStatus;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.page.Page;
-import com.gafker.manage.pojo.request.HappayteachersdaysRequest;
+import com.gafker.manage.entity.Happayteachersdays;
+import com.gafker.manage.entity.HappayteachersdaysExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.entity.HappayteachersdaysExample.Criteria;
+import com.gafker.manage.enums.RecordStatus;
+import com.gafker.manage.pojo.HappayteachersdaysRequest;
 import com.gafker.manage.service.HappayteachersdayService;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.VisitorcountService;
@@ -217,14 +217,14 @@ public class HappayteachersdaysController {
 	}
 
 	private void exampleKeyCondition(HappayteachersdaysExample example, Long id) {
-		example.createCriteria().andIdEqualTo(id).andIsshowEqualTo(RecordStatus.Show.getValue());
+		example.createCriteria().andIdEqualTo(id).andIsshowEqualTo(RecordStatus.SHOW.getValue());
 		example.setOrderByClause("Id DESC");
 	}
 
 	private void exampleStudentCondition(HappayteachersdaysExample example, Long id) {
 		Criteria criteria = example.createCriteria();
 		criteria.andStudentsEqualTo(String.valueOf(id));
-		criteria.andIsshowEqualTo(RecordStatus.Show.getValue());
+		criteria.andIsshowEqualTo(RecordStatus.SHOW.getValue());
 		example.setOrderByClause("Id DESC");
 	}
 

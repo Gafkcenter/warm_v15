@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.form.PhoneprefixForm;
+import com.gafker.manage.pojo.PhoneprefixForm;
 import com.gafker.manage.service.PhoneprefixService;
 
 @Controller

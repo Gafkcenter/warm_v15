@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Familynames;
+import com.gafker.manage.entity.FamilynamesExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.FamilynamesExample.Criteria;
 import com.gafker.manage.mapper.FamilynamesMapper;
-import com.gafker.manage.pojo.Familynames;
-import com.gafker.manage.pojo.FamilynamesExample;
-import com.gafker.manage.pojo.FamilynamesExample.Criteria;
-import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.FamilynamesService;
 
 @Service

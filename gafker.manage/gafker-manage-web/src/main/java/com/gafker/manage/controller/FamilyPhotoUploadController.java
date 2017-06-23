@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gafker.manage.pojo.Familyphoto;
-import com.gafker.manage.pojo.file.UploadedFile;
-import com.gafker.manage.pojo.form.FamilyphotoForm;
+import com.gafker.manage.entity.Familyphoto;
+import com.gafker.manage.pojo.FamilyphotoForm;
+import com.gafker.manage.pojo.UploadedFile;
 import com.gafker.manage.service.FileService;
 import com.gafker.manage.service.utils.FileUtils;
 

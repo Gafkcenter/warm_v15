@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familygeneration;
-import com.gafker.manage.pojo.FamilygenerationExample;
+import com.gafker.manage.entity.Familygeneration;
+import com.gafker.manage.entity.FamilygenerationExample;
 
 public interface FamilygenerationMapper {
 

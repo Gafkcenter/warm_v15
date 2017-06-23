@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gafker.manage.pojo.form.PhonesevenForm;
+import com.gafker.manage.pojo.PhonesevenForm;
 import com.gafker.manage.service.PhonesevenService;
 
 @Controller
@@ -41,7 +41,7 @@ public class PhoneSevenController {
 	 */
 	@RequestMapping(value = "checkgeo")
 	public String getPhoneSevenGeoCheck(Model m) throws Exception {
-		int result = phonesevenService.updateAttributionPhoneSeven(0l,new PhonesevenForm());
+		int result = phonesevenService.updateGeoPhoneSeven(0l,new PhonesevenForm());
 		m.addAttribute("message", "完成！"+new Date());
 		if (result<0)
 			m.addAttribute("message", "失败！"+new Date());

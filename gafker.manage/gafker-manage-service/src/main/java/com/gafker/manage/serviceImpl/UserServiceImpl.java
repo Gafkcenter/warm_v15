@@ -5,8 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.User;
 import com.gafker.manage.mapper.IUserDao;
-import com.gafker.manage.pojo.User;
 import com.gafker.manage.service.IUserService;
 
 

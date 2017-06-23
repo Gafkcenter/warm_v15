@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familyclothespress;
-import com.gafker.manage.pojo.FamilyclothespressExample;
+import com.gafker.manage.entity.Familyclothespress;
+import com.gafker.manage.entity.FamilyclothespressExample;
 
 public interface FamilyclothespressMapper{
 

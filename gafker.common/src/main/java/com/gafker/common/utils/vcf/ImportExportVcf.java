@@ -46,10 +46,12 @@ public class ImportExportVcf {
 
 	public static void  exportVcf(String fileName,List<AddressBean> addressList) {
 		try {
-			File file = new File(fileName);
-			if (file.exists()) {
-				file.createNewFile();
+			String filepath=fileName.substring(0,fileName.lastIndexOf("/")+1);
+			File file = new File(filepath);
+			if(!file.exists()){
+				file.mkdirs();
 			}
+			file=new File(fileName);
 			BufferedWriter reader = new BufferedWriter(new PrintWriter(file));
 			for (AddressBean bean : addressList) {
 				reader.write("BEGIN:VCARD");

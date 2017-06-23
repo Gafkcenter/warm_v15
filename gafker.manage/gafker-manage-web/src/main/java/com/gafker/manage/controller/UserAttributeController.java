@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gafker.manage.pojo.Familynames;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.request.HappayteachersdaysRequest;
+import com.gafker.manage.entity.Familynames;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.pojo.HappayteachersdaysRequest;
 import com.gafker.manage.service.FamilynamesService;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.utils.CookiesUtil;

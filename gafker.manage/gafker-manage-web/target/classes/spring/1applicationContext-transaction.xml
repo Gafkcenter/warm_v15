@@ -21,9 +21,11 @@
 			<tx:method name="query*" read-only="true" />
 			<tx:method name="find*" read-only="true" />
 			<tx:method name="get*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
 
 			<!-- 主库执行操作，事务传播行为定义为默认行为 -->
 			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 

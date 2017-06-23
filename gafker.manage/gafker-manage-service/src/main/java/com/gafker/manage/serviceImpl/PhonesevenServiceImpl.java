@@ -4,35 +4,35 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.shiro.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gafker.common.utils.HttpClientUtil;
 import com.gafker.common.utils.vcf.AddressBean;
 import com.gafker.common.utils.vcf.ImportExportVcf;
+import com.gafker.manage.datatype.AddressBeanExchange;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.PhoneprefixExample;
+import com.gafker.manage.entity.Phoneseven;
+import com.gafker.manage.entity.PhonesevenExample;
+import com.gafker.manage.entity.PhonesevenExample.Criteria;
+import com.gafker.manage.enums.PhoneprefixFinished;
 import com.gafker.manage.mapper.PhonesevenMapper;
-import com.gafker.manage.pojo.FamilysizeExample;
-import com.gafker.manage.pojo.PhoneprefixExample;
-import com.gafker.manage.pojo.Phoneseven;
-import com.gafker.manage.pojo.PhonesevenExample;
-import com.gafker.manage.pojo.PhonesevenExample.Criteria;
-import com.gafker.manage.pojo.enums.PhoneprefixFinished;
-import com.gafker.manage.pojo.form.PhonecvfpathForm;
-import com.gafker.manage.pojo.form.PhoneprefixForm;
-import com.gafker.manage.pojo.form.PhonesevenForm;
-import com.gafker.manage.pojo.jsonbeantype.AddressBeanExchange;
-import com.gafker.manage.pojo.jsonbeantype.Data360;
-import com.gafker.manage.pojo.jsonbeantype.PhoneMobile;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.PhonecvfpathForm;
+import com.gafker.manage.pojo.PhoneprefixForm;
+import com.gafker.manage.pojo.PhonesevenForm;
 import com.gafker.manage.service.PhonecvfpathService;
 import com.gafker.manage.service.PhoneprefixService;
 import com.gafker.manage.service.PhonesevenService;
 import com.gafker.manage.service.utils.FileUtils;
-import com.gafker.manage.service.utils.JSonUtils;
+import com.gafker.manage.service.utils.ThirdPartyRestApi;
+import com.gafker.manage.serviceImpl.multithread.MultiThreadProcessService;
 
 @Service
 @Transactional
@@ -43,23 +43,32 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	private String vcfPathRoot;
 	@Value("${vcf.file.record.root}")
 	private String vcfRecordRoot;
-	@Value("${api.mobile.iteblog}")
-	private String mobileRest;
 	@Value("${api.mobile.shouji}")
 	private String mobileRest1;
 	@Value("${api.mobile.taobao}")
 	private String mobileRest2;
-	@Value("${page.getbatch.limit}")
-	private int getLimit;
+	@Value("${api.mobile.iteblog}")
+	private String mobileRest3;
+	@Value("${api.getphoneplace.limit}")
+	private int getPhoneplaceLimit;
+	@Value("${vcf.getseven.limit}")
+	private int getVcfSevenLimit;
+	@Value("${vcf.can.save.limit}")
+	private int vcfByCanSaveCount;
 
 	@Autowired
 	PhonesevenMapper phonesevenMapper;
 
 	@Autowired
 	PhoneprefixService phoneprefixService;
-	
+
 	@Autowired
 	PhonecvfpathService phonecvfpathService;
+	
+	@Autowired
+	private ThreadPoolTaskExecutor taskExecutor;
+	@Autowired
+	private MultiThreadProcessService multithreadProcessService;
 
 	@Override
 	public int save(PhonesevenForm s) throws Exception {
@@ -95,27 +104,16 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	}
 
 	@Override
-	public List<PhonesevenForm> selectByExample(FamilysizeExample c) throws Exception {
+	public List<PhonesevenForm> selectByExampleForm(PhonesevenExample c) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<PhonesevenForm> selectByExample(FamilysizeExample c, Page p) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PhonesevenForm> selectAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PhonesevenForm> selectAll(Page p) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PhonesevenForm> selectByExample(PhonesevenExample c) throws Exception {
+		List<Phoneseven> dataList = phonesevenMapper.selectByExample(c);
+		List<PhonesevenForm> dataVo = this.copyEntityToVoForm(dataList);
+		return dataVo;
 	}
 
 	@Override
@@ -153,7 +151,7 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	 */
 	private int addSevenBatch(PhoneprefixForm data) throws Exception {
 		int result;
-		List<PhonesevenForm> insertList = new ArrayList<PhonesevenForm>();
+		List<Phoneseven> insertList = new ArrayList<Phoneseven>();
 		// 暂用Remarks用来存放上次seven执行的结束位置,即从seven开始执行。
 		String startPositionPhone = data.getRemarks();
 		long i = Long.parseLong(data.getPrefix()) * 10000;
@@ -162,7 +160,7 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 			i = Long.parseLong(startPositionPhone);
 		}
 		for (; i <= endLoop; i++) {
-			PhonesevenForm r = new PhonesevenForm();
+			Phoneseven r = new Phoneseven();
 			r.setPhoneseven(i);
 			r.setUpdatetime(new Date());
 			r.setPrefixFk(data.getId());
@@ -177,162 +175,166 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	}
 
 	@Override
-	public void updateAttributionPhoneSeven(Long seven, List<PhonesevenForm> phoneList) {
-		// TODO Auto-generated method stub
-
+	public void updateGeoPhoneSeven(Long seven, List<PhonesevenForm> phoneList) throws Exception {
+		int result  = this.updateGeoResultToRepostory(phoneList);
 	}
 
 	@Override
-	public int updateAttributionPhoneSeven(Long seven, PhonesevenForm phoneLis) throws Exception {
-		int result = -1;
-		PhonesevenExample c = new PhonesevenExample();
-		Criteria cr = c.createCriteria();
-		cr.andFinishedIsNull();
-		if (getLimit != -1) {
-			c.setStart(0);
-			c.setLimit(getLimit);
-		}
-		List<Phoneseven> dataList = phonesevenMapper.selectByExample(c);
+	public int updateGeoPhoneSeven(Long seven, PhonesevenForm phoneLis) throws Exception {
+		PhonesevenExample c = getGeoCondition();
+		List<PhonesevenForm> dataList = this.selectByExample(c);
+		int result  = this.updateGeoResultToRepostory(dataList);
+		return result;
+	}
+
+	private int updateGeoResultToRepostory(List<PhonesevenForm> dataList) throws Exception {
+		int result=-1;
 		if (dataList == null) {
 			return result;
 		}
-		for (Phoneseven phone : dataList) {
-			result = getGeoInfo(phone);
+		for (PhonesevenForm phone : dataList) {
+			PhonesevenForm geoInfo = ThirdPartyRestApi.getPhonePlaceFromAll3rdApi(phone,mobileRest1,mobileRest2,mobileRest3);
+			if (geoInfo != null)
+				result = this.update(geoInfo);
 		}
 		if (result == 0)
 			result = 0;
 		return result;
 	}
 
-	private int getGeoInfo(Phoneseven phone) {
-		int result = 0;
-		PhonesevenForm phoneNew = new PhonesevenForm();
-		phoneNew.getFromPhoneseven(phone);
-		// httpclient 对phoneseven 设置归属地
-		String phoneseven = String.valueOf(phoneNew.getPhoneseven());
-		String mobleRestTemp = mobileRest1;
-		mobleRestTemp = mobleRestTemp.replace("%", phoneseven);
-		String stringGeo = HttpClientUtil.httpGetRequest(mobleRestTemp);
-		PhoneMobile phoneTemp = JSonUtils.toObject(stringGeo, PhoneMobile.class);
-		Data360 data2 = phoneTemp.getData();
-		if (phoneTemp != null && data2 != null && "".equals(data2.getProvince())) {
-			mobleRestTemp = mobileRest2;
-			mobleRestTemp = mobleRestTemp.replace("%", phoneseven);
-			stringGeo = HttpClientUtil.httpGetRequest(mobleRestTemp + "8888");
-			if (stringGeo.contains("province:''")) {
-				mobleRestTemp = mobileRest;
-				mobleRestTemp = mobleRestTemp.replace("%", phoneseven);
-				stringGeo = HttpClientUtil.httpGetRequest(mobleRestTemp);
-				if (stringGeo.contains("<html>"))
-					return result;
-			}
+	public PhonesevenExample getGeoCondition() {
+		PhonesevenExample c = new PhonesevenExample();
+		Criteria cr = c.createCriteria();
+		cr.andFinishedIsNull();
+		if (getPhoneplaceLimit != -1) {
+			c.setStart(0);
+			c.setLimit(getPhoneplaceLimit);
 		}
-		stringGeo = stringGeo.replaceAll("ID", "id");
-		PhoneMobile phoneInfo = JSonUtils.toObject(stringGeo, PhoneMobile.class);
-		if (phoneInfo != null && ("0".equals(phoneInfo.getRet()) || "0".equals(phoneInfo.getCode()))) {
-			phoneNew.setFinished(PhoneprefixFinished.START.getValue());
-			String phoneString = JSonUtils.toJsonString(phoneInfo);
-			Data360 data = phoneInfo.getData();
-			phoneNew.setRemarks(phoneInfo.getAreaCode() + "_" + phoneInfo.getZip() + "_" + phoneInfo.getAreaVid() + "_"
-					+ phoneInfo.getMts());
-			if (data != null && !"".equals(data.getProvince()))
-				phoneNew.setRemarks(phoneInfo.getData().getProvince() + phoneInfo.getData().getCity());
-			phoneNew.setGeoposition(phoneString);
-			phoneNew.setUpdatetime(new Date());
-		}
-		if ("null_null_null_null".equals(phoneNew.getRemarks()))
-			phoneNew.setFinished(null);
-		result = phonesevenMapper.updateByPrimaryKey(phoneNew);
-		return result;
+		return c;
 	}
 
 	@Override
 	public int saveVcfPhoneSeven(String cityAlpha, List<PhonesevenForm> phoneList) throws Exception {
-		// TODO Auto-generated method stub
 		// 1.查出所有的PhoneSeven starPosition IS NULL 可以分页page
 		int result = -1;
 		PhonesevenExample c = new PhonesevenExample();
 		Criteria cr = c.createCriteria();
 		cr.andStartpositionIsNull();
-		if (getLimit != -1) {
+		if (getVcfSevenLimit != -1) {
 			c.setStart(0);
-			c.setLimit(getLimit);
+			c.setLimit(getVcfSevenLimit);
 		}
-		List<Phoneseven> dataList = phonesevenMapper.selectByExample(c);
+		List<PhonesevenForm> dataList = this.selectByExample(c);
 		if (dataList == null) {
 			return result;
 		}
 		// add. 每个phoneseven生成一个vcf号码系列
 		List<AddressBean> addressList = new ArrayList<AddressBean>();
-		int fileTotal=0;
+		int fileTotal = 0;
 		for (Phoneseven data : dataList) {
 			// 生成AddressBean列表
-			StringBuffer sb=new StringBuffer();
+			StringBuffer sb = new StringBuffer();
 			long m = data.getPhoneseven() * 10000;
 			int fileCount = 1;
 			String yearMonthPath = FileUtils.getYearMonthDayPath(true);
 			String remarks = data.getRemarks();
-			for (long i = 1; i < 10000; i++) {
+			for (long i = 0; i < 10000; i++) {
 				data.setPhoneseven(m + i);
-				data.setRemarks( remarks+ data.getPhoneseven());
+				data.setRemarks(remarks + data.getPhoneseven());
 				AddressBeanExchange ad = new AddressBeanExchange();
 				ad.fromPhonesevenToAddressBean(data);
 				addressList.add(ad);
-				if (i % 5 == 0) {
+				if (i % vcfByCanSaveCount == 0) {
 					// 2.以5000为单位保存到vcf文件中
-					this.writeToVcfFile(addressList, data, fileCount, yearMonthPath,sb);
+					this.writeToVcfFile(addressList, data, fileCount, yearMonthPath, sb);
 					addressList = new ArrayList<AddressBean>();
 					fileCount++;
 				}
 			}
 			if (addressList != null && addressList.size() > 0)
-				this.writeToVcfFile(addressList, data, fileCount, yearMonthPath,sb);
-			fileTotal+=fileCount;
+				this.writeToVcfFile(addressList, data, fileCount, yearMonthPath, sb);
+			fileTotal += fileCount;
 			// 3.更新phoneSeven的startPonsition
 			this.updatePhoneSevenStartPosition(data);
 			// 4.向表phonecvfpath插入一条记录
-			PhonecvfpathForm s = new PhonecvfpathForm();
-			s.setPhonesevenFk(data.getId());
-			s.setCvfname(sb.toString());
-			s.setCreatetime(new Date());
-			phonecvfpathService.save(s);
+			this.insertCvfPath(data, sb);
 		}
 		return fileTotal;
 	}
 
-	private void updatePhoneSevenStartPosition(Phoneseven data) {
-		Phoneseven phoneSeven=new Phoneseven();
-		phoneSeven.setId(data.getId());
-		phoneSeven.setStartposition(data.getStartposition());
-		phoneSeven.setUpdatetime(new Date());
-		phonesevenMapper.updateByPrimaryKeySelective(phoneSeven);
+	private void insertCvfPath(Phoneseven data, StringBuffer sb) throws Exception {
+		PhonecvfpathForm s = new PhonecvfpathForm();
+		s.setPhonesevenFk(data.getId());
+		s.setCvfname(sb.toString());
+		s.setCreatetime(new Date());
+		int save = phonecvfpathService.save(s);
+		if (save <= 0 && LOGGER.isDebugEnabled()) {
+			LOGGER.debug("文件保存的记录没有保存成功,注意确认:" + data.getId());
+		}
 	}
 
-	private void writeToVcfFile(List<AddressBean> addressList, Phoneseven data, int fileCount, String yearMonthPath,StringBuffer sb) {
-		String commonPathName = yearMonthPath + data.getRemarks() +"_"+ fileCount + ".vcf";
+	private void updatePhoneSevenStartPosition(Phoneseven data) throws Exception {
+		PhonesevenForm phoneSeven = new PhonesevenForm();
+		phoneSeven.setId(data.getId());
+		phoneSeven.setStartposition(String.valueOf(data.getPhoneseven()));
+		phoneSeven.setUpdatetime(new Date());
+		int update = this.updateSelect(phoneSeven);
+		if (update <= 0 && LOGGER.isDebugEnabled()) {
+			LOGGER.debug("文件保存的记录没有保存成功,注意确认:" + data.getId());
+		}
+	}
+
+	private void writeToVcfFile(List<AddressBean> addressList, Phoneseven data, int fileCount, String yearMonthPath,
+			StringBuffer sb) {
+		String commonPathName = yearMonthPath + data.getRemarks() + "_" + fileCount + ".vcf";
 		String saveFileName = vcfPathRoot + commonPathName;
 		String recordFileName = vcfRecordRoot + commonPathName;
 		ImportExportVcf.exportVcf(saveFileName, addressList);
-		sb.append(recordFileName+",");
+		sb.append(recordFileName + ",");
 	}
-
-//	private List<AddressBean> convertPhonesevenToAddressBeanList(List<Phoneseven> dataList) {
-//		List<AddressBean> dl = null;
-//		if (dataList != null && dataList.size() > 0) {
-//			dl = new ArrayList<AddressBean>();
-//			for (Phoneseven data : dataList) {
-//				AddressBeanExchange ae = new AddressBeanExchange();
-//				ae.fromPhonesevenToAddressBean(data);
-//				dl.add(ae);
-//			}
-//		}
-//		return dl;
-//	}
 
 	@Override
-	public int save(List<PhonesevenForm> sList) throws Exception {
-		int result = phonesevenMapper.insertBatch(sList);
-		return result;
+	public PhonesevenForm copyEntityToVoForm(Phoneseven entity) throws Exception {
+		PhonesevenForm dest = null;
+		if (entity != null) {
+			dest = new PhonesevenForm();
+			BeanUtils.copyProperties(dest, entity);
+		}
+		return dest;
 	}
 
+	@Override
+	public List<PhonesevenForm> copyEntityToVoForm(List<Phoneseven> entity) throws Exception {
+		List<PhonesevenForm> desc = null;
+		if (!CollectionUtils.isEmpty(entity)) {
+			desc = new ArrayList<PhonesevenForm>();
+			for (Phoneseven en : entity)
+				desc.add(this.copyEntityToVoForm(en));
+		}
+		return desc;
+	}
+
+	@Override
+	public int save(List<PhonesevenForm> s) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<PhonesevenForm> selectByExample(PhonesevenExample c, Page p) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PhonesevenForm> selectAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PhonesevenForm> selectAll(Page p) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

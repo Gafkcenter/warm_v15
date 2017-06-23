@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Phonecvfpath;
-import com.gafker.manage.pojo.PhonecvfpathExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Phonecvfpath;
+import com.gafker.manage.entity.PhonecvfpathExample;
 
 public interface PhonecvfpathMapper {
     /**

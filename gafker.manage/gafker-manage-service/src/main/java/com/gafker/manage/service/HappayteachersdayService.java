@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gafker.manage.pojo.Happayteachersdays;
-import com.gafker.manage.pojo.HappayteachersdaysExample;
-import com.gafker.manage.pojo.page.Page;
-import com.gafker.manage.pojo.request.HappayteachersdaysRequest;
+import com.gafker.manage.entity.Happayteachersdays;
+import com.gafker.manage.entity.HappayteachersdaysExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.pojo.HappayteachersdaysRequest;
 
 public interface HappayteachersdayService {
 

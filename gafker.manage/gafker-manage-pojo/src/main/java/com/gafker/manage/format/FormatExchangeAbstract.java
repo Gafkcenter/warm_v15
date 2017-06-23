@@ -2,7 +2,7 @@ package com.gafker.manage.format;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.gafker.manage.pojo.Userattribute;
+import com.gafker.manage.entity.Userattribute;
 
 public abstract class FormatExchangeAbstract implements FormatExchange<Userattribute>{
 	

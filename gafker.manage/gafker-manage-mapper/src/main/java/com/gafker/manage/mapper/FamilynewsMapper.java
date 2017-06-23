@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Familynews;
-import com.gafker.manage.pojo.FamilynewsExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Familynews;
+import com.gafker.manage.entity.FamilynewsExample;
 
 public interface FamilynewsMapper {
     /**

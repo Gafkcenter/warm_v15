@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.gafker.manage.pojo.CookieTime;
+import com.gafker.manage.entity.CookieTime;
 
 public class CookiesUtil {
 	public static Logger logger1 = LogManager.getLogger(CookiesUtil.class);

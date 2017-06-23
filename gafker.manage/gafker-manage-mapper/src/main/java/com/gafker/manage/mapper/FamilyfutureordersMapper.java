@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familyfutureorders;
-import com.gafker.manage.pojo.FamilyfutureordersExample;
+import com.gafker.manage.entity.Familyfutureorders;
+import com.gafker.manage.entity.FamilyfutureordersExample;
 
 public interface FamilyfutureordersMapper {
 

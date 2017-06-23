@@ -1,6 +1,6 @@
 package com.gafker.manage.service;
 
-import com.gafker.manage.pojo.response.FileBase64InfoResponse;
+import com.gafker.manage.vo.FileBase64InfoResponse;
 
 public interface FileBase64Service {
 

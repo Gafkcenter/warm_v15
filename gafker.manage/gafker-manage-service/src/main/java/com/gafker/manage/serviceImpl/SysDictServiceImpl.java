@@ -16,11 +16,11 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.SysDict;
+import com.gafker.manage.entity.SysDictExample;
 import com.gafker.manage.mapper.SysDictMapper;
-import com.gafker.manage.pojo.SysDict;
-import com.gafker.manage.pojo.SysDictExample;
-import com.gafker.manage.pojo.page.Page;
-import com.gafker.manage.pojo.query.SysDictQuery;
+import com.gafker.manage.pojo.SysDictQuery;
 import com.gafker.manage.service.SysDictService;
 
 @Transactional

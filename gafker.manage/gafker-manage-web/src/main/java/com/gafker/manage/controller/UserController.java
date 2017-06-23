@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gafker.manage.pojo.User;
+import com.gafker.manage.entity.User;
 import com.gafker.manage.service.IUserService;
 
 /**

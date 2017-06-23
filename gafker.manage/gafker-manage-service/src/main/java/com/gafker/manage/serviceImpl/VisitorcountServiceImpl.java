@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Visitorcount;
+import com.gafker.manage.entity.VisitorcountExample;
 import com.gafker.manage.mapper.VisitorcountMapper;
-import com.gafker.manage.pojo.Visitorcount;
-import com.gafker.manage.pojo.VisitorcountExample;
-import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.VisitorcountService;
 
 @Service

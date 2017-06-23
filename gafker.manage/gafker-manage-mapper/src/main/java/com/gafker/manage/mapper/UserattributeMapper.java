@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.UserattributeExample;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.entity.UserattributeExample;
 
 public interface UserattributeMapper {
 

@@ -1,11 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Phoneseven;
-import com.gafker.manage.pojo.PhonesevenExample;
-import com.gafker.manage.pojo.form.PhonesevenForm;
-
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Phoneseven;
+import com.gafker.manage.entity.PhonesevenExample;
 
 public interface PhonesevenMapper {
 
@@ -80,5 +80,5 @@ public interface PhonesevenMapper {
 	 * @param sList
 	 * @return
 	 */
-	int insertBatch(List<PhonesevenForm> sList);
+	int insertBatch(List<Phoneseven> sList);
 }

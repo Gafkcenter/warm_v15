@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.Familyproduct;
-import com.gafker.manage.pojo.FamilytraceabilityExample;
-import com.gafker.manage.pojo.form.FamilytraceabilityForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Familyproduct;
+import com.gafker.manage.entity.FamilytraceabilityExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.pojo.FamilytraceabilityForm;
 import com.gafker.manage.service.FamilyproductService;
 import com.gafker.manage.service.FamilytraceabilityService;
 

@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.service.base.BaseService1;
 
 public interface UserAttributeService extends  BaseService1<Userattribute, Page, Userattribute, Userattribute>{

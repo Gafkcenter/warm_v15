@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.SysDict;
-import com.gafker.manage.pojo.SysDictType;
-import com.gafker.manage.pojo.page.Page;
-import com.gafker.manage.pojo.query.SysDictQuery;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.SysDict;
+import com.gafker.manage.entity.SysDictType;
+import com.gafker.manage.pojo.SysDictQuery;
 import com.gafker.manage.service.SysDictService;
 import com.gafker.manage.service.SysDictTypeService;
 

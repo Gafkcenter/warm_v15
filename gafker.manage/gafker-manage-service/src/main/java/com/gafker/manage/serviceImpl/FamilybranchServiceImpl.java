@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Familybranch;
+import com.gafker.manage.entity.FamilybranchExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.FamilybranchExample.Criteria;
 import com.gafker.manage.mapper.FamilybranchMapper;
-import com.gafker.manage.pojo.Familybranch;
-import com.gafker.manage.pojo.FamilybranchExample;
-import com.gafker.manage.pojo.FamilybranchExample.Criteria;
-import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.FamilybranchService;
 
 @Service

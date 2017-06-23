@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Feedback;
 import com.gafker.manage.mapper.FeedbackMapper;
-import com.gafker.manage.pojo.Feedback;
 import com.gafker.manage.service.FeedBackService;
 
 @Service("feedBackService")

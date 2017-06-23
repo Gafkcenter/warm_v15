@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familymessageskinds;
-import com.gafker.manage.pojo.FamilymessageskindsExample;
+import com.gafker.manage.entity.Familymessageskinds;
+import com.gafker.manage.entity.FamilymessageskindsExample;
 
 public interface FamilymessageskindsMapper {
 
