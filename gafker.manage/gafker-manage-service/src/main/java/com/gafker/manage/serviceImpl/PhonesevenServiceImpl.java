@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gafker.common.utils.vcf.AddressBean;
@@ -35,7 +36,7 @@ import com.gafker.manage.service.utils.ThirdPartyRestApi;
 import com.gafker.manage.serviceImpl.multithread.MultiThreadProcessService;
 
 @Service
-@Transactional
+@Transactional(propagation=Propagation.SUPPORTS)//by Defonds,for BUG094537
 public class PhonesevenServiceImpl implements PhonesevenService {
 	private static final Logger LOGGER = LogManager.getLogger(PhonesevenServiceImpl.class);
 
@@ -182,26 +183,41 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	@Override
 	public int updateGeoPhoneSeven(Long seven, PhonesevenForm phoneLis) throws Exception {
 		PhonesevenExample c = getGeoCondition();
+		c.createCriteria().andFinishedIsNull();
 		c.setStart(1);
-		c.setLimit(500);
+		c.setLimit(300);
+		long start =System.currentTimeMillis();
 		List<PhonesevenForm> dataList = this.selectByExample(c);
 		int result  = this.updateGeoResultToRepostory(dataList);
+		LOGGER.info("总记录数："+dataList.size()+"\t	有效更新数量:"+result+"\t	所用时间:"+(System.currentTimeMillis()-start)/60/1000+"分钟");
 		return result;
 	}
 
 	private int updateGeoResultToRepostory(List<PhonesevenForm> dataList) throws Exception {
 		int result=-1;
+		int change =0;
 		if (dataList == null) {
 			return result;
 		}
 		for (PhonesevenForm phone : dataList) {
-			PhonesevenForm geoInfo = ThirdPartyRestApi.getPhonePlaceFromAll3rdApi(phone,mobileRest1,mobileRest2,mobileRest3);
-			if (geoInfo != null)
+			try{
+			PhonesevenForm  geoInfo=new PhonesevenForm();
+			geoInfo = ThirdPartyRestApi.getPhonePlaceFromAll3rdApi(phone,mobileRest1,mobileRest2,mobileRest3);
+			
+			if (geoInfo != null && geoInfo.getGeoposition()!=null){
 				result = this.update(geoInfo);
+				if(result>0)
+				change++;
+			}else{
+				geoInfo.setId(phone.getId());
+				geoInfo.setFinished("nodata");
+				result =this.update(geoInfo);
+			}
+			}catch(Exception e){
+				continue;
+			}
 		}
-		if (result == 0)
-			result = 0;
-		return result;
+		return change;
 	}
 
 	public PhonesevenExample getGeoCondition() {

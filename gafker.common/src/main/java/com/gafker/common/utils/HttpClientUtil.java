@@ -151,9 +151,9 @@ public class HttpClientUtil {
 				return result;
 			}
 		} catch (ClientProtocolException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 
 		}

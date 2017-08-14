@@ -13,6 +13,7 @@ public class ThirdPartyRestApi {
 	public static PhonesevenForm getPhonePlaceFromAll3rdApi(Phoneseven phone, String mobileRest1, String mobileRest2,
 			String mobileRest3) {
 		PhonesevenForm phoneNew = new PhonesevenForm();
+		phoneNew.setId(phone.getId());
 		phoneNew.getFromPhoneseven(phone);
 		// httpclient 对phoneseven 设置归属地
 		String phoneseven = String.valueOf(phoneNew.getPhoneseven());
@@ -36,7 +37,10 @@ public class ThirdPartyRestApi {
 			}
 		}
 		stringGeo = stringGeo.replaceAll("ID", "id");
-		PhoneMobile phoneInfo = JSonUtils.toObject(stringGeo, PhoneMobile.class);
+		PhoneMobile phoneInfo =null;
+		if(stringGeo !=null && !"".equals(stringGeo)){
+		phoneInfo = JSonUtils.toObject(stringGeo, PhoneMobile.class);
+		}
 		if (phoneInfo != null && ("0".equals(phoneInfo.getRet()) || "0".equals(phoneInfo.getCode())||!"".equals(phoneInfo.getProvince()))) {
 			phoneNew.setFinished(PhoneprefixFinished.START.getValue());
 			String phoneString = JSonUtils.toJsonString(phoneInfo);
@@ -48,8 +52,11 @@ public class ThirdPartyRestApi {
 			phoneNew.setGeoposition(phoneString);
 			phoneNew.setUpdatetime(new Date());
 		}
-		if ("null_null_null_null".equals(phoneNew.getRemarks()))
-			phoneNew.setFinished(null);
+		if ("null_null_null_null".equals(phoneNew.getRemarks())){
+			phoneNew.setFinished("nodate");
+		}else{
+			phoneNew.setFinished("nodate");
+		}
 		return phoneNew;
 	}
 }

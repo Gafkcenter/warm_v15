@@ -14,7 +14,7 @@ public class PhoneSevenTask {
 	private ThreadPoolTaskExecutor taskExecutor;
 	@Autowired
 	private PhonesevenService phonesevenService;
-	@Scheduled(cron = "0 0/5 * * * ?")  
+	@Scheduled(cron = "0 0/1 * * * ?")  
 	public void phoneSevenGeo(){
 			taskExecutor.execute(new GetGeoPosition(phonesevenService));
 	}
