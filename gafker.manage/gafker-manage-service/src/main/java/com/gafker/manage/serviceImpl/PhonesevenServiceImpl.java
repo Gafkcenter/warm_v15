@@ -182,6 +182,8 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	@Override
 	public int updateGeoPhoneSeven(Long seven, PhonesevenForm phoneLis) throws Exception {
 		PhonesevenExample c = getGeoCondition();
+		c.setStart(1);
+		c.setLimit(500);
 		List<PhonesevenForm> dataList = this.selectByExample(c);
 		int result  = this.updateGeoResultToRepostory(dataList);
 		return result;
