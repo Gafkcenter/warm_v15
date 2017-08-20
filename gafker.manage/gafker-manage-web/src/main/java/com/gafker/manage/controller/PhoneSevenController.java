@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gafker.manage.pojo.PhonesevenForm;
@@ -39,13 +40,16 @@ public class PhoneSevenController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "checkgeo")
-	public String getPhoneSevenGeoCheck(Model m) throws Exception {
-		int result = phonesevenService.updateGeoPhoneSeven(0l,new PhonesevenForm());
-		m.addAttribute("message", "完成！"+new Date());
-		if (result<0)
-			m.addAttribute("message", "失败！"+new Date());
-		return "success";
+	@RequestMapping(value = "checkgeo/{p}")
+	public void getPhoneSevenGeoCheck(@PathVariable Integer p) throws Exception {
+		int result=0;
+		for(int i=1;i<=10;i++){
+		result	= phonesevenService.updateGeoPhoneSeven(p+i,100);
+		}
+		if(result>0){
+			this.getPhoneSevenGeoCheck(p);
+		}
+		
 	}
 	@RequestMapping(value = "vcf")
 	public String getVcfCheck(Model m) throws Exception {

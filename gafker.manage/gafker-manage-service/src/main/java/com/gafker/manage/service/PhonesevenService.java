@@ -34,6 +34,7 @@ public interface PhonesevenService extends BaseService2<PhonesevenForm,Phoneseve
 	 * @return 
 	 */
 	public int updateGeoPhoneSeven(Long seven, PhonesevenForm phoneList) throws Exception;
+	public int updateGeoPhoneSeven(int pageSize,int pageNo) throws Exception;
 	public int saveVcfPhoneSeven(String cityAlpha, List<PhonesevenForm> phoneList) throws Exception;
 	public PhonesevenExample getGeoCondition();
 }

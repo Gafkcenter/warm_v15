@@ -50,6 +50,8 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	private String mobileRest2;
 	@Value("${api.mobile.iteblog}")
 	private String mobileRest3;
+	@Value("${api.mobile.ipcn}")
+	private String mobileRest4;
 	@Value("${api.getphoneplace.limit}")
 	private int getPhoneplaceLimit;
 	@Value("${vcf.getseven.limit}")
@@ -185,7 +187,7 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 		PhonesevenExample c = getGeoCondition();
 		c.createCriteria().andFinishedIsNull();
 		c.setStart(1);
-		c.setLimit(300);
+		c.setLimit(100);
 		long start =System.currentTimeMillis();
 		List<PhonesevenForm> dataList = this.selectByExample(c);
 		int result  = this.updateGeoResultToRepostory(dataList);
@@ -202,7 +204,7 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 		for (PhonesevenForm phone : dataList) {
 			try{
 			PhonesevenForm  geoInfo=new PhonesevenForm();
-			geoInfo = ThirdPartyRestApi.getPhonePlaceFromAll3rdApi(phone,mobileRest1,mobileRest2,mobileRest3);
+			geoInfo = ThirdPartyRestApi.getPhonePlaceFromAll3rdApi(phone,mobileRest4,mobileRest1,mobileRest2,mobileRest3);
 			
 			if (geoInfo != null && geoInfo.getGeoposition()!=null){
 				result = this.update(geoInfo);
@@ -354,5 +356,18 @@ public class PhonesevenServiceImpl implements PhonesevenService {
 	public List<PhonesevenForm> selectAll(Page p) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int updateGeoPhoneSeven(int pageSize, int pageNo) throws Exception {
+		PhonesevenExample c = getGeoCondition();
+		c.createCriteria().andFinishedIsNull();
+		c.setStart((pageNo-1)*pageSize);
+		c.setLimit(pageSize);
+		long start =System.currentTimeMillis();
+		List<PhonesevenForm> dataList = this.selectByExample(c);
+		int result  = this.updateGeoResultToRepostory(dataList);
+		LOGGER.info("总记录数："+dataList.size()+"\t	有效更新数量:"+result+"\t	所用时间:"+(System.currentTimeMillis()-start)/60/1000+"分钟");
+		return result;
 	}
 }
