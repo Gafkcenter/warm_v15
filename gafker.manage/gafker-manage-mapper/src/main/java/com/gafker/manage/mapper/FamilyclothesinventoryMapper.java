@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familyclothesinventory;
-import com.gafker.manage.pojo.FamilyclothesinventoryExample;
+import com.gafker.manage.entity.Familyclothesinventory;
+import com.gafker.manage.entity.FamilyclothesinventoryExample;
 
 public interface FamilyclothesinventoryMapper{
 

@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Userpermission;
-import com.gafker.manage.pojo.UserpermissionExample;
+import com.gafker.manage.entity.Userpermission;
+import com.gafker.manage.entity.UserpermissionExample;
 
 public interface UserpermissionMapper {
     /**

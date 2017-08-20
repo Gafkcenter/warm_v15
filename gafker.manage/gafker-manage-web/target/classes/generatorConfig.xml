@@ -5,10 +5,13 @@
 	<classPathEntry
 	location="C:\Users\john\.m2\repository\mysql-connector-java-5.1.32.jar" />
 	<!-- mysqlLoginString -->
-	<context id="context1" targetRuntime="MyBatis3">
+	<context id="mysqlgenerator" targetRuntime="MyBatis3">
+	<plugin type="cc.bandaotixi.plugins.BatchInsertPlugin"></plugin>
+        <plugin type="cc.bandaotixi.plugins.BatchUpdatePlugin"></plugin>
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 		connectionURL="jdbc:mysql://127.0.0.1:3306/fhadmin?useUnicode=true&amp;characterEncoding=UTF-8"
 		userId="root" password="root" />
+<<<<<<< HEAD
 		<!-- bean.java 项目名\src\main\java -->
 		<javaModelGenerator targetPackage="com.gafker.manage.pojo"
 		targetProject="D:\2DemoProject\warm_v15\warm_v15\gafker.manage\gafker-manage-pojo\src\main\java" />
@@ -19,12 +22,28 @@
 		<javaClientGenerator targetPackage="com.gafker.manage.mapper"
 		targetProject="D:\2DemoProject\warm_v15\warm_v15\gafker.manage\gafker-manage-mapper\src\main\java" type="XMLMAPPER" />
 		<!--
+=======
+		<!-- bean.java 项目名/src/main/java -->
+		<javaModelGenerator targetPackage="com.gafker.manage.entity"
+		targetProject="D:/workspacehttpclient/gafker.manage/gafker-manage-pojo/src/main/java" />
+		<!-- mapperSql.xml -->
+		<sqlMapGenerator targetPackage="mybatis.mappers"
+		targetProject="D:/workspacehttpclient/gafker.manage/gafker-manage-web/src/main/resources" />
+		<!-- mapperDaoInterface.java -->
+		<javaClientGenerator targetPackage="com.gafker.manage.mapper"
+		targetProject="D:/workspacehttpclient/gafker.manage/gafker-manage-mapper/src/main/java" type="XMLMAPPER" />
+		<!--  
+>>>>>>> 9c1b6ae4133135d8dbc045f69c66621f2f27d8cd
 		<table schema="fhadmin" tableName="family"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybookname"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybookscontent"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybooksection"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybranch"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		
 		<table schema="fhadmin" tableName="familycalendar"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<table schema="fhadmin" tableName="pagetest"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<!--
 		<table schema="fhadmin" tableName="familyclothesinventory"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyclothespress"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familydict"><generatedKey column="id" sqlStatement="JDBC"/></table>
@@ -37,11 +56,14 @@
 		<table schema="fhadmin" tableName="familyphoto"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyproduct"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
+<<<<<<< HEAD
 		-->
 		<table schema="fhadmin" tableName="wo_timesTable" domainObjectName="TimesTable" enableCountByExample="false"
 			   enableDeleteByExample="true" enableSelectByExample="true"
 			   enableUpdateByExample="true"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<!--
+=======
+>>>>>>> 9c1b6ae4133135d8dbc045f69c66621f2f27d8cd
 		<table schema="fhadmin" tableName="familytraceability"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyworkhelp"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="feedback"><generatedKey column="id" sqlStatement="JDBC"/></table>
@@ -60,6 +82,14 @@
 		<table schema="fhadmin" tableName="userpermission"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="userfkrole"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="userfkpermission"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<!-- Phone System 5个表完成
+		<table schema="fhadmin" tableName="phoneseven"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phonenumberlist"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		tableName="userattribute" 
+		<table schema="fhadmin" tableName="phoneprefix"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phoneuseuser"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phonecvfpath"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		-->
 	</context>
 </generatorConfiguration>

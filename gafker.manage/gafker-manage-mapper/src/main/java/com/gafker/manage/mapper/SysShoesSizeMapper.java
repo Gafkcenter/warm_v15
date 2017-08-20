@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.SysShoesSize;
-import com.gafker.manage.pojo.SysShoesSizeExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.SysShoesSize;
+import com.gafker.manage.entity.SysShoesSizeExample;
 
 public interface SysShoesSizeMapper {
     /**

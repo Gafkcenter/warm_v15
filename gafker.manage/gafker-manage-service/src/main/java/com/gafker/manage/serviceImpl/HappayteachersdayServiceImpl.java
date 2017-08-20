@@ -16,19 +16,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gafker.manage.entity.Happayteachersdays;
+import com.gafker.manage.entity.HappayteachersdaysExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.mapper.HappayteachersdaysMapper;
 import com.gafker.manage.mapper.VisitorcountMapper;
 import com.gafker.manage.mapper.VisitorlogMapper;
-import com.gafker.manage.pojo.FileResponse;
-import com.gafker.manage.pojo.Happayteachersdays;
-import com.gafker.manage.pojo.HappayteachersdaysExample;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.page.Page;
-import com.gafker.manage.pojo.request.HappayteachersdaysRequest;
+import com.gafker.manage.pojo.HappayteachersdaysRequest;
 import com.gafker.manage.service.HappayteachersdayService;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.utils.BarcodeFactory;
 import com.gafker.manage.service.utils.FileUtils;
+import com.gafker.manage.vo.FileResponse;
 
 @Service("happayteachersdaysService")
 @Transactional

@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Userfkrole;
-import com.gafker.manage.pojo.UserfkroleExample;
+import com.gafker.manage.entity.Userfkrole;
+import com.gafker.manage.entity.UserfkroleExample;
 
 public interface UserfkroleMapper {
     /**

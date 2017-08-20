@@ -15,13 +15,13 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Familynews;
+import com.gafker.manage.entity.FamilynewsExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.mapper.FamilynewsMapper;
 import com.gafker.manage.mapper.UserattributeMapper;
-import com.gafker.manage.pojo.Familynews;
-import com.gafker.manage.pojo.FamilynewsExample;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.form.FamilynewsForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.FamilynewsForm;
 import com.gafker.manage.service.FamilynewsService;
 
 @Service
@@ -71,7 +71,9 @@ public class FamilynewsServiceImpl implements FamilynewsService {
 
 	@Override
 	public List<FamilynewsForm> listAll() throws Exception {
-		return this.listByCondition(new FamilynewsExample());
+		FamilynewsExample example = new FamilynewsExample();
+		example.setOrderByClause("id DESC");
+		return this.listByCondition(example);
 	}
 
 	@Override

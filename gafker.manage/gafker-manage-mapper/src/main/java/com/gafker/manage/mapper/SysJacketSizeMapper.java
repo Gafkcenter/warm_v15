@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.SysJacketSize;
-import com.gafker.manage.pojo.SysJacketSizeExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.SysJacketSize;
+import com.gafker.manage.entity.SysJacketSizeExample;
 
 public interface SysJacketSizeMapper {
 

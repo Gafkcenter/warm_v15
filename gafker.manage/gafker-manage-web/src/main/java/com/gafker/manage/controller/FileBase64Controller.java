@@ -20,9 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.gafker.manage.pojo.response.FileBase64InfoResponse;
 import com.gafker.manage.service.FileBase64Service;
-import com.gafker.manage.service.FileService;
+import com.gafker.manage.vo.FileBase64InfoResponse;
 
 @Controller
 public class FileBase64Controller {

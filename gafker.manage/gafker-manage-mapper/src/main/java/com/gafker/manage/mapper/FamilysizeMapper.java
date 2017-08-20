@@ -1,9 +1,11 @@
 package com.gafker.manage.mapper;
 
-import com.gafker.manage.pojo.Familysize;
-import com.gafker.manage.pojo.FamilysizeExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.gafker.manage.entity.Familysize;
+import com.gafker.manage.entity.FamilysizeExample;
 
 public interface FamilysizeMapper {
 

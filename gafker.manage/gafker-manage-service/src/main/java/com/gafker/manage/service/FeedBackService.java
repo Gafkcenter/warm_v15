@@ -1,6 +1,6 @@
 package com.gafker.manage.service;
 
-import com.gafker.manage.pojo.Feedback;
+import com.gafker.manage.entity.Feedback;
 
 public interface FeedBackService {
 

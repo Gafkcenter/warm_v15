@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Visitorlog;
-import com.gafker.manage.pojo.VisitorlogExample;
+import com.gafker.manage.entity.Visitorlog;
+import com.gafker.manage.entity.VisitorlogExample;
 
 public interface VisitorlogMapper {
     /**

@@ -13,9 +13,9 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gafker.manage.pojo.jsonbeantype.Coupon;
-import com.gafker.manage.pojo.jsonbeantype.Money;
-import com.gafker.manage.pojo.jsonbeantype.Qrcode;
+import com.gafker.manage.datatype.Coupon;
+import com.gafker.manage.datatype.Money;
+import com.gafker.manage.datatype.Qrcode;
 
 /**
  * 处理Object与String的表现

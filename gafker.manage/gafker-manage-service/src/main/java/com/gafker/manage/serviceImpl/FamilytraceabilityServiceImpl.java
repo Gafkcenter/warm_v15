@@ -16,13 +16,13 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Familyproduct;
+import com.gafker.manage.entity.Familytraceability;
+import com.gafker.manage.entity.FamilytraceabilityExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.mapper.FamilytraceabilityMapper;
-import com.gafker.manage.pojo.Familyproduct;
-import com.gafker.manage.pojo.Familytraceability;
-import com.gafker.manage.pojo.FamilytraceabilityExample;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.form.FamilytraceabilityForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.FamilytraceabilityForm;
 import com.gafker.manage.service.FamilyproductService;
 import com.gafker.manage.service.FamilytraceabilityService;
 

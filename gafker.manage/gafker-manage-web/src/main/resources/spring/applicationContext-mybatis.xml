@@ -14,7 +14,7 @@
 		<!-- mybatis-config.xml -->
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
 		<!-- 别名包 -->
-		<property name="typeAliasesPackage" value="com.gafker.manage.pojo"/>
+		<property name="typeAliasesPackage" value="com.gafker.manage.entity"/>
 		<!-- mapper.xml -->
 		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/>
 	</bean>

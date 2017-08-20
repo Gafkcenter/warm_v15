@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gafker.common.utils.RequestResponseUtils;
-import com.gafker.manage.pojo.Feedback;
+import com.gafker.manage.entity.Feedback;
 import com.gafker.manage.service.FeedBackService;
 
 @Controller

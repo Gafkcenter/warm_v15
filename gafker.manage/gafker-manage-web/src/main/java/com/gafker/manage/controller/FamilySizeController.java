@@ -1,6 +1,5 @@
 package com.gafker.manage.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.FamilysizeExample;
-import com.gafker.manage.pojo.FamilysizeExample.Criteria;
-import com.gafker.manage.pojo.form.FamilysizeForm;
+import com.gafker.manage.entity.FamilysizeExample;
+import com.gafker.manage.entity.FamilysizeExample.Criteria;
+import com.gafker.manage.pojo.FamilysizeForm;
 import com.gafker.manage.service.FamilySizeService;
 
 @Controller

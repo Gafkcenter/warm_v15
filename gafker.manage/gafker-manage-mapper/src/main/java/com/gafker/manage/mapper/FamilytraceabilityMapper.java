@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familytraceability;
-import com.gafker.manage.pojo.FamilytraceabilityExample;
+import com.gafker.manage.entity.Familytraceability;
+import com.gafker.manage.entity.FamilytraceabilityExample;
 
 public interface FamilytraceabilityMapper {
 

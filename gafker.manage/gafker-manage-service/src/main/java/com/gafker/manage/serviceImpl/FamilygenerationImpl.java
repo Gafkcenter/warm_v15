@@ -12,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gafker.manage.entity.Familygeneration;
+import com.gafker.manage.entity.FamilygenerationExample;
+import com.gafker.manage.entity.Page;
 import com.gafker.manage.mapper.FamilygenerationMapper;
-import com.gafker.manage.pojo.Familygeneration;
-import com.gafker.manage.pojo.FamilygenerationExample;
-import com.gafker.manage.pojo.page.Page;
 import com.gafker.manage.service.FamilygenerationService;
 
 @Service

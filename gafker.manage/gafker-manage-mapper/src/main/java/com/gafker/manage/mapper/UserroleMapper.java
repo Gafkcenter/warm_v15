@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Userrole;
-import com.gafker.manage.pojo.UserroleExample;
+import com.gafker.manage.entity.Userrole;
+import com.gafker.manage.entity.UserroleExample;
 
 public interface UserroleMapper {
     /**

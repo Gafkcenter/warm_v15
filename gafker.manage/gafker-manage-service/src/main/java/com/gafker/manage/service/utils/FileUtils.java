@@ -20,7 +20,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.gafker.manage.pojo.FileResponse;
+import com.gafker.manage.vo.FileResponse;
 
 public class FileUtils {
 	public static final Logger logger1 = LogManager.getLogger(FileUtils.class);

@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familyproduct;
-import com.gafker.manage.pojo.FamilyproductExample;
+import com.gafker.manage.entity.Familyproduct;
+import com.gafker.manage.entity.FamilyproductExample;
 
 public interface FamilyproductMapper {
 

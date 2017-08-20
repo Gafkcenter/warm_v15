@@ -7,16 +7,19 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.shiro.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gafker.manage.entity.Familycalendar;
+import com.gafker.manage.entity.Familysize;
+import com.gafker.manage.entity.FamilysizeExample;
+import com.gafker.manage.entity.Page;
 import com.gafker.manage.mapper.FamilysizeMapper;
 import com.gafker.manage.mapper.SysJacketSizeMapper;
 import com.gafker.manage.mapper.SysShoesSizeMapper;
-import com.gafker.manage.pojo.Familysize;
-import com.gafker.manage.pojo.FamilysizeExample;
-import com.gafker.manage.pojo.form.FamilysizeForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.FamilycalendarForm;
+import com.gafker.manage.pojo.FamilysizeForm;
 import com.gafker.manage.service.FamilySizeService;
 
 @Service
@@ -88,7 +91,7 @@ public class FamilySizeServiceImpl implements FamilySizeService {
 	@Override
 	public List<FamilysizeForm> selectAll() throws Exception {
 		List<FamilysizeForm> dataFormList = null;
-		FamilysizeExample c=new FamilysizeExample();
+		FamilysizeExample c = new FamilysizeExample();
 		c.setOrderByClause("id DESC");
 		List<Familysize> dataList = familySizeMapper.selectByExample(null);
 		dataFormList = this.copyFamilySizetoForm(dataList);
@@ -120,5 +123,32 @@ public class FamilySizeServiceImpl implements FamilySizeService {
 			BeanUtils.copyProperties(dataDesc, data);
 		}
 		return dataDesc;
+	}
+
+	@Override
+	public int save(List<FamilysizeForm> s) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public FamilysizeForm copyEntityToVoForm(Familysize entity) throws Exception {
+		FamilysizeForm dest = null;
+		if (entity != null) {
+			dest = new FamilysizeForm();
+			BeanUtils.copyProperties(dest, entity);
+		}
+		return dest;
+	}
+
+	@Override
+	public List<FamilysizeForm> copyEntityToVoForm(List<Familysize> entity) throws Exception {
+		List<FamilysizeForm> desc = null;
+		if (CollectionUtils.isEmpty(entity)) {
+			desc = new ArrayList<FamilysizeForm>();
+			for (Familysize en : entity)
+				desc.add(this.copyEntityToVoForm(en));
+		}
+		return desc;
 	}
 }

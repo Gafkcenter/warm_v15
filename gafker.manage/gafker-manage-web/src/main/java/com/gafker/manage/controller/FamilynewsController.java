@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.Familynews;
-import com.gafker.manage.pojo.FamilynewsExample;
-import com.gafker.manage.pojo.FamilynewsExample.Criteria;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.form.FamilynewsForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Familynews;
+import com.gafker.manage.entity.FamilynewsExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.entity.FamilynewsExample.Criteria;
+import com.gafker.manage.pojo.FamilynewsForm;
 import com.gafker.manage.service.FamilynewsService;
 
 @Controller

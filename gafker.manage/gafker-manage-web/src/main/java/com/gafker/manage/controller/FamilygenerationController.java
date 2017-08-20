@@ -15,10 +15,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gafker.manage.pojo.Familygeneration;
-import com.gafker.manage.pojo.FamilygenerationExample;
-import com.gafker.manage.pojo.Familynames;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.entity.Familygeneration;
+import com.gafker.manage.entity.FamilygenerationExample;
+import com.gafker.manage.entity.Familynames;
+import com.gafker.manage.entity.Page;
 import com.gafker.manage.service.FamilygenerationService;
 import com.gafker.manage.service.FamilynamesService;
 

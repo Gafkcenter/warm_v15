@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.SysDict;
-import com.gafker.manage.pojo.SysDictExample;
+import com.gafker.manage.entity.SysDict;
+import com.gafker.manage.entity.SysDictExample;
 
 public interface SysDictMapper {
 

@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.gafker.manage.pojo.Userattribute;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.service.UserAttributeService;
 import com.gafker.manage.service.utils.CookiesUtil;
 

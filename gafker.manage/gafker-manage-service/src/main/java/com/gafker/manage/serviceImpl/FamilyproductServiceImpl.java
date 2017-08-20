@@ -18,20 +18,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gafker.common.tools.RandomUtils;
+import com.gafker.manage.datatype.Qrcode;
+import com.gafker.manage.entity.Familyproduct;
+import com.gafker.manage.entity.FamilyproductExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
 import com.gafker.manage.mapper.FamilyproductMapper;
-import com.gafker.manage.pojo.Familyproduct;
-import com.gafker.manage.pojo.FamilyproductExample;
-import com.gafker.manage.pojo.FileResponse;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.form.FamilyproductForm;
-import com.gafker.manage.pojo.jsonbeantype.Qrcode;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.FamilyproductForm;
 import com.gafker.manage.service.FamilyproductService;
 import com.gafker.manage.service.utils.BarcodeFactory;
 import com.gafker.manage.service.utils.FileUtils;
 import com.gafker.manage.service.utils.JSonUtils;
 import com.gafker.manage.service.utils.JedisUtils;
 import com.gafker.manage.service.utils.JedisUtils.Strings;
+import com.gafker.manage.vo.FileResponse;
 
 @Service
 @Transactional

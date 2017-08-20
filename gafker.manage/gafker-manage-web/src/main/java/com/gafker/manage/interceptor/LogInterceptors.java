@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gafker.manage.pojo.Visitorcount;
-import com.gafker.manage.pojo.Visitorlog;
+import com.gafker.manage.entity.Visitorcount;
+import com.gafker.manage.entity.Visitorlog;
 import com.gafker.manage.service.VisitorcountService;
 import com.gafker.manage.service.VisitorlogService;
 

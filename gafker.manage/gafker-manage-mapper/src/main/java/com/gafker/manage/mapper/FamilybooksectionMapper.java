@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familybooksection;
-import com.gafker.manage.pojo.FamilybooksectionExample;
+import com.gafker.manage.entity.Familybooksection;
+import com.gafker.manage.entity.FamilybooksectionExample;
 
 public interface FamilybooksectionMapper{
     /**

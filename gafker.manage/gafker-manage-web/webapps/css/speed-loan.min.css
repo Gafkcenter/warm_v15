@@ -621,7 +621,7 @@ input, label, select {
 
 .loan-li {
 	margin: 0 0 0 5px;
-	padding: 16px 0 16px 90px;
+	padding: 5px 0 5px 90px;
 	position: relative;
 	background: url('') no-repeat;
 	background-size: 80px 960px

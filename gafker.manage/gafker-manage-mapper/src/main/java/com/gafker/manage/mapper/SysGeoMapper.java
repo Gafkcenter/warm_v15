@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.SysGeo;
-import com.gafker.manage.pojo.SysGeoExample;
+import com.gafker.manage.entity.SysGeo;
+import com.gafker.manage.entity.SysGeoExample;
 
 public interface SysGeoMapper {
     /**

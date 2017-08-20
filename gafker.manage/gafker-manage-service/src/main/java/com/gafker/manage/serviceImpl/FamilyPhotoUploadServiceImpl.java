@@ -21,14 +21,14 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gafker.manage.entity.Familyphoto;
+import com.gafker.manage.entity.FamilyphotoExample;
+import com.gafker.manage.entity.Page;
+import com.gafker.manage.entity.Userattribute;
+import com.gafker.manage.entity.FamilyphotoExample.Criteria;
 import com.gafker.manage.mapper.FamilyphotoMapper;
-import com.gafker.manage.pojo.Familyphoto;
-import com.gafker.manage.pojo.FamilyphotoExample;
-import com.gafker.manage.pojo.FamilyphotoExample.Criteria;
-import com.gafker.manage.pojo.Userattribute;
-import com.gafker.manage.pojo.file.UploadedFile;
-import com.gafker.manage.pojo.form.FamilyphotoForm;
-import com.gafker.manage.pojo.page.Page;
+import com.gafker.manage.pojo.FamilyphotoForm;
+import com.gafker.manage.pojo.UploadedFile;
 import com.gafker.manage.service.FileService;
 import com.gafker.manage.service.utils.FileUtils;
 

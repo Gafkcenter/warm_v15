@@ -1,10 +1,11 @@
 package com.gafker.manage.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.gafker.manage.pojo.Familydict;
-import com.gafker.manage.pojo.FamilydictExample;
+import com.gafker.manage.entity.Familydict;
+import com.gafker.manage.entity.FamilydictExample;
 
 public interface FamilydictMapper {
 
