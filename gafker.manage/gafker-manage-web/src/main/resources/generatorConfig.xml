@@ -11,14 +11,14 @@
 		userId="root" password="root" />
 		<!-- bean.java 项目名\src\main\java -->
 		<javaModelGenerator targetPackage="com.gafker.manage.pojo"
-		targetProject="gafker-manage-pojo\src\main\java" />
+		targetProject="D:\2DemoProject\warm_v15\warm_v15\gafker.manage\gafker-manage-pojo\src\main\java" />
 		<!-- mapperSql.xml -->
 		<sqlMapGenerator targetPackage="mybatis.mappers"
-		targetProject="gafker-manage-web\src\main\resources" />
+		targetProject="D:\2DemoProject\warm_v15\warm_v15\gafker.manage\gafker-manage-web\src\main\resources" />
 		<!-- mapperDaoInterface.java -->
 		<javaClientGenerator targetPackage="com.gafker.manage.mapper"
-		targetProject="gafker-manage-mapper\src\main\java" type="XMLMAPPER" />
-		<!--  
+		targetProject="D:\2DemoProject\warm_v15\warm_v15\gafker.manage\gafker-manage-mapper\src\main\java" type="XMLMAPPER" />
+		<!--
 		<table schema="fhadmin" tableName="family"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybookname"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familybookscontent"><generatedKey column="id" sqlStatement="JDBC"/></table>
@@ -36,9 +36,12 @@
 		<table schema="fhadmin" tableName="familynews"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyphoto"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyproduct"><generatedKey column="id" sqlStatement="JDBC"/></table>
-		-->
 		<table schema="fhadmin" tableName="familysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
-		<!-- 
+		-->
+		<table schema="fhadmin" tableName="wo_timesTable" domainObjectName="TimesTable" enableCountByExample="false"
+			   enableDeleteByExample="true" enableSelectByExample="true"
+			   enableUpdateByExample="true"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<!--
 		<table schema="fhadmin" tableName="familytraceability"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="familyworkhelp"><generatedKey column="id" sqlStatement="JDBC"/></table>
 		<table schema="fhadmin" tableName="feedback"><generatedKey column="id" sqlStatement="JDBC"/></table>
