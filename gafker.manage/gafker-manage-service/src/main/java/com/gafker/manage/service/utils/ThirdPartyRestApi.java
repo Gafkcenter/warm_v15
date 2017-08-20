@@ -10,16 +10,30 @@ import com.gafker.manage.enums.PhoneprefixFinished;
 import com.gafker.manage.pojo.PhonesevenForm;
 
 public class ThirdPartyRestApi {
-	public static PhonesevenForm getPhonePlaceFromAll3rdApi(Phoneseven phone, String mobileRest1, String mobileRest2,
+	public static PhonesevenForm getPhonePlaceFromAll3rdApi(Phoneseven phone,String mobileRest4, String mobileRest1, String mobileRest2,
 			String mobileRest3) {
 		PhonesevenForm phoneNew = new PhonesevenForm();
 		phoneNew.setId(phone.getId());
 		phoneNew.getFromPhoneseven(phone);
 		// httpclient 对phoneseven 设置归属地
 		String phoneseven = String.valueOf(phoneNew.getPhoneseven());
-		String mobleRestTemp = mobileRest1;
+		String mobleRestTemp = mobileRest4;
 		mobleRestTemp = mobleRestTemp.replace("%", phoneseven);
 		String stringGeo = HttpClientUtil.httpGetRequest(mobleRestTemp);
+		if(stringGeo != null){
+		int start = stringGeo.indexOf("所在城市:");
+		if(start !=-1){
+		String place =	stringGeo.substring(start, start+15);
+			phoneNew.setGeoposition("{}");
+			phoneNew.setFinished("start");
+			phoneNew.setUpdatetime(new Date());
+			phoneNew.setRemarks(place);
+			return phoneNew;
+		}
+		}
+		mobleRestTemp = mobileRest1;
+		mobleRestTemp = mobleRestTemp.replace("%", phoneseven);
+		stringGeo = HttpClientUtil.httpGetRequest(mobleRestTemp);
 		PhoneMobile phoneTemp = JSonUtils.toObject(stringGeo, PhoneMobile.class);
 		Data360 data2 = phoneTemp.getData();
 		if (phoneTemp != null && data2 != null && "".equals(data2.getProvince())) {
