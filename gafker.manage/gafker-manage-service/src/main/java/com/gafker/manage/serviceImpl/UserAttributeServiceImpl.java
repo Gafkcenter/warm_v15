@@ -50,7 +50,6 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 	@Value("${default.login.password}")
 	private String defaultPassword;
 
-	@Override
 	public int saveInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res, MultipartFile files)
 			throws Exception {
 		String uuidFullName = FileUtils.getUuidFullName("demo.png", savePath);
@@ -75,7 +74,6 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 		BarcodeFactory.nowhitecode(urlQrcode, qrcodesize, qrcodesize, saveQrcodePath);
 	}
 
-	@Override
 	public int qrcodeInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res, MultipartFile files)
 			throws Exception {
 		userattributeMapper.updateByPrimaryKey(user);
@@ -273,6 +271,20 @@ public class UserAttributeServiceImpl implements UserAttributeService {
 			user.setPhonenum("18133064619");
 		}
 		return user;
+	}
+
+	@Override
+	public <MultipartFile> int saveInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res,
+			MultipartFile files) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public <MultipartFile> int qrcodeInfo(Userattribute user, HttpServletRequest req, HttpServletResponse res,
+			MultipartFile files) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

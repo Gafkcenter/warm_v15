@@ -43,6 +43,7 @@
 		<guava.version>15.0-rc1</guava.version>
 		<pagehelper.version>3.4.2</pagehelper.version>
 		<jsqlparser.version>0.9.1</jsqlparser.version>
+		<websocket.version>1.1</websocket.version>
 		<mapper.version>2.0.1</mapper.version>
 	</properties>
 
@@ -102,6 +103,16 @@
 				<artifactId>spring-aspects</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			
+			<!-- WebSocket1.1 -->
+			<!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
+			<dependency>
+			    <groupId>javax.websocket</groupId>
+			    <artifactId>javax.websocket-api</artifactId>
+			    <version>${websocket.version}</version>
+			    <scope>provided</scope>
+			</dependency>
+			
 
 			<!-- Mybatis -->
 			<dependency>

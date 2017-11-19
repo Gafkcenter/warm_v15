@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0" metadata-complete="false">
+	<!-- 请禁用com.sishuok.config.WebInitializer后开启如下配置 -->
+	<!-- Spring配置文件开始 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-config.xml</param-value>
+	</context-param>
+	<listener>
+		<!-- ContextLoaderListener初始化的上下文加载的Bean是对于整个应用程序共享的， 不管是使用什么表现层技术，一般如DAO层、Service层Bean； -->
+		<listener-class>org.springframework.context.ContextLoader</listener-class>
+	</listener>
+	<!-- Spring配置文件结束 -->
+	<!-- 设置servlet编码开始 -->
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<!-- 设置servlet编码结束 -->
+	<!-- 设置Spring 前端控制器 -->
+	<!-- DispatcherServlet初始化的上下文加载的Bean是只对Spring Web MVC有效的Bean， 如Controller、HandlerMapping、HandlerAdapter等等，该初始化上下文应该只加载Web相关组件。 -->
+	<servlet>
+		<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- 设置Spring 前端控制器 -->
+</web-app>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebSocket</title>
+</head>
+<body>
+<h1>聊天室</h1>
+<div>
+    <input type="submit" value="Start" onclick="start()" />
+</div>
+<div id ="messages" style="border: 0px solid #0000ff;text-align: left;">
+
+<style type="text/css">
+body{
+text-align: center;
+}
+div{
+border: 1px solid #0000ff;
+}
+div.wh{
+width: 102px;
+height: 102px;
+border: 1px solid #00ff00;
+}
+</style>
+<script type="text/javascript">
+var webSocket = new WebSocket('ws://localhost:8080/websocketTest');
+webSocket.onerror =function(event){
+	onError(event)
+};
+webSocket.onopen=function(event){
+	onOpen(event)
+};
+webSocket.onmessage=function(event){
+	onMessage(event)
+};
+function onMessage(event){
+	document.getElementById('messages').innerHTML+='<br />'+event.data;
+}
+function onOpen(event){
+	document.getElementById('messages').innerHTML='Connection established';
+}
+function onError(event){
+	alert(event.data);
+}
+function start(){
+	webSocket.send('hello_hand_hand');
+	return false;
+}
+</script>
+
+</body>
+</html>

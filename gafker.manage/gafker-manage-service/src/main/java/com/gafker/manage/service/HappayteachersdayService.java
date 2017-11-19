@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import com.gafker.manage.entity.Happayteachersdays;
 import com.gafker.manage.entity.HappayteachersdaysExample;
@@ -14,7 +13,7 @@ import com.gafker.manage.pojo.HappayteachersdaysRequest;
 
 public interface HappayteachersdayService {
 
-	public int saveInfo(HappayteachersdaysRequest record,HttpServletRequest req,HttpServletResponse res,MultipartFile files)throws Exception;
+	public <MultipartFile> int saveInfo(HappayteachersdaysRequest record,HttpServletRequest req,HttpServletResponse res,MultipartFile files)throws Exception;
 
 	public int updateInfo(HappayteachersdaysRequest record)throws Exception;
 

@@ -210,4 +210,11 @@ public class HappayteachersdayServiceImpl implements HappayteachersdayService, I
 		QRCODE_IMAGES_WIDTH = qrcodeImageWidth;
 
 	}
+
+	@Override
+	public <MultipartFile> int saveInfo(HappayteachersdaysRequest record, HttpServletRequest req,
+			HttpServletResponse res, MultipartFile files) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gafker.manage.pojo.PhonesevenForm;
 import com.gafker.manage.service.PhonesevenService;
 
 @Controller
@@ -42,13 +41,8 @@ public class PhoneSevenController {
 	 */
 	@RequestMapping(value = "checkgeo/{p}")
 	public void getPhoneSevenGeoCheck(@PathVariable Integer p) throws Exception {
-		int result=0;
-		for(int i=1;i<=10;i++){
-		result	= phonesevenService.updateGeoPhoneSeven(p+i,100);
-		}
-		if(result>0){
+		phonesevenService.updateGeoPhoneSeven(p,100);
 			this.getPhoneSevenGeoCheck(p);
-		}
 		
 	}
 	@RequestMapping(value = "vcf")
