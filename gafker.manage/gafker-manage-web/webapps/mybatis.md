@@ -9,4 +9,7 @@
 	4. 使用合理的数据库权限;
 	6. <a href="http://www.cnblogs.com/200911/p/5869097.html">参考1</a><br/>
 	5. <a href="http://blog.csdn.net/yizhenn/article/details/52384601">参考2</a><br/>
-		
+
+
+首页 > 北美洲 > 美国 > 素材 >BrandColors:世界知名品牌颜色收集网		
+http://www.egouz.com/topics/10920.html
