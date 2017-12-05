@@ -1,28 +1,38 @@
 //
-// Carousel
+// Carousel 旋转木马 跑马灯
 // --------------------------------------------------
 
 
 // Wrapper for the slide container and indicators
-.carousel {
+.carousel {//旋转木马 跑马灯舞台
   position: relative;
+  padding-top: 4px;//Gafker added 
+  padding-bottom: 28px;//Gafker added
+  background-color: @gray-lighter;//#000000;//Gafker added
 }
 
-.carousel-inner {
+.carousel-inner {//carousel-inner 幻灯片图片
   position: relative;
   overflow: hidden;
   width: 100%;
 
-  > .item {
+  > .item {//放图片的div
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
-
+    max-height: 640px; //Gafker added 图片最大宽度，超过的会隐藏
     // Account for jankitude on images
     > img,
     > a > img {
       .img-responsive();
       line-height: 1;
+      min-width: 100%; //Gafker added 确保混入支持小屏 图片铺满舞台(最小都要100%显示)
+      @media (min-width: @screen-md-min) {
+      		margin-top: -40px;
+    }
+    @media (min-width: @screen-lg-min) {
+      		margin-top: -60px;
+    }
     }
   }
 
@@ -64,7 +74,7 @@
 // Left/right controls for nav
 // ---------------------------
 
-.carousel-control {
+.carousel-control {//左右移动控制
   position: absolute;
   top: 0;
   left: 0;
@@ -143,7 +153,7 @@
 // Add an unordered list with the following class and add a list item for each
 // slide your carousel holds.
 
-.carousel-indicators {
+.carousel-indicators {//carousel-indicators 旋转木马的指标 圆点模式设置
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -183,7 +193,7 @@
   }
 }
 
-// Optional captions
+// Optional captions  captions字幕; 标题，说明文字，字幕; 第三档
 // -----------------------------
 // Hidden by default for smaller viewports
 .carousel-caption {
@@ -203,10 +213,10 @@
 }
 
 
-// Scale up controls for tablets and up
+// Scale up controls for tablets and up 平板电脑的放大控制
 @media screen and (min-width: @screen-sm-min) {
 
-  // Scale up the controls a smidge
+  // Scale up the controls a smidge  规模的控制点图标
   .carousel-control {
     .glyphicons-chevron-left,
     .glyphicons-chevron-right,
@@ -220,14 +230,14 @@
     }
   }
 
-  // Show and left align the captions
+  // Show and left align the captions 左右移动符号图标
   .carousel-caption {
     left: 20%;
     right: 20%;
     padding-bottom: 30px;
   }
 
-  // Move up the indicators
+  // Move up the indicators carousel-indicators 旋转木马的指标 圆点模式设置  指示物; （车辆上的） 转弯指示灯; 指示信号;
   .carousel-indicators {
     bottom: 20px;
   }
