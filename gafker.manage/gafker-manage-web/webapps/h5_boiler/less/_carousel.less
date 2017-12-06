@@ -20,7 +20,7 @@
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
-    max-height: 640px; //Gafker added 图片最大宽度，超过的会隐藏
+    max-height: 640px; //Gafker added 图片最大高度，超过的会隐藏
     // Account for jankitude on images
     > img,
     > a > img {
@@ -155,7 +155,8 @@
 
 .carousel-indicators {//carousel-indicators 旋转木马的指标 圆点模式设置
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;//10px;//Gafker edit
+  margin-bottom: 0px;//Gafker add
   left: 50%;
   z-index: 15;
   width: 60%;
@@ -166,11 +167,12 @@
 
   li {
     display: inline-block;
-    width:  10px;
-    height: 10px;
-    margin: 1px;
+    width:  18px;//10px;Gafker add
+    height: 18px;//10px;Gafker add
+    //margin: 1px;Gafker edit
     text-indent: -999px;
-    border: 1px solid @carousel-indicator-border-color;
+    background-color: @carousel-indicator-bg;//Gafker add
+    //border: 1px solid @carousel-indicator-border-color;Gafker edit
     border-radius: 10px;
     cursor: pointer;
 
@@ -182,13 +184,14 @@
     //
     // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
     // set alpha transparency for the best results possible.
-    background-color: #000 \9; // IE8
-    background-color: rgba(0,0,0,0); // IE9
+    //background-color: #000 \9; // IE8 Gafker edit
+    //background-color: rgba(0,0,0,0); // IE9 Gafker edit
   }
+  li:hover,//Gafker add
   .active {
-    margin: 0;
-    width:  12px;
-    height: 12px;
+    //margin: 0;Gafker edit
+    //width:  12px;Gafker edit
+    //height: 12px;Gafker edit
     background-color: @carousel-indicator-active-bg;
   }
 }
@@ -238,7 +241,8 @@
   }
 
   // Move up the indicators carousel-indicators 旋转木马的指标 圆点模式设置  指示物; （车辆上的） 转弯指示灯; 指示信号;
-  .carousel-indicators {
-    bottom: 20px;
-  }
+  //Gafker edit noted
+  //.carousel-indicators {
+  //  bottom: 20px;
+  //}
 }
