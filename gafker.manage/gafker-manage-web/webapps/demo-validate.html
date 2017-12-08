@@ -1,8 +1,7 @@
-﻿
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>验证插件</title>
 <style>
 body,a{ font-size:14px; color:#666;}
@@ -14,7 +13,7 @@ textarea {border:#ddd solid 1px; background-color:transparent; width:60%}
 .bl-form label{ float:left; width:100px; text-align:right; padding-top:6px;}
 .bl-form .controls label{ width:auto;}
 .bl-form li{ margin-top:20px; overflow:hidden;}
-em,strong{ color:#C00;}
+em{ color:#C00;}
 span.error{color:#C00; padding:0 6px;}
 </style>
 </head>
@@ -30,7 +29,8 @@ span.error{color:#C00; padding:0 6px;}
         <p>data-msg-required="请输入您的电子邮箱" //为空时的提示信息</p>
         <p>data-msg-<em>email</em>="邮箱格式不正确" //不符合正则的提示</p>
         <p>placeholder="电子邮件"   //input中没有填写的提示</p>
-        <strong>更多信息请右键查看源代码</strong>
+        <strong>更多信息请参考源代码</strong>
+        <p>表单的样式是随手写了一下，只是看起来稍微好看一点，样式不是本文重点，验证规则与书写方法和样式无关，可以自行定义。懒人建站http://www.51xuediannao.com/</p>
     </div>
 	<form action="js/test.json" method="post" class="bl-form bl-formhor" id="jsForm">
         <ul>
@@ -140,8 +140,7 @@ span.error{color:#C00; padding:0 6px;}
     </form>
 </div>
 <script src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
-<script src="http://cdn.bootcss.com/jquery-validate/1.11.1/jquery.validate.min.js"></script>
-
+<script src="jquery.validate.js"></script>
 <script>
 $(function(){
     //jquery.validate
@@ -272,5 +271,25 @@ jQuery.validator.addMethod("idCard", function (value, element) {
 
 
 </script>
+
+
+<!--下面只是说明与程序代码无关-->
+<div style="width:95%;padding:50px; font-size:14px; line-height:1.75;">
+    <span>本代码由<a href="http://www.51xuediannao.com" style="color:#F00;">懒人建站网 收集整理 我要学电脑.COM →51xuediannao.com</a> </span>
+    <a href="http://www.51xuediannao.com/">懒人建站-jquery特效-建站素材 http://www.51xuediannao.com/</a><br/>
+    
+    <span>我们为您提供-
+    <a href="http://www.51xuediannao.com/html+css/">html+css</a>，
+    <a href="http://www.51xuediannao.com/js/">jquery特效</a>，
+    <a href="http://www.51xuediannao.com/js/">JS代码</a>，
+    <a href="http://www.51xuediannao.com/js/texiao/">网页特效</a>，
+    <a href="http://www.51xuediannao.com/js/nav/">导航菜单</a>，
+    <a href="http://www.51xuediannao.com/js/slide/">焦点幻灯片</a>，
+    <a href="http://www.51xuediannao.com/sucai/">建站素材</a>
+    <a class="link" title="大学生假期网上兼职挣点零花钱" href="http://www.51xuediannao.com/yumenba/wsjianzhi.html">大学生假期网上兼职挣点零花钱</a>
+    </span>
+    <span>懒人建站只收录实用和能提高用户体验的代码</span>
+    <span>我们只想解放出你的部分写代码时间来思考更高层次的设计。</span>
+</div>
 </body>
 </html>
