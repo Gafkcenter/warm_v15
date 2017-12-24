@@ -176,8 +176,9 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
+  float: left;//right;edit gafker
+  margin-left: @navbar-padding-horizontal;
+  //margin-right: @navbar-padding-horizontal;
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -443,7 +444,8 @@
     }
 
 
-    @media (max-width: @screen-xs-max) {
+    @media (max-width: @grid-float-breakpoint) {
+//    @media (max-width: @screen-xs-max) {
       // Dropdowns get custom display when collapsed
       .open .dropdown-menu {
         > li > a {

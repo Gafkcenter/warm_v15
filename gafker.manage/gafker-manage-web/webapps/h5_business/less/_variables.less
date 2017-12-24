@@ -8,19 +8,22 @@
 
 // Grays
 // -------------------------
-
+//							企业网站配置色
 @gray-darker:            	#222; // edited
 @gray-dark:              	#454545; // edited
 @gray:                  	#777; // edited
 @gray-light:             	#aeaeae; // edited
 @gray-lighter:           	#ccc; // edited
-@gray-lightest:						#ededed; // edited
-@off-white:								#fafafa; // edited
+@gray-lightest:				#ededed; // edited
+@off-white:					#fafafa; // edited
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         #428bca;
+@brand-primary:		#3e7dbd;//edited blue 企业网站配置
+@brand-feature:		#c60004;//added new red  企业网站配置
+
+//@brand-primary:         #428bca;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
@@ -255,25 +258,41 @@
 // Navbar
 // -------------------------
 
+//企业网站配置(导航栏反色)
+@navbar-height: 				44px;
+@navbar-default-color:			@text-color;
+@navbar-default-bg:				#fff;
+@navbar-border-radius:          0;
+
 // Basics of a navbar
-@navbar-height:                    50px;
+//@navbar-height:                    50px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
+//@navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
-@navbar-default-color:             @gray;
-@navbar-default-bg:                #fff;
+//@navbar-default-color:             @gray;
+//@navbar-default-bg:                #fff;
 @navbar-default-border:            @gray-lighter; // darken(@navbar-default-bg, 9.5%);
 
 // Navbar links
+
+//企业网站配置
 @navbar-default-link-color:                @navbar-default-color;
-@navbar-default-link-hover-color:          @link-hover-color;
-@navbar-default-link-hover-bg:             @off-white;
-@navbar-default-link-active-color:         @link-hover-color;
-@navbar-default-link-active-bg:            @gray-lightest;
+@navbar-default-link-hover-color:          @navbar-default-color;
+@navbar-default-link-hover-bg:             darken(@navbar-default-color,5%);
+@navbar-default-link-active-color:         @navbar-default-color;
+@navbar-default-link-active-bg:            @navbar-default-link-hover-bg;
 @navbar-default-link-disabled-color:       @gray-lighter;
 @navbar-default-link-disabled-bg:          transparent;
+//原始配置
+//@navbar-default-link-color:                @navbar-default-color;
+//@navbar-default-link-hover-color:          @link-hover-color;
+//@navbar-default-link-hover-bg:             @off-white;
+//@navbar-default-link-active-color:         @link-hover-color;
+//@navbar-default-link-active-bg:            @gray-lightest;
+//@navbar-default-link-disabled-color:       @gray-lighter;
+//@navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
@@ -281,6 +300,16 @@
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
+
+//企业配置
+@navbar-default-toggle-hover-bg:           transparent;
+@navbar-default-toggle-icon-bar-bg:        @gray;
+@navbar-default-toggle-border-color:       transparent;
+
+//@navbar-default-toggle-hover-bg:           #ddd;
+//@navbar-default-toggle-icon-bar-bg:        #ccc;
+//@navbar-default-toggle-border-color:       #ddd;
+//普通配置
 @navbar-default-toggle-hover-bg:           #ddd;
 @navbar-default-toggle-icon-bar-bg:        #ccc;
 @navbar-default-toggle-border-color:       #ddd;
@@ -288,15 +317,24 @@
 
 // Inverted navbar
 //
+// 企业配置
+@navbar-inverse-color:                      @gray-lightest;
+@navbar-inverse-bg:                         @brand-primary;
+
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @gray-light;
-@navbar-inverse-bg:                         #222;
+//@navbar-inverse-color:                      @gray-light;
+//@navbar-inverse-bg:                         #222;
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @gray-light;
+//企业配置
+@navbar-inverse-link-color:                 @navbar-inverse-color;
 @navbar-inverse-link-hover-color:           #fff;
-@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-hover-bg:              darken(@navbar-inverse-bg, 5%);
+
+//@navbar-inverse-link-color:                 @gray-light;
+//@navbar-inverse-link-hover-color:           #fff;
+//@navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
 @navbar-inverse-link-disabled-color:        #444;

@@ -41,21 +41,27 @@
         <header role="banner">
         <div class="container">
         <a class="banner-brand visible-md visible-lg" href="index.html"><img alt="Bootstrappin'" src="img/logo.png" width="180"/></a>
-        </div>
-        <!-- 页面头Header菜单 导航列表-->
-            <nav role="navigation" class="navbar navbar-static-top navbar-default">
+        <!-- utility 公用事业; 功用，效用; 有用的物体或器械; 公用事业公司-->
+        <div class="utility-nav">
+        <ul>
+        <li><a href="#"><i class="icon fa fa-user fa-lg"></i><span>Login or Register</span></a></li>
+        <li><a href="#"><i class="icon fa fa-shopping-cart fa-lg"></i><span>View Cart</span></a></li>
+        </ul>
+        </div><!-- utility-nav -->
+        </div><!-- container -->
+        <!-- 页面头Header菜单 导航列表 navbar-static-top-->
+            <nav role="navigation" class="navbar navbar-default">
             <!-- 导航头div容器 -->
               <div class="container">
               <!-- div容器头 -->
                 <div class="navbar-header">
-                <a class="navbar-brand visible-xs visible-sm" href="index.html"><img alt="Bootstrappin'" src="img/logo.png" width="120"/></a>
-                
-                <!-- 三道杠菜单按钮  小屏幕时候显示 data-toggle 设置预期行为  data-target 设置行为触发目标-->
+                  <!-- 三道杠菜单按钮  小屏幕时候显示 data-toggle 设置预期行为  data-target 设置行为触发目标-->
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
+                  <a class="navbar-brand visible-xs visible-sm" href="index.html"><img alt="Bootstrappin'" src="img/logo.png" width="120"/></a>
                 </div>
                 <!-- 功能列表 小屏幕时三道杠显示 大屏幕时一栏横屏显示    collapse 折叠; toggle 切换键-->
                 <div class="navbar-collapse collapse">
@@ -79,7 +85,7 @@
 	                    </ul>
                     </li>
                     <li class="dropdown">
-	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">中国茶艺<b class="caret"></b></a>
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">名间茶艺<b class="caret"></b></a>
 	                    <ul class="dropdown-menu">
 	                    	<li><a href="#">种植技术</a></li>
 	                    	<li><a href="#">采摘培训</a></li>
@@ -89,7 +95,7 @@
 	                    </ul>
                     </li>
                     <li class="dropdown">
-	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">名师名茶<b class="caret"></b></a>
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">名茶名师<b class="caret"></b></a>
 	                    <ul class="dropdown-menu">
 	                    	<li><a href="#">种植技术</a></li>
 	                    	<li><a href="#">采摘培训</a></li>
@@ -109,7 +115,17 @@
 	                    </ul>
                     </li>
                     <li class="dropdown">
-	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">农村家产品溯源<b class="caret"></b></a>
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">农村溯源<b class="caret"></b></a>
+	                    <ul class="dropdown-menu">
+	                    	<li><a href="#">种植技术</a></li>
+	                    	<li><a href="#">采摘培训</a></li>
+	                    	<li><a href="#">工艺烘烤</a></li>
+	                    	<li><a href="#">名师评签</a></li>
+	                    	<li><a href="#">出口销售</a></li>
+	                    </ul>
+                    </li>
+                    <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">传承云<b class="caret"></b></a>
 	                    <ul class="dropdown-menu">
 	                    	<li><a href="#">种植技术</a></li>
 	                    	<li><a href="#">采摘培训</a></li>
@@ -119,12 +135,29 @@
 	                    </ul>
                     </li>
                     </ul>
+                    <!-- 右导航树 -->
+                    <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">导航树<b class="caret"></b></a>
+	                    <ul class="dropdown-menu">
+	                    	<li><a href="#">种植技术</a></li>
+	                    	<li><a href="#">采摘培训</a></li>
+	                    	<li><a href="#">工艺烘烤</a></li>
+	                    	<li><a href="#">名师评签</a></li>
+	                    	<li><a href="#">出口销售</a></li>
+	                    </ul>
+                    </li>
+                    </ul>
+                    
                 </div><!--/.nav-collapse -->
               </div><!--/.container -->
             </nav>
         </header>
 <!-- 页面主体内容 -->
         <main role="main">
+        <div class="container">
+        <div class="row">
+        <section class="primary-content col-md-5">
         <!--*****1 carousel  slide旋转木马  幻灯片-->
         <div id="homepage-feature" class="carousel slide">
 	        <!--1.1 carousel-indicators 旋转木马的指标 圆点模式设置  指示物; （车辆上的） 转弯指示灯; 指示信号;-->
@@ -161,27 +194,37 @@
 		        <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
 	        </a>
         </div><!-- /#homepage-feature.carousel -->
+        <h2>Featured Content</h2>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget.</p>
+                    <p><a class="btn btn-feature btn-lg pull-right" href="#">Learn more <span class="icon fa fa-arrow-circle-right"></span></a></p>
         
-        <!--2 ***** BootStrap 栅格Grid -->
-        <div class="page-contents container">
-        <div class="row"><!-- 行  -->
-        <!-- col-12全宽 col-6 一半 col-4 三分之一 -->
-        <div class="col-sm-4">
-        <h2>Welcome!</h2>
-        <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-        <!--***** btn 链接变成按钮 btn-primary 按钮色彩配置 pull-right 右推放置 -->
-        <p><a href="#" class="btn btn-primary pull-right">See our portfolio <span class="icon fa fa-arrow-circle-right"></span></a></p>
-        </div>
-        <div class="col-sm-4">
-        <h2>Recent Updates</h2>
-        <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-        <p><a href="#" class="btn btn-primary pull-right">See what's new! <span class="icon fa fa-arrow-circle-right"></span></a></p>
-        </div>
-        <div class="col-sm-4">
-        <h2>Our Team</h2>
-        <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-        <p><a href="#" class="btn btn-primary pull-right">Meet the team! <span class="icon fa fa-arrow-circle-right"></span></a></p>
-        </div>
+        </section>
+        <section class="content-secondary col-md-4">
+
+                    <h3>Welcome!</h3>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+
+                    <h3>Recent Updates</h3>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+
+                    <h3>And another thing</h3>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+
+                </section>
+                <section class="content-tertiary col-md-3">
+                    <h4>Don't Miss!</h4>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <h4>Check it out</h4>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <h4>Finally</h4>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    </section>
         </div><!-- /.row -->
         </div><!-- /.container -->
         </main>
