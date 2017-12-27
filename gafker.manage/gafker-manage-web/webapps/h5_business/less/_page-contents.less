@@ -2,6 +2,8 @@
 // Page Contents
 // --------------------------
 main {
+	padding-top: 20px;
+	padding-bottom: 40px;
 		[class*="col-"] {
 			h1,h2,h3,h4 {
 				clear: both;
@@ -15,4 +17,16 @@ main {
 				}
 				}
 			}
+	
+	@media (max-width: @screen-sm-min) {
+		[class*="col-"] {
+			clear: both;
+		}
 	}
+	}
+.content-primary {
+	font-size: @font-size-large;
+}
+.content-tertiary {
+	font-size: @font-size-small;
+}
