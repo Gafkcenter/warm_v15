@@ -5,23 +5,19 @@
 footer[role="contentinfo"] {
 	padding-top: 24px;
 	padding-bottom: 24px;
-	foot-size: @font-size-small;
-	background-color: darken(@navbar-inverse-bg,18%);
-	color: darken(@navbar-inverse-color,18%);
-	a{
+	font-size: @font-size-small;
+	background-color: darken(@navbar-inverse-bg, 18%);
+	color: darken(@navbar-inverse-color, 18%);
+	a {
 		color: @navbar-inverse-color;
 		&:focus,
-		&：hover,
+		&:hover,
 		&:active {
 			color: @navbar-inverse-link-hover-color;
 		}
 	}
 	.btn-default {
-			color: darken(@navbar-inverse-bg, 18%) !important;
-		}
-	.footer-brand {
-		text-align: center;
-		margin-top: 6px;
+		color: darken(@navbar-inverse-bg, 18%) !important;
 	}
 	h3 {
 		font-size: 120%;
@@ -33,6 +29,12 @@ footer[role="contentinfo"] {
 		padding: 0;
 		margin: 0;
 	}
+
+	.footer-brand {
+		text-align: center;
+		margin-top: 6px;
+	}
+
 	ul.social {
 		margin: 0;
 		padding: 24px 0 0;
@@ -45,17 +47,14 @@ footer[role="contentinfo"] {
 				font-size: 18px;
 				line-height: 30px;
 				.square(30px);
-				background-color: darken(@navbar-inverse-bg, 27%);
-				color: darken(@navbar-inverse-bg, 18%);
-				//color: #fff;
-		    	border-radius: 36px;
-				background-color: @gray-light;
+		    border-radius: 36px;
+				background-color: darken(@navbar-inverse-bg, 27%); // @gray-light;
+				color: darken(@navbar-inverse-color, 18%); // #fff; // edited
 				margin: 0 3px 3px 0;
 				&:hover {
 					text-decoration: none;
-					//background-color: @link-hover-color;
-					background-color: darken(@navbar-inverse-bg, 32%);
-					color: @navbar-inverse-link-hover-color;
+					background-color: darken(@navbar-inverse-bg, 32%); // @link-hover-color;
+					color: @navbar-inverse-link-hover-color; // added
 				}
 			}
 		}

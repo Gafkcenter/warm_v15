@@ -13,3 +13,7 @@
 
 首页 > 北美洲 > 美国 > 素材 >BrandColors:世界知名品牌颜色收集网		
 http://www.egouz.com/topics/10920.html
+
+
+LayerUI：http://blog.csdn.net/haibo0668/article/details/52932891
+Jquery Validator：http://www.51xuediannao.com/js/jquery/jquery_validate/
